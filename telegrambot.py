@@ -7,7 +7,7 @@ TOKEN = ""		#Token of your telegram bot that you created from @BotFather
 bot = telegram.Bot(TOKEN)
 
 #debugging
-bot.sendMessage(chat_id=26349488, text="DEBUGGING ON")
+bot.sendMessage(chat_id=26349488, text="BOT ON")
 
 LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
 
