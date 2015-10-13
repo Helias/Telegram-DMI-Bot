@@ -20,5 +20,5 @@ def getProfessori(input):
             risultati += 1
         i += 1
     if (risultati == 0) :
-        output = "\nNon sono stati trovati risultati :(\n\n"
+        output = "\nProfessore non trovato! :(\n\n"
     return output
