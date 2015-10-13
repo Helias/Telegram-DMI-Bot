@@ -16,3 +16,9 @@ The bot is live on Telegram with the username [@DMI_bot](https://web.telegram.or
 Send **'/start'** to start it, **'/help'** to see a list of commands.
 
 Please note that the commands and their answers from the bot are in Italian.
+
+###License
+This open-source software is published under the GNU General Public License (GNU GPL) version 3. Please refer to the "LICENSE" file of this project for the full text.
+
+###Credits
+This project is made possible thanks to the contributions of Stefano Borzì (Helias), Adriano Ferraguto (adrianoferraguto) and Luca Cavallaro (lucacavallaro).
