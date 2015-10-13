@@ -1,1 +1,704 @@
-[{"ID": "1", "Ruolo": "Associato", "Nome": "Franco", "Cognome": "Barbanera", "Email": "barba@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~barba/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=QlJCRk5DNjNTMDNFNDcyQw=="}, {"ID": "2", "Ruolo": "Associato", "Nome": "Sebastiano", "Cognome": "Battiato", "Email": "battiato@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~battiato", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=QlRUU1NUNzJSMTlDMzUxUA=="}, {"ID": "3", "Ruolo": "Ordinario", "Nome": "Angelo", "Cognome": "Bella", "Email": "bella@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=QkxMTkdMNThBMjZDMzUxRA=="}, {"ID": "4", "Ruolo": "Associato", "Nome": "Gianpaolo", "Cognome": "Bella", "Email": "giamp@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~giamp", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=QkxMR1BMNzNFMDdDMzUxUg=="}, {"ID": "5", "Ruolo": "Ricercatore", "Nome": "Veronica", "Cognome": "Biazzo", "Email": "vbiazzo@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=QlpaVk5DNjhUNTFDMzUxUg=="}, {"ID": "6", "Ruolo": "Ricercatore", "Nome": "Paola", "Cognome": "Bonacini", "Email": "bonacini@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~bonacini/DMI/Home.html", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Qk5DUExBNzlFNTBDMzUxTw=="}, {"ID": "7", "Ruolo": "Ricercatore", "Nome": "Sebastiano", "Cognome": "Boscarino", "Email": "boscarino@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~boscarino/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=QlNDU1NUNzVTMTZFNTI2QQ=="}, {"ID": "8", "Ruolo": "Ordinario", "Nome": "Domenico", "Cognome": "Cantone", "Email": "cantone@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~cantone", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q05URE5DNTlBMTBDMzUxUw=="}, {"ID": "9", "Ruolo": "Ricercatore", "Nome": "Andrea Orazio", "Cognome": "Caruso", "Email": "aocaruso@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~aocaruso/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q1JTTlJSNjdQMjZDMzUxWQ=="}, {"ID": "10", "Ruolo": "Associato", "Nome": "Dario", "Cognome": "Catalano", "Email": "catalano@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q1RMRFJBNzJBMTdDMzUxTg=="}, {"ID": "11", "Ruolo": "Ricercatore", "Nome": "Antonio", "Cognome": "Causa", "Email": "causa@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q1NBTlRONjhDMjdDMzUxVg=="}, {"ID": "12", "Ruolo": "Associato", "Nome": "Raffaella Giovanna", "Cognome": "Cilia", "Email": "cilia@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q0xJUkZMNjZBNTZIMTYzSQ=="}, {"ID": "13", "Ruolo": "Ricercatore", "Nome": "Gianluca", "Cognome": "Cincotti", "Email": "", "Sito": "", "SchedaDMI": ""}, {"ID": "14", "Ruolo": "Associato", "Nome": "Giuseppa Rita", "Cognome": "Cirmi", "Email": "cirmi@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q1JNR1BQNjZQNDVBMDE0TQ=="}, {"ID": "15", "Ruolo": "Ordinario", "Nome": "Vincenzo", "Cognome": "Cutello", "Email": "", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Q1RMVkNONjFNMjJBMDE0UA=="}, {"ID": "16", "Ruolo": "Associato", "Nome": "Marco", "Cognome": "D'Anna", "Email": "mdanna@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RE5OTVJDNjdTMDFINTAxTQ=="}, {"ID": "17", "Ruolo": "Ricercatore", "Nome": "Salvatore", "Cognome": "D'Asero", "Email": "dasero@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RFNSU1ZUNzNEMTBDMzUxVA=="}, {"ID": "18", "Ruolo": "Associato", "Nome": "Patrizia", "Cognome": "Daniele", "Email": "daniele@dmi.unict.it", "Sito": "http://patriziadaniele.com/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RE5MUFJaNzNENTRBNDk0Sw=="}, {"ID": "19", "Ruolo": "Ordinario", "Nome": "Giuseppe", "Cognome": "Di Fazio", "Email": "difazio@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~difazio/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=REZaR1BQNjNUMjVDMzUxUQ=="}, {"ID": "20", "Ruolo": "Ricercatore", "Nome": "Mario", "Cognome": "Di Raimondo", "Email": "diraimondo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/diraimondo/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RFJNTVJBNzZCMTBGMjU4Ug=="}, {"ID": "21", "Ruolo": "Associato", "Nome": "Rosalba", "Cognome": "Di Vincenzo", "Email": "divincenzo@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RFZOUkxCNTFSNTRDNTY4UQ=="}, {"ID": "22", "Ruolo": "Ordinario", "Nome": "Giovanni", "Cognome": "Emmanuele", "Email": "emmanuele@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~emmanuele/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TU1OR05ONTZBMTVDMzUxSA=="}, {"ID": "23", "Ruolo": "Ricercatore", "Nome": "Paolo", "Cognome": "Falsaperla", "Email": "falsaperla@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~falsaperla/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RkxTUExBNjVQMjdDMzUxSA=="}, {"ID": "24", "Ruolo": "Ricercatore", "Nome": "Maria", "Cognome": "Fanciullo", "Email": "fanciullo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~fanciullo/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Rk5DTVJBNzFCNTFJNzU0Sg=="}, {"ID": "25", "Ruolo": "Associato", "Nome": "Francesca", "Cognome": "Faraci", "Email": "ffaraci@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RlJDRk5DNzdENThDMzUxQg=="}, {"ID": "26", "Ruolo": "Ricercatore", "Nome": "Giovanni Maria", "Cognome": "Farinella", "Email": "gfarinella@dmi.unict.it", "Sito": "http://www.dmi.unict.it/farinella", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RlJOR05ONzZNMjBINzkyUA=="}, {"ID": "27", "Ruolo": "Ricercatore", "Nome": "Simone", "Cognome": "Faro", "Email": "faro@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~faro", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=RlJBU01ONzdUMDNDMzUxSg=="}, {"ID": "28", "Ruolo": "Ordinario", "Nome": "Giovanni", "Cognome": "Gallo", "Email": "gallo@dmi.unict.it", "Sito": "http://http//www.dmi.unict.it/~gallo/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=R0xMR05ONjJCMjhCNDI4SQ=="}, {"ID": "29", "Ruolo": "Ordinario", "Nome": "Mario", "Cognome": "Gionfriddo", "Email": "gionfriddo@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=R05GTVJBNDZTMDZGMTU4Qw=="}, {"ID": "30", "Ruolo": "Ordinario", "Nome": "Salvatore", "Cognome": "Giuffrida", "Email": "giuffrida@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~geometria/giuffrida/indexgiuffrida.htm", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=R0ZGU1ZUNDVBMDFDMzUxRg=="}, {"ID": "31", "Ruolo": "Associato", "Nome": "Laila", "Cognome": "Giusti", "Email": "giusti@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=R1NUTExBNTNMNDdaMzE1VA=="}, {"ID": "32", "Ruolo": "Associato", "Nome": "Elena Maria", "Cognome": "Guardo", "Email": "guardo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~guardo", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=R1JETE1SNzBQNTZDMzUxSg=="}, {"ID": "33", "Ruolo": "Associato", "Nome": "Salvatore", "Cognome": "Leonardi", "Email": "leonardi@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~leonardi/CV.doc", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TE5SU1ZUNjhQMTRDMzUxUw=="}, {"ID": "34", "Ruolo": "Ricercatore", "Nome": "Sebastiano", "Cognome": "Lombardo", "Email": "lombardo@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TE1CU1NUNTNMMDNBMDI5TQ=="}, {"ID": "35", "Ruolo": "Ricercatore", "Nome": "Maria Serafina", "Cognome": "Madonia", "Email": "madonia@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~madonia/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TUROTVNSNjJUNzFHMjczUA=="}, {"ID": "36", "Ruolo": "Associato", "Nome": "Renato", "Cognome": "Maggioni", "Email": "maggioni@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~maggioni", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TUdHUk5UNDVBMDFINTAxQQ=="}, {"ID": "37", "Ruolo": "Ricercatore", "Nome": "Maria Flavia", "Cognome": "Mammana", "Email": "fmammana@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TU1NTUZMNzJUNDVDMzUxUw=="}, {"ID": "38", "Ruolo": "Ordinario", "Nome": "Salvatore Angelo", "Cognome": "Marano", "Email": "marano@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TVJOU1ZUNjRCMDFDNDgwTA=="}, {"ID": "39", "Ruolo": "Ricercatore", "Nome": "Lucia Maria", "Cognome": "Marino", "Email": "lmarino@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~lmarino/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TVJOTE1SNzNBNjlDMzUxSA=="}, {"ID": "40", "Ruolo": "Ricercatore", "Nome": "Vincenzo", "Cognome": "Micale", "Email": "vmicale@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TUNMVkNONzRIMjJDMzUxUw=="}, {"ID": "41", "Ruolo": "Associato", "Nome": "Lorenzo Maria Filippo", "Cognome": "Milazzo", "Email": "milazzo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~milazzo/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TUxaTE5aNjNNMDRDMzUxTA=="}, {"ID": "42", "Ruolo": "Ordinario", "Nome": "Salvatore", "Cognome": "Milici", "Email": "milici@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~milici/milicisalv/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TUxDU1ZUNDhIMjRGOTUxQg=="}, {"ID": "43", "Ruolo": "Ricercatore", "Nome": "Gaetano", "Cognome": "Moschetti", "Email": "moschetti@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~moschetti", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TVNDR1RONTNBMDVGMjUwUQ=="}, {"ID": "44", "Ruolo": "Associato", "Nome": "Santo", "Cognome": "Motta", "Email": "motta@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TVRUU05UNDZCMjBINTAxUQ=="}, {"ID": "45", "Ruolo": "Ordinario", "Nome": "Giuseppe", "Cognome": "Mulone", "Email": "mulone@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~mulone", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TUxOR1BQNTFSMTVCNjAyQQ=="}, {"ID": "46", "Ruolo": "Associato", "Nome": "Orazio", "Cognome": "Muscato", "Email": "muscato@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~muscato/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TVNDUlpPNjBDMTNGOTQzRQ=="}, {"ID": "47", "Ruolo": "Associato", "Nome": "Ornella", "Cognome": "Naselli", "Email": "naselli@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TlNMUkxMNjBFNDRDMzUxVg=="}, {"ID": "48", "Ruolo": "Ricercatore", "Nome": "Marianna", "Cognome": "Nicolosi Asmundo", "Email": "nicolosi@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~nicolosi/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TkNMTU5ONzRFNjRDMzUxQQ=="}, {"ID": "49", "Ruolo": "Associato", "Nome": "Giuseppe", "Cognome": "Nicosia", "Email": "nicosia@dmi.unict.it", "Sito": "http://www.dmi.unict.it/nicosia/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=TkNTR1BQNzRBMThDMzUxSw=="}, {"ID": "50", "Ruolo": "Ordinario", "Nome": "Giuseppe", "Cognome": "Pappalardo", "Email": "pappalardo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/pappalardo", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UFBQR1BQNjBBMDRDMzUxRw=="}, {"ID": "51", "Ruolo": "Ricercatore", "Nome": "Mario Francesco", "Cognome": "Pavone", "Email": "mpavone@dmi.unict.it", "Sito": "http://www.dmi.unict.it/mpavone/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UFZOTUZSNzRUMTFDMzUxRw=="}, {"ID": "52", "Ruolo": "Associato", "Nome": "Mario", "Cognome": "Pennisi", "Email": "pennisi@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UE5OTVJBNTJFMDVCMjAyQQ=="}, {"ID": "53", "Ruolo": "Ricercatore", "Nome": "Rosa Maria", "Cognome": "Pidatella", "Email": "rosa@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UERUUk1SNTdTNjFDMzUxVQ=="}, {"ID": "54", "Ruolo": "Ricercatore", "Nome": "Daniele", "Cognome": "Puglisi", "Email": "dpuglisi@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~dpuglisi/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UEdMRE5MNzlFMjFCNDI4TA=="}, {"ID": "55", "Ruolo": "Ricercatore", "Nome": "Fabio", "Cognome": "Raciti", "Email": "", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkNURkJBNjhFMjNDMzUxRw=="}, {"ID": "56", "Ruolo": "Associato", "Nome": "Grazia", "Cognome": "Raciti", "Email": "raciti@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkNUR1JaNTFENTRBMDI5Uw=="}, {"ID": "57", "Ruolo": "Ordinario", "Nome": "Alfio", "Cognome": "Ragusa", "Email": "ragusa@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~ragusa/docs/frame_coordinator.htm", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkdTTEZBNDZQMDVDMzUxUg=="}, {"ID": "58", "Ruolo": "Associato", "Nome": "Maria Alessandra", "Cognome": "Ragusa", "Email": "maragusa@dmi.unict.it", "Sito": "http://www3.unict.it/gioenia/index.php/soci/161-ragusa.html", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkdTTUxTNjZINThDMzUxRw=="}, {"ID": "59", "Ruolo": "Ricercatore", "Nome": "Riccardo", "Cognome": "Re", "Email": "riccardo@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkVYUkNSNjZNMDVDMzUxTQ=="}, {"ID": "60", "Ruolo": "Ordinario", "Nome": "Biagio", "Cognome": "Ricceri", "Email": "ricceri@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkNDQkdJNTVCMDdDMzUxSw=="}, {"ID": "61", "Ruolo": "Associato", "Nome": "Salvatore Antonio", "Cognome": "Riccobene", "Email": "riccobene@unict.it", "Sito": "http://www.dmi.unict.it/sriccobene", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UkNDU1ZUNjdNMjRDMzUxWA=="}, {"ID": "62", "Ruolo": "Associato", "Nome": "Francesco", "Cognome": "Russo", "Email": "frusso@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~frusso", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UlNTRk5DNjdSMTlGMjA1Sw=="}, {"ID": "63", "Ruolo": "Ordinario", "Nome": "Giovanni", "Cognome": "Russo", "Email": "russo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~russo", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UlNTR05ONThBMTFHMjczVg=="}, {"ID": "64", "Ruolo": "Ricercatore", "Nome": "Corrado", "Cognome": "Santoro", "Email": "santoro@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~santoro", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U05UQ1JENjZNMTFBNTIySQ=="}, {"ID": "65", "Ruolo": "Associato", "Nome": "Giuseppe", "Cognome": "Scollo", "Email": "scollo@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~scollo", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U0NMR1BQNTNCMTBDMzUxVw=="}, {"ID": "66", "Ruolo": "Associato", "Nome": "Laura Rosa Maria", "Cognome": "Scrimali", "Email": "scrimali@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U0NSTFJTNzZFNDVDMzUxUw=="}, {"ID": "67", "Ruolo": "Ricercatore", "Nome": "Irene", "Cognome": "Sergio", "Email": "", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U1JHUk5JNTNENTRMMzMxUg=="}, {"ID": "68", "Ruolo": "Ricercatore", "Nome": "Giuseppe", "Cognome": "Sorace", "Email": "sorace@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U1JDR1BQNTRNMjZDMzUxVQ=="}, {"ID": "69", "Ruolo": "Associato", "Nome": "Filippo", "Cognome": "Stanco", "Email": "fstanco@dmi.unict.it", "Sito": "http://http//www.dmi.unict.it/fstanco/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U1RORlBQNzVUMTJGODkyWQ=="}, {"ID": "70", "Ruolo": "Ordinario", "Nome": "Rosario", "Cognome": "Strano", "Email": "sstrano@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=U1RSUlNSNDRUMDFBMDI4RQ=="}, {"ID": "71", "Ruolo": "Ricercatore", "Nome": "Rita", "Cognome": "Tracinà", "Email": "tracina@dmi.unict.it", "Sito": "", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=VFJDUlRJNjRSNjZDMzUxSA=="}, {"ID": "72", "Ruolo": "Ricercatore", "Nome": "Emiliano Alessio", "Cognome": "Tramontana", "Email": "tramontana@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~tramonta", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=VFJNTU5MNzBUMTFDMzUxSQ=="}, {"ID": "73", "Ruolo": "Ordinario", "Nome": "Massimo", "Cognome": "Trovato", "Email": "trovato@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~trovato/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=VFJWTVNNNjBUMTBDMzUxUw=="}, {"ID": "74", "Ruolo": "Ordinario", "Nome": "Alfonso", "Cognome": "Villani", "Email": "villani@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~villani/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=VkxMTE5TNTJSMjdBOTczVg=="}, {"ID": "75", "Ruolo": "Associato", "Nome": "Pietro", "Cognome": "Zamboni", "Email": "zamboni@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~zamboni/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=Wk1CUFRSNjVQMTFGMTU4RQ=="}, {"ID": "76", "Ruolo": "Ricercatore", "Nome": "Giuseppe", "Cognome": "Zappalà", "Email": "zappalag@dmi.unict.it", "Sito": "http://www.dmi.unict.it/~zappalag/", "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=WlBQR1BQNzBQMjdDMzUxTw=="}, {"ID": "77", "Ruolo": "nil", "Nome": "nil", "Cognome": "nil", "Email": "nil", "Sito": "nil", "SchedaDMI": "nil"}, {"ID": "-1", "Ruolo": "nil", "Nome": "nil", "Cognome": "nil", "Email": "nil", "Sito": "nil", "SchedaDMI": "nil"}]
+[
+  {
+    "ID": "1",
+    "Ruolo": "Associato",
+    "Nome": "Franco",
+    "Cognome": "Barbanera",
+    "Email": "barba@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~barba\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=QlJCRk5DNjNTMDNFNDcyQw=="
+  },
+  {
+    "ID": "2",
+    "Ruolo": "Associato",
+    "Nome": "Sebastiano",
+    "Cognome": "Battiato",
+    "Email": "battiato@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~battiato",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=QlRUU1NUNzJSMTlDMzUxUA=="
+  },
+  {
+    "ID": "3",
+    "Ruolo": "Ordinario",
+    "Nome": "Angelo",
+    "Cognome": "Bella",
+    "Email": "bella@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=QkxMTkdMNThBMjZDMzUxRA=="
+  },
+  {
+    "ID": "4",
+    "Ruolo": "Associato",
+    "Nome": "Gianpaolo",
+    "Cognome": "Bella",
+    "Email": "giamp@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~giamp",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=QkxMR1BMNzNFMDdDMzUxUg=="
+  },
+  {
+    "ID": "5",
+    "Ruolo": "Ricercatore",
+    "Nome": "Veronica",
+    "Cognome": "Biazzo",
+    "Email": "vbiazzo@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=QlpaVk5DNjhUNTFDMzUxUg=="
+  },
+  {
+    "ID": "6",
+    "Ruolo": "Ricercatore",
+    "Nome": "Paola",
+    "Cognome": "Bonacini",
+    "Email": "bonacini@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~bonacini\/DMI\/Home.html",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Qk5DUExBNzlFNTBDMzUxTw=="
+  },
+  {
+    "ID": "7",
+    "Ruolo": "Ricercatore",
+    "Nome": "Sebastiano",
+    "Cognome": "Boscarino",
+    "Email": "boscarino@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~boscarino\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=QlNDU1NUNzVTMTZFNTI2QQ=="
+  },
+  {
+    "ID": "8",
+    "Ruolo": "Ordinario",
+    "Nome": "Domenico",
+    "Cognome": "Cantone",
+    "Email": "cantone@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~cantone",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q05URE5DNTlBMTBDMzUxUw=="
+  },
+  {
+    "ID": "9",
+    "Ruolo": "Ricercatore",
+    "Nome": "Andrea Orazio",
+    "Cognome": "Caruso",
+    "Email": "aocaruso@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~aocaruso\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q1JTTlJSNjdQMjZDMzUxWQ=="
+  },
+  {
+    "ID": "10",
+    "Ruolo": "Associato",
+    "Nome": "Dario",
+    "Cognome": "Catalano",
+    "Email": "catalano@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q1RMRFJBNzJBMTdDMzUxTg=="
+  },
+  {
+    "ID": "11",
+    "Ruolo": "Ricercatore",
+    "Nome": "Antonio",
+    "Cognome": "Causa",
+    "Email": "causa@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q1NBTlRONjhDMjdDMzUxVg=="
+  },
+  {
+    "ID": "12",
+    "Ruolo": "Associato",
+    "Nome": "Raffaella Giovanna",
+    "Cognome": "Cilia",
+    "Email": "cilia@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q0xJUkZMNjZBNTZIMTYzSQ=="
+  },
+  {
+    "ID": "13",
+    "Ruolo": "Ricercatore",
+    "Nome": "Gianluca",
+    "Cognome": "Cincotti",
+    "Email": "",
+    "Sito": "",
+    "SchedaDMI": ""
+  },
+  {
+    "ID": "14",
+    "Ruolo": "Associato",
+    "Nome": "Giuseppa Rita",
+    "Cognome": "Cirmi",
+    "Email": "cirmi@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q1JNR1BQNjZQNDVBMDE0TQ=="
+  },
+  {
+    "ID": "15",
+    "Ruolo": "Ordinario",
+    "Nome": "Vincenzo",
+    "Cognome": "Cutello",
+    "Email": "",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Q1RMVkNONjFNMjJBMDE0UA=="
+  },
+  {
+    "ID": "16",
+    "Ruolo": "Associato",
+    "Nome": "Marco",
+    "Cognome": "D'Anna",
+    "Email": "mdanna@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RE5OTVJDNjdTMDFINTAxTQ=="
+  },
+  {
+    "ID": "17",
+    "Ruolo": "Ricercatore",
+    "Nome": "Salvatore",
+    "Cognome": "D'Asero",
+    "Email": "dasero@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RFNSU1ZUNzNEMTBDMzUxVA=="
+  },
+  {
+    "ID": "18",
+    "Ruolo": "Associato",
+    "Nome": "Patrizia",
+    "Cognome": "Daniele",
+    "Email": "daniele@dmi.unict.it",
+    "Sito": "http:\/\/patriziadaniele.com\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RE5MUFJaNzNENTRBNDk0Sw=="
+  },
+  {
+    "ID": "19",
+    "Ruolo": "Ordinario",
+    "Nome": "Giuseppe",
+    "Cognome": "Di Fazio",
+    "Email": "difazio@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~difazio\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=REZaR1BQNjNUMjVDMzUxUQ=="
+  },
+  {
+    "ID": "20",
+    "Ruolo": "Ricercatore",
+    "Nome": "Mario",
+    "Cognome": "Di Raimondo",
+    "Email": "diraimondo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/diraimondo\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RFJNTVJBNzZCMTBGMjU4Ug=="
+  },
+  {
+    "ID": "21",
+    "Ruolo": "Associato",
+    "Nome": "Rosalba",
+    "Cognome": "Di Vincenzo",
+    "Email": "divincenzo@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RFZOUkxCNTFSNTRDNTY4UQ=="
+  },
+  {
+    "ID": "22",
+    "Ruolo": "Ordinario",
+    "Nome": "Giovanni",
+    "Cognome": "Emmanuele",
+    "Email": "emmanuele@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~emmanuele\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TU1OR05ONTZBMTVDMzUxSA=="
+  },
+  {
+    "ID": "23",
+    "Ruolo": "Ricercatore",
+    "Nome": "Paolo",
+    "Cognome": "Falsaperla",
+    "Email": "falsaperla@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~falsaperla\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RkxTUExBNjVQMjdDMzUxSA=="
+  },
+  {
+    "ID": "24",
+    "Ruolo": "Ricercatore",
+    "Nome": "Maria",
+    "Cognome": "Fanciullo",
+    "Email": "fanciullo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~fanciullo\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Rk5DTVJBNzFCNTFJNzU0Sg=="
+  },
+  {
+    "ID": "25",
+    "Ruolo": "Associato",
+    "Nome": "Francesca",
+    "Cognome": "Faraci",
+    "Email": "ffaraci@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RlJDRk5DNzdENThDMzUxQg=="
+  },
+  {
+    "ID": "26",
+    "Ruolo": "Ricercatore",
+    "Nome": "Giovanni Maria",
+    "Cognome": "Farinella",
+    "Email": "gfarinella@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/farinella",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RlJOR05ONzZNMjBINzkyUA=="
+  },
+  {
+    "ID": "27",
+    "Ruolo": "Ricercatore",
+    "Nome": "Simone",
+    "Cognome": "Faro",
+    "Email": "faro@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~faro",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=RlJBU01ONzdUMDNDMzUxSg=="
+  },
+  {
+    "ID": "28",
+    "Ruolo": "Ordinario",
+    "Nome": "Giovanni",
+    "Cognome": "Gallo",
+    "Email": "gallo@dmi.unict.it",
+    "Sito": "http:\/\/http\/\/www.dmi.unict.it\/~gallo\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=R0xMR05ONjJCMjhCNDI4SQ=="
+  },
+  {
+    "ID": "29",
+    "Ruolo": "Ordinario",
+    "Nome": "Mario",
+    "Cognome": "Gionfriddo",
+    "Email": "gionfriddo@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=R05GTVJBNDZTMDZGMTU4Qw=="
+  },
+  {
+    "ID": "30",
+    "Ruolo": "Ordinario",
+    "Nome": "Salvatore",
+    "Cognome": "Giuffrida",
+    "Email": "giuffrida@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~geometria\/giuffrida\/indexgiuffrida.htm",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=R0ZGU1ZUNDVBMDFDMzUxRg=="
+  },
+  {
+    "ID": "31",
+    "Ruolo": "Associato",
+    "Nome": "Laila",
+    "Cognome": "Giusti",
+    "Email": "giusti@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=R1NUTExBNTNMNDdaMzE1VA=="
+  },
+  {
+    "ID": "32",
+    "Ruolo": "Associato",
+    "Nome": "Elena Maria",
+    "Cognome": "Guardo",
+    "Email": "guardo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~guardo",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=R1JETE1SNzBQNTZDMzUxSg=="
+  },
+  {
+    "ID": "33",
+    "Ruolo": "Associato",
+    "Nome": "Salvatore",
+    "Cognome": "Leonardi",
+    "Email": "leonardi@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~leonardi\/CV.doc",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TE5SU1ZUNjhQMTRDMzUxUw=="
+  },
+  {
+    "ID": "34",
+    "Ruolo": "Ricercatore",
+    "Nome": "Sebastiano",
+    "Cognome": "Lombardo",
+    "Email": "lombardo@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TE1CU1NUNTNMMDNBMDI5TQ=="
+  },
+  {
+    "ID": "35",
+    "Ruolo": "Ricercatore",
+    "Nome": "Maria Serafina",
+    "Cognome": "Madonia",
+    "Email": "madonia@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~madonia\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TUROTVNSNjJUNzFHMjczUA=="
+  },
+  {
+    "ID": "36",
+    "Ruolo": "Associato",
+    "Nome": "Renato",
+    "Cognome": "Maggioni",
+    "Email": "maggioni@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~maggioni",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TUdHUk5UNDVBMDFINTAxQQ=="
+  },
+  {
+    "ID": "37",
+    "Ruolo": "Ricercatore",
+    "Nome": "Maria Flavia",
+    "Cognome": "Mammana",
+    "Email": "fmammana@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TU1NTUZMNzJUNDVDMzUxUw=="
+  },
+  {
+    "ID": "38",
+    "Ruolo": "Ordinario",
+    "Nome": "Salvatore Angelo",
+    "Cognome": "Marano",
+    "Email": "marano@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TVJOU1ZUNjRCMDFDNDgwTA=="
+  },
+  {
+    "ID": "39",
+    "Ruolo": "Ricercatore",
+    "Nome": "Lucia Maria",
+    "Cognome": "Marino",
+    "Email": "lmarino@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~lmarino\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TVJOTE1SNzNBNjlDMzUxSA=="
+  },
+  {
+    "ID": "40",
+    "Ruolo": "Ricercatore",
+    "Nome": "Vincenzo",
+    "Cognome": "Micale",
+    "Email": "vmicale@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TUNMVkNONzRIMjJDMzUxUw=="
+  },
+  {
+    "ID": "41",
+    "Ruolo": "Associato",
+    "Nome": "Lorenzo Maria Filippo",
+    "Cognome": "Milazzo",
+    "Email": "milazzo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~milazzo\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TUxaTE5aNjNNMDRDMzUxTA=="
+  },
+  {
+    "ID": "42",
+    "Ruolo": "Ordinario",
+    "Nome": "Salvatore",
+    "Cognome": "Milici",
+    "Email": "milici@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~milici\/milicisalv\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TUxDU1ZUNDhIMjRGOTUxQg=="
+  },
+  {
+    "ID": "43",
+    "Ruolo": "Ricercatore",
+    "Nome": "Gaetano",
+    "Cognome": "Moschetti",
+    "Email": "moschetti@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~moschetti",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TVNDR1RONTNBMDVGMjUwUQ=="
+  },
+  {
+    "ID": "44",
+    "Ruolo": "Associato",
+    "Nome": "Santo",
+    "Cognome": "Motta",
+    "Email": "motta@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TVRUU05UNDZCMjBINTAxUQ=="
+  },
+  {
+    "ID": "45",
+    "Ruolo": "Ordinario",
+    "Nome": "Giuseppe",
+    "Cognome": "Mulone",
+    "Email": "mulone@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~mulone",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TUxOR1BQNTFSMTVCNjAyQQ=="
+  },
+  {
+    "ID": "46",
+    "Ruolo": "Associato",
+    "Nome": "Orazio",
+    "Cognome": "Muscato",
+    "Email": "muscato@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~muscato\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TVNDUlpPNjBDMTNGOTQzRQ=="
+  },
+  {
+    "ID": "47",
+    "Ruolo": "Associato",
+    "Nome": "Ornella",
+    "Cognome": "Naselli",
+    "Email": "naselli@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TlNMUkxMNjBFNDRDMzUxVg=="
+  },
+  {
+    "ID": "48",
+    "Ruolo": "Ricercatore",
+    "Nome": "Marianna",
+    "Cognome": "Nicolosi Asmundo",
+    "Email": "nicolosi@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~nicolosi\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TkNMTU5ONzRFNjRDMzUxQQ=="
+  },
+  {
+    "ID": "49",
+    "Ruolo": "Associato",
+    "Nome": "Giuseppe",
+    "Cognome": "Nicosia",
+    "Email": "nicosia@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/nicosia\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=TkNTR1BQNzRBMThDMzUxSw=="
+  },
+  {
+    "ID": "50",
+    "Ruolo": "Ordinario",
+    "Nome": "Giuseppe",
+    "Cognome": "Pappalardo",
+    "Email": "pappalardo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/pappalardo",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UFBQR1BQNjBBMDRDMzUxRw=="
+  },
+  {
+    "ID": "51",
+    "Ruolo": "Ricercatore",
+    "Nome": "Mario Francesco",
+    "Cognome": "Pavone",
+    "Email": "mpavone@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/mpavone\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UFZOTUZSNzRUMTFDMzUxRw=="
+  },
+  {
+    "ID": "52",
+    "Ruolo": "Associato",
+    "Nome": "Mario",
+    "Cognome": "Pennisi",
+    "Email": "pennisi@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UE5OTVJBNTJFMDVCMjAyQQ=="
+  },
+  {
+    "ID": "53",
+    "Ruolo": "Ricercatore",
+    "Nome": "Rosa Maria",
+    "Cognome": "Pidatella",
+    "Email": "rosa@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UERUUk1SNTdTNjFDMzUxVQ=="
+  },
+  {
+    "ID": "54",
+    "Ruolo": "Ricercatore",
+    "Nome": "Daniele",
+    "Cognome": "Puglisi",
+    "Email": "dpuglisi@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~dpuglisi\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UEdMRE5MNzlFMjFCNDI4TA=="
+  },
+  {
+    "ID": "55",
+    "Ruolo": "Ricercatore",
+    "Nome": "Fabio",
+    "Cognome": "Raciti",
+    "Email": "",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkNURkJBNjhFMjNDMzUxRw=="
+  },
+  {
+    "ID": "56",
+    "Ruolo": "Associato",
+    "Nome": "Grazia",
+    "Cognome": "Raciti",
+    "Email": "raciti@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkNUR1JaNTFENTRBMDI5Uw=="
+  },
+  {
+    "ID": "57",
+    "Ruolo": "Ordinario",
+    "Nome": "Alfio",
+    "Cognome": "Ragusa",
+    "Email": "ragusa@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~ragusa\/docs\/frame_coordinator.htm",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkdTTEZBNDZQMDVDMzUxUg=="
+  },
+  {
+    "ID": "58",
+    "Ruolo": "Associato",
+    "Nome": "Maria Alessandra",
+    "Cognome": "Ragusa",
+    "Email": "maragusa@dmi.unict.it",
+    "Sito": "http:\/\/www3.unict.it\/gioenia\/index.php\/soci\/161-ragusa.html",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkdTTUxTNjZINThDMzUxRw=="
+  },
+  {
+    "ID": "59",
+    "Ruolo": "Ricercatore",
+    "Nome": "Riccardo",
+    "Cognome": "Re",
+    "Email": "riccardo@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkVYUkNSNjZNMDVDMzUxTQ=="
+  },
+  {
+    "ID": "60",
+    "Ruolo": "Ordinario",
+    "Nome": "Biagio",
+    "Cognome": "Ricceri",
+    "Email": "ricceri@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkNDQkdJNTVCMDdDMzUxSw=="
+  },
+  {
+    "ID": "61",
+    "Ruolo": "Associato",
+    "Nome": "Salvatore Antonio",
+    "Cognome": "Riccobene",
+    "Email": "riccobene@unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/sriccobene",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UkNDU1ZUNjdNMjRDMzUxWA=="
+  },
+  {
+    "ID": "62",
+    "Ruolo": "Associato",
+    "Nome": "Francesco",
+    "Cognome": "Russo",
+    "Email": "frusso@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~frusso",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UlNTRk5DNjdSMTlGMjA1Sw=="
+  },
+  {
+    "ID": "63",
+    "Ruolo": "Ordinario",
+    "Nome": "Giovanni",
+    "Cognome": "Russo",
+    "Email": "russo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~russo",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=UlNTR05ONThBMTFHMjczVg=="
+  },
+  {
+    "ID": "64",
+    "Ruolo": "Ricercatore",
+    "Nome": "Corrado",
+    "Cognome": "Santoro",
+    "Email": "santoro@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~santoro",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U05UQ1JENjZNMTFBNTIySQ=="
+  },
+  {
+    "ID": "65",
+    "Ruolo": "Associato",
+    "Nome": "Giuseppe",
+    "Cognome": "Scollo",
+    "Email": "scollo@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~scollo",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U0NMR1BQNTNCMTBDMzUxVw=="
+  },
+  {
+    "ID": "66",
+    "Ruolo": "Associato",
+    "Nome": "Laura Rosa Maria",
+    "Cognome": "Scrimali",
+    "Email": "scrimali@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U0NSTFJTNzZFNDVDMzUxUw=="
+  },
+  {
+    "ID": "67",
+    "Ruolo": "Ricercatore",
+    "Nome": "Irene",
+    "Cognome": "Sergio",
+    "Email": "",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U1JHUk5JNTNENTRMMzMxUg=="
+  },
+  {
+    "ID": "68",
+    "Ruolo": "Ricercatore",
+    "Nome": "Giuseppe",
+    "Cognome": "Sorace",
+    "Email": "sorace@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U1JDR1BQNTRNMjZDMzUxVQ=="
+  },
+  {
+    "ID": "69",
+    "Ruolo": "Associato",
+    "Nome": "Filippo",
+    "Cognome": "Stanco",
+    "Email": "fstanco@dmi.unict.it",
+    "Sito": "http:\/\/http\/\/www.dmi.unict.it\/fstanco\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U1RORlBQNzVUMTJGODkyWQ=="
+  },
+  {
+    "ID": "70",
+    "Ruolo": "Ordinario",
+    "Nome": "Rosario",
+    "Cognome": "Strano",
+    "Email": "sstrano@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=U1RSUlNSNDRUMDFBMDI4RQ=="
+  },
+  {
+    "ID": "71",
+    "Ruolo": "Ricercatore",
+    "Nome": "Rita",
+    "Cognome": "Tracin\u00e0",
+    "Email": "tracina@dmi.unict.it",
+    "Sito": "",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=VFJDUlRJNjRSNjZDMzUxSA=="
+  },
+  {
+    "ID": "72",
+    "Ruolo": "Ricercatore",
+    "Nome": "Emiliano Alessio",
+    "Cognome": "Tramontana",
+    "Email": "tramontana@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~tramonta",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=VFJNTU5MNzBUMTFDMzUxSQ=="
+  },
+  {
+    "ID": "73",
+    "Ruolo": "Ordinario",
+    "Nome": "Massimo",
+    "Cognome": "Trovato",
+    "Email": "trovato@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~trovato\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=VFJWTVNNNjBUMTBDMzUxUw=="
+  },
+  {
+    "ID": "74",
+    "Ruolo": "Ordinario",
+    "Nome": "Alfonso",
+    "Cognome": "Villani",
+    "Email": "villani@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~villani\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=VkxMTE5TNTJSMjdBOTczVg=="
+  },
+  {
+    "ID": "75",
+    "Ruolo": "Associato",
+    "Nome": "Pietro",
+    "Cognome": "Zamboni",
+    "Email": "zamboni@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~zamboni\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=Wk1CUFRSNjVQMTFGMTU4RQ=="
+  },
+  {
+    "ID": "76",
+    "Ruolo": "Ricercatore",
+    "Nome": "Giuseppe",
+    "Cognome": "Zappal\u00e0",
+    "Email": "zappalag@dmi.unict.it",
+    "Sito": "http:\/\/www.dmi.unict.it\/~zappalag\/",
+    "SchedaDMI": "http:\/\/web.dmi.unict.it\/?q=Docenti\/Informazioni%20docenti&key=WlBQR1BQNzBQMjdDMzUxTw=="
+  },
+  {
+    "ID": "77",
+    "Ruolo": "Associato",
+    "Nome": "Alfredo",
+    "Cognome": "Pulvirenti",
+    "Email": "apulvirenti@dmi.unict.it",
+    "Sito": "http://www.dmi.unict.it/~apulvirenti/site/",
+    "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UExWTFJENzRTMTZDMzUxRg=="
+  },
+  {
+    "ID": "-1",
+    "Ruolo": "nil",
+    "Nome": "nil",
+    "Cognome": "nil",
+    "Email": "nil",
+    "Sito": "nil",
+    "SchedaDMI": "nil"
+  }
+]
