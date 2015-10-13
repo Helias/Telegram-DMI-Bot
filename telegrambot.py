@@ -16,12 +16,12 @@ last_text = ""
 while True:
 	messageText = ""
 	for update in bot.getUpdates(offset=LAST_UPDATE_ID, timeout=2):
-	text = update.message.text
-	chat_id = update.message.chat.id
-	update_id = update.update_id
+		text = update.message.text
+		chat_id = update.message.chat.id
+		update_id = update.update_id
 
 	if text != last_text and text != "":
-	last_text = text
+		last_text = text
 	text = text.lower()
 	if text.startswith('/'):
 		if (text == '/help' or text == '/help@dmi_bot'):
@@ -58,7 +58,7 @@ while True:
 			messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 
 	if messageText != "":
-	bot.sendMessage(chat_id=chat_id, text=messageText)
-	LAST_UPDATE_ID = update_id + 1
-	text = ""
+		bot.sendMessage(chat_id=chat_id, text=messageText)
+		LAST_UPDATE_ID = update_id + 1
+		text = ""
 
