@@ -1,7 +1,9 @@
-# Coded By Adriano Ferraguto (Telegram: @adriano_effe)
+# Codice scritto da Adriano Ferraguto (Telegram: @adriano_effe)
 # -*- coding: utf-8 -*-
 
 import json
+import time
+import datetime
     
 def getProfessori(input):
     with open("professori.json") as data_file:
@@ -20,5 +22,55 @@ def getProfessori(input):
             risultati += 1
         i += 1
     if (risultati == 0) :
-        output = "\nProfessore non trovato! :(\n\n"
+        output = "\nNon sono stati trovati risultati :(\n\n"
     return output
+
+def getLezioni(anno,semestre,giorno):
+    with open("lezioni.json") as data_file:
+        lezioni_data = json.load(data_file)
+    output = ""
+    i = 0
+    risultati = 0
+    while(lezioni_data[i]["Nome"] != "nil") :
+        if(lezioni_data[i]["GiornoSettimana"] == str(giorno) and lezioni_data[i]["Anno"] == anno and lezioni_data[i]["Semestre"] == semestre):
+            output += "\nLezione di " + lezioni_data[i]["Nome"] + ", dalle ore " + lezioni_data[i]["OraInizio"] + " alle ore " + lezioni_data[i]["OraFine"] + ", in aula " + lezioni_data[i]["Aula"]
+            risultati += 1
+        i += 1
+    if (risultati == 0):
+        return "Nessuna lezione trovata per il giorno specificato"
+    return output
+
+def lezioni(input):
+    #Interpreta l'anno richiesto
+    inputArray = input.split(' ')
+    if (inputArray[0] == "primo"):
+        anno = "1"
+    elif (inputArray[0] == "secondo"):
+        anno = "2"
+    elif (inputArray[0] == "terzo"):
+        anno = "3"
+    else:
+        return "Non ho capito la richiesta. Digita /help per maggiori info"
+    #Interpreta il giorno della settimana
+    if (len(inputArray) == 1 or inputArray[1] == "oggi"):
+        giorno = datetime.datetime.today().weekday()+1
+    elif (inputArray[1] == "domani"):
+        giorno = datetime.datetime.today().weekday()
+    elif (inputArray[1] == "lunedì"):
+        giorno = 1
+    elif (inputArray[1] == "martedì"):
+        giorno = 2
+    elif (inputArray[1] == "mercoledì"):
+        giorno = 3
+    elif (inputArray[1] == "giovedì"):
+        giorno = 4
+    elif (inputArray[1] == "venerdì"):
+        giorno = 5
+    else:
+        return "Non ho capito la richiesta. Digita /help per maggiori info"
+    #Imposta il semestre corrente
+    semestre = "1"
+    #Chiama la funzione apposita con gli argomenti correttamente interpretati
+    return getLezioni(anno,semestre,giorno)
+
+
