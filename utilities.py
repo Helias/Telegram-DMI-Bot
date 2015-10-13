@@ -55,15 +55,15 @@ def lezioni(input):
         giorno = datetime.datetime.today().weekday()+1
     elif (inputArray[1] == "domani"):
         giorno = datetime.datetime.today().weekday()
-    elif (inputArray[1] == "lunedì"):
+    elif ("lun" in inputArray[1]):
         giorno = 1
-    elif (inputArray[1] == "martedì"):
+    elif ("mar" in inputArray[1]):
         giorno = 2
-    elif (inputArray[1] == "mercoledì"):
+    elif ("mer" in inputArray[1]):
         giorno = 3
-    elif (inputArray[1] == "giovedì"):
+    elif ("gio" in inputArray[1]):
         giorno = 4
-    elif (inputArray[1] == "venerdì"):
+    elif ("ven" in inputArray[1]):
         giorno = 5
     else:
         return "Non ho capito la richiesta. Digita /help per maggiori info"
