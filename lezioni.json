@@ -30,6 +30,7 @@
     {"Nome": "Programmazione GPU", "GiornoSettimana": "2", "OraInizio": "15:00", "OraFine": "17:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Startup d'impresa", "GiornoSettimana": "2", "OraInizio": "17:00", "OraFine": "19:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Informatica Musicale", "GiornoSettimana": "2", "OraInizio": "17:00", "OraFine": "19:00", "Aula": "4", "Anno": "3", "Semestre": "1"}, 
+	{"Nome": "Laboratorio Avanzato di Programmazione 1", "GiornoSettimana": "3", "OraInizio": "9:00", "OraFine": "11:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Fisica", "GiornoSettimana": "3", "OraInizio": "11:00", "OraFine": "13:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Introduzione al Data Mining", "GiornoSettimana": "3", "OraInizio": "15:00", "OraFine": "17:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Social Media Management", "GiornoSettimana": "3", "OraInizio": "17:00", "OraFine": "19:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
@@ -40,6 +41,6 @@
     {"Nome": "Startup d'impresa", "GiornoSettimana": "4", "OraInizio": "17:00", "OraFine": "19:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Fisica", "GiornoSettimana": "5", "OraInizio": "11:00", "OraFine": "13:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "Introduzione al Data Mining", "GiornoSettimana": "5", "OraInizio": "15:00", "OraFine": "17:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
-    {"Nome": "Informatica Musicale", "GiornoSettimana": "5", "OraInizio": "17:00", "OraFine": "19:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
+    {"Nome": "Informatica Musicale", "GiornoSettimana": "4", "OraInizio": "17:00", "OraFine": "19:00", "Aula": "2", "Anno": "3", "Semestre": "1"}, 
     {"Nome": "nil", "GiornoSettimana": "nil", "OraInizio": "nil", "OraFine": "nil", "Aula": "nil", "Anno": "nil", "Semestre": "nil"}
 ]
