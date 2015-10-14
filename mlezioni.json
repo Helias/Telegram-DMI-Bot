@@ -1,0 +1,479 @@
+[
+    {
+        "Nome": "Crittografia",
+        "GiornoSettimana": "1",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Crittografia",
+        "GiornoSettimana": "3",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Crittografia",
+        "GiornoSettimana": "5",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Algoritmi e Complessit√ ",
+        "GiornoSettimana": "3",
+        "OraInizio": "8:00",
+        "OraFine": "11:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Algoritmi e Complessit√ ",
+        "GiornoSettimana": "5",
+        "OraInizio": "8:00",
+        "OraFine": "11:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Ottimizzazione",
+        "GiornoSettimana": "2",
+        "OraInizio": "8:00",
+        "OraFine": "10:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Ottimizzazione",
+        "GiornoSettimana": "4",
+        "OraInizio": "8:00",
+        "OraFine": "10:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Fondamenti di Analisi dei Dati",
+        "GiornoSettimana": "1",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Fondamenti di Analisi dei Dati",
+        "GiornoSettimana": "3",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Fondamenti di Analisi dei Dati",
+        "GiornoSettimana": "5",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Social media management",
+        "GiornoSettimana": "1",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "2",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Social media management",
+        "GiornoSettimana": "3",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "2",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Social media management",
+        "GiornoSettimana": "5",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "2",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Compilatori",
+        "GiornoSettimana": "1",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "3",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Compilatori",
+        "GiornoSettimana": "3",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "3",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Compilatori",
+        "GiornoSettimana": "5",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "3",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Bioinformatica",
+        "GiornoSettimana": "1",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "3",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Bioinformatica",
+        "GiornoSettimana": "3",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "3",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Bioinformatica",
+        "GiornoSettimana": "5",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "3",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Linguaggi Formali e Applicazioni",
+        "GiornoSettimana": "1",
+        "OraInizio": "11:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Linguaggi Formali e Applicazioni",
+        "GiornoSettimana": "3",
+        "OraInizio": "11:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Linguaggi Formali e Applicazioni",
+        "GiornoSettimana": "5",
+        "OraInizio": "11:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "P2P and Wireless Networks",
+        "GiornoSettimana": "2",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "P2P and Wireless Networks",
+        "GiornoSettimana": "4",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Pattern Recognition",
+        "GiornoSettimana": "1",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Pattern Recognition",
+        "GiornoSettimana": "3",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Pattern Recognition",
+        "GiornoSettimana": "5",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "1"
+    },
+    {
+        "Nome": "Sistemi Robotici",
+        "GiornoSettimana": "1",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "4",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi Robotici",
+        "GiornoSettimana": "3",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "4",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Computer Security",
+        "GiornoSettimana": "1",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Computer Security",
+        "GiornoSettimana": "3",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Computer Vision",
+        "GiornoSettimana": "2",
+        "OraInizio": "10:00",
+        "OraFine": "12:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Computer Vision",
+        "GiornoSettimana": "4",
+        "OraInizio": "10:00",
+        "OraFine": "12:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Analisi Numerica",
+        "GiornoSettimana": "2",
+        "OraInizio": "8:00",
+        "OraFine": "10:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Analisi Numerica",
+        "GiornoSettimana": "4",
+        "OraInizio": "8:00",
+        "OraFine": "10:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Fondamenti e Linguaggi P.D.",
+        "GiornoSettimana": "2",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Fondamenti e Linguaggi P.D.",
+        "GiornoSettimana": "4",
+        "OraInizio": "17:00",
+        "OraFine": "19:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Intelligenza Artificiale",
+        "GiornoSettimana": "1",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "2",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Intelligenza Artificiale",
+        "GiornoSettimana": "5",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "2",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Machine Learning",
+        "GiornoSettimana": "2",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Machine Learning",
+        "GiornoSettimana": "4",
+        "OraInizio": "15:00",
+        "OraFine": "17:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi Distribuiti 1",
+        "GiornoSettimana": "1",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi Distribuiti 1",
+        "GiornoSettimana": "3",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "1",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Analisi e Gestione dei Dati",
+        "GiornoSettimana": "2",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "2",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Analisi e Gestione dei Dati",
+        "GiornoSettimana": "3",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "2",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Computazione Naturale",
+        "GiornoSettimana": "2",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "2",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Computazione Naturale",
+        "GiornoSettimana": "4",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "2",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Web Reasoning",
+        "GiornoSettimana": "1",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "2",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Web Reasoning",
+        "GiornoSettimana": "3",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "2",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi Distribuiti",
+        "GiornoSettimana": "1",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi Distribuiti",
+        "GiornoSettimana": "3",
+        "OraInizio": "10:00",
+        "OraFine": "13:00",
+        "Aula": "24",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi dedicati e laboratorio",
+        "GiornoSettimana": "2",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "4",
+        "Anno": "2",
+        "Semestre": "2"
+    },
+    {
+        "Nome": "Sistemi dedicati e laboratorio",
+        "GiornoSettimana": "4",
+        "OraInizio": "15:00",
+        "OraFine": "18:00",
+        "Aula": "4",
+        "Anno": "2",
+        "Semestre": "2"
+    }
+]
