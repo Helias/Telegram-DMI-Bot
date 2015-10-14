@@ -3,6 +3,8 @@ import telegram
 from utilities import *
 
 tokenconf = open('token.conf', 'r').read()
+tokenconf = tokenconf.replace("\n", "")
+
 TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 
 #chat_id log
