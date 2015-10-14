@@ -5,6 +5,9 @@ from utilities import *
 tokenconf = open('token.conf', 'r').read()
 TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 
+#chat_id log
+logs = 1 #disable/enable logs (1 enabled, 0 disabled)
+
 bot = telegram.Bot(TOKEN)
 
 #debugging
@@ -63,6 +66,11 @@ while True:
 			messageText = "Sala Lettura:\nlunedì - venerdì 08.00 - 19.00 \n\nServizio Distribuzione: \nlunedì - giovedì 08.30 - 14.00 \nlunedì - giovedì 14.30 - 16.30 \nvenerdì  08.30 - 13.30"
 
 	if messageText != "":
+		if logs != 0:
+			log = open("log.txt", "a+")
+			if not str(chat_id) in log.read():
+				log.write("\n"+str(chat_id))
+
 		bot.sendMessage(chat_id=chat_id, text=messageText)
 		LAST_UPDATE_ID = update_id + 1
 		text = ""
