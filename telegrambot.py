@@ -2,7 +2,8 @@
 import telegram
 from utilities import *
 
-TOKEN = ""      #Token of your telegram bot that you created from @BotFather
+tokenconf = open('token.conf', 'r').read()
+TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 
 bot = telegram.Bot(TOKEN)
 
