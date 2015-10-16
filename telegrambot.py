@@ -10,7 +10,7 @@ TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFat
 #chat_id log
 logs = 1 #disable/enable logs (1 enabled, 0 disabled)
 
-news = "News @DMI_Bot! Se riscontrate bug o volete migliorare questo bot contattate @Helias o @adriano_effe"
+news = "News"
 
 bot = telegram.Bot(TOKEN)
 
@@ -73,7 +73,7 @@ while True:
 		elif (('/news' in text) and (chat_id == 26349488 or chat_id == 26879677)):
 			news = text.replace("/news ", "")
 			messageText = "News Aggiornata!"
-		elif (text == '/spamnews' and (chat_id == 26349488 or chat_id == 26879677)):
+		elif (text == '/spamnews' and (chat_id == 26349488 or chat_id == 26879677) and news != "News"):
 			chat_ids = open('log.txt', 'r').read()
 			chat_ids = chat_ids.split("\n")
 			for i in range((len(chat_ids)-2)):
