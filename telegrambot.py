@@ -78,7 +78,6 @@ try:
 				chat_ids = open('log.txt', 'r').read()
 				chat_ids = chat_ids.split("\n")
 				for i in range((len(chat_ids)-3)):
-					print str(chat_ids[i])+"\n"
 					try:
 						bot.sendMessage(chat_id=chat_ids[i], text=news)
 					except Exception as error:
