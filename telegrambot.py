@@ -84,7 +84,7 @@ while True:
 		if logs != 0:
 			log = open("log.txt", "a+")
 			if not str(chat_id) in log.read():
-				log.write("\n"+str(chat_id))
+				log.write(str(chat_id)+"\n")
 
 		bot.sendMessage(chat_id=chat_id, text=messageText)
 		LAST_UPDATE_ID = update_id + 1
