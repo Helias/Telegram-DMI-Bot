@@ -24,9 +24,13 @@ def getProfessori(input):
         output = "\nNon sono stati trovati risultati :(\n\n"
     return output
 
-def getLezioni(anno,semestre,giorno):
-    with open("lezioni.json") as data_file:
-        lezioni_data = json.load(data_file)
+def getLezioni(anno,semestre,giorno,corso):
+    if (corso == "triennale"):
+        with open("lezioni.json") as data_file:
+            lezioni_data = json.load(data_file)
+    elif (corso == "magistrale"):
+        with open("mlezioni.json") as data_file:
+            lezioni_data = json.load(data_file)
     output = ""
     i = 0
     risultati = 0
@@ -39,7 +43,7 @@ def getLezioni(anno,semestre,giorno):
         return "Nessuna lezione trovata per il giorno specificato"
     return output
 
-def lezioni(input):
+def lezioni(input,corso):
     #Interpreta l'anno richiesto
     inputArray = input.split(' ')
     if (inputArray[0] == "primo"):
@@ -70,6 +74,6 @@ def lezioni(input):
     #Imposta il semestre corrente
     semestre = "1"
     #Chiama la funzione apposita con gli argomenti correttamente interpretati
-    return getLezioni(anno,semestre,giorno)
+    return getLezioni(anno,semestre,giorno,corso)
 
 

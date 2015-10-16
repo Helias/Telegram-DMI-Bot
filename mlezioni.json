@@ -27,7 +27,7 @@
         "Semestre": "1"
     },
     {
-        "Nome": "Algoritmi e Complessit√ ",
+        "Nome": "Algoritmi e Complessit√†",
         "GiornoSettimana": "3",
         "OraInizio": "8:00",
         "OraFine": "11:00",
@@ -36,7 +36,7 @@
         "Semestre": "1"
     },
     {
-        "Nome": "Algoritmi e Complessit√ ",
+        "Nome": "Algoritmi e Complessit√†",
         "GiornoSettimana": "5",
         "OraInizio": "8:00",
         "OraFine": "11:00",
@@ -475,5 +475,14 @@
         "Aula": "4",
         "Anno": "2",
         "Semestre": "2"
+    },
+    {
+        "Nome": "nil",
+        "GiornoSettimana": "nil",
+        "OraInizio": "nil",
+        "OraFine": "nil",
+        "Aula": "nil",
+        "Anno": "nil",
+        "Semestre": "nil"
     }
 ]

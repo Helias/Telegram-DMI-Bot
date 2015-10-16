@@ -53,11 +53,13 @@ while True:
 		elif ('/lezioni' in text):
 			text = text.replace("@dmi_bot", "")
 			text = text.replace("/lezioni ", "")
-			messageText = lezioni(text)
+			messageText = lezioni(text,"triennale")
+		elif ('/mlezioni' in text):
+			text = text.replace("@dmi_bot", "")
+			text = text.replace("/mlezioni ", "")
+			messageText = lezioni(text,"magistrale")
 		elif (text == '/esami' or text == '/esami@dmi_bot'):
 			messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
-		elif (text == '/mlezioni' or text == '/mlezioni@dmi_bot'):
-			messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20delle%20Lezioni'
 		elif (text == '/mesami' or text == '/mesami@dmi_bot'):
 			messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
 		elif (text == '/aulario' or text == '/aulario@dmi_bot'):
