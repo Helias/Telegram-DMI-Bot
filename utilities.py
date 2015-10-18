@@ -57,7 +57,6 @@ def lezioni(input,corso):
     #Interpreta il giorno della settimana
     if (len(inputArray) == 1 or inputArray[1] == "oggi"):
         giorno = datetime.datetime.today().weekday()
-	print "oggi: "+str(giorno)
     elif (inputArray[1] == "domani"):
 		giorno = datetime.datetime.today().weekday()+1		
     elif ("lun" in inputArray[1]):
