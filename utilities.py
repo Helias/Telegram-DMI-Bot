@@ -59,6 +59,8 @@ def lezioni(input,corso):
         giorno = datetime.datetime.today().weekday()+1
     elif (inputArray[1] == "domani"):
         giorno = datetime.datetime.today().weekday()+2
+        if (giorno == 8):
+            giorno = 1
     elif ("lun" in inputArray[1]):
         giorno = 1
     elif ("mar" in inputArray[1]):
