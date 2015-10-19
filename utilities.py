@@ -56,11 +56,7 @@ def lezioni(input,corso):
         return "Non ho capito la richiesta. Digita /help per maggiori info"
     #Interpreta il giorno della settimana
     if (len(inputArray) == 1 or inputArray[1] == "oggi"):
-<<<<<<< HEAD
-        giorno = datetime.datetime.today().weekday()
-=======
         giorno = datetime.datetime.today().weekday()+1
->>>>>>> parent of 1b47392... Fixed get "lezioni *  domani"
     elif (inputArray[1] == "domani"):
         giorno = datetime.datetime.today().weekday()+2
     elif ("lun" in inputArray[1]):
