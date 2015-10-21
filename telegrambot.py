@@ -79,10 +79,28 @@ try:
 				chat_ids = chat_ids.split("\n")
 				for i in range((len(chat_ids)-1)):
 					try:
-						bot.sendMessage(chat_id=chat_ids[i], text=news)
+						if not "+" in str(chat_id):
+							bot.sendMessage(chat_id=chat_ids[i], text=news)
 					except Exception as error:
 						open("errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
 				messageText = "News spammata!"
+			elif (text == '/disablenews'):
+				chat_ids = open('log.txt', 'r').read()
+				if not ("+"+str(chat_id)) in chat_ids:
+					chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
+					messageText = "News disabilitate!"
+					open('log.txt', 'w').write(chat_ids)
+				else:
+					messageText = "News già disabilitate!"
+			elif (text == '/enablenews'):
+				chat_ids = open('log.txt', 'r').read()
+				if ("+"+str(chat_id)) in chat_ids:
+					chat_ids = chat_ids.replace("+"+str(chat_id), str(chat_id))
+					messageText = "News abilitate!"
+					open('log.txt', 'w').write(chat_ids)
+				else:
+					messageText = "News già abilitate!"
+
 
 		if messageText != "":
 			if logs != 0:
