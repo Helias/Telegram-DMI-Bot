@@ -77,7 +77,7 @@ try:
 			elif (text == '/spamnews' and (chat_id == 26349488 or chat_id == 26879677) and news != "News"):
 				chat_ids = open('log.txt', 'r').read()
 				chat_ids = chat_ids.split("\n")
-				for i in range((len(chat_ids)-3)):
+				for i in range((len(chat_ids)-1)):
 					try:
 						bot.sendMessage(chat_id=chat_ids[i], text=news)
 					except Exception as error:
