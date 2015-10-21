@@ -79,7 +79,7 @@ try:
 				chat_ids = chat_ids.split("\n")
 				for i in range((len(chat_ids)-1)):
 					try:
-						if not "+" in str(chat_id):
+						if not "+" in chat_ids[i]:
 							bot.sendMessage(chat_id=chat_ids[i], text=news)
 					except Exception as error:
 						open("errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
