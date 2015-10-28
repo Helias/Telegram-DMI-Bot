@@ -67,9 +67,9 @@ try:
 				messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
 			elif (text == '/aulario' or text == '/aulario@dmi_bot'):
 				messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
-			elif (text == '/mensa'):
+			elif (text == '/mensa' or text == '/mensa@dmi_bot'):
 				messageText = "Orario Mensa\npranzo dalle ore 12,00 alle ore 14,30\ncena dalle ore 19,00 alle ore 21,30"
-			elif (text == '/biblioteca'):
+			elif (text == '/biblioteca' or text == '/biblioteca@dmi_bot'):
 				messageText = "Sala Lettura:\nlunedì - venerdì 08.00 - 19.00 \n\nServizio Distribuzione: \nlunedì - giovedì 08.30 - 14.00 \nlunedì - giovedì 14.30 - 16.30 \nvenerdì  08.30 - 13.30"
 			elif (('/news' in text) and (chat_id == 26349488 or chat_id == 26879677)):
 				news = text.replace("/news ", "")
@@ -84,7 +84,7 @@ try:
 					except Exception as error:
 						open("errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
 				messageText = "News spammata!"
-			elif (text == '/disablenews'):
+			elif (text == '/disablenews' or text == '/disablenews@dmi_bot'):
 				chat_ids = open('log.txt', 'r').read()
 				if not ("+"+str(chat_id)) in chat_ids:
 					chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
@@ -92,7 +92,7 @@ try:
 					open('log.txt', 'w').write(chat_ids)
 				else:
 					messageText = "News già disabilitate!"
-			elif (text == '/enablenews'):
+			elif (text == '/enablenews' or text == '/enablenews@dmi_bot'):
 				chat_ids = open('log.txt', 'r').read()
 				if ("+"+str(chat_id)) in chat_ids:
 					chat_ids = chat_ids.replace("+"+str(chat_id), str(chat_id))
