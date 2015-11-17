@@ -34,7 +34,7 @@ try:
 		text = text.lower()
 		if text.startswith('/'):
 			if (text == '/help' or text == '/help@dmi_bot'):
-				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\n\n/urp - URP studenti\n\n     Coded By @Helias && @adriano_effe"
+				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\nCUS orari e contatti:\n/cus sede e contatti\n\n/urp - URP studenti\n\n     Coded By @Helias && @adriano_effe"
 			elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
 				messageText = 'Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\nSig.ra Cristina Mele Tel. 095/7337227\nEmail: cmele@dmi.unict.it\n\nOrari:\nLunedì dalle 15:00 alle 17:00\nGiovedì dalle 10:00 alle 12:00'
 			elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):
@@ -42,7 +42,7 @@ try:
 			elif (text == '/ersu' or text == '/ersu@dmi_bot'):
 				messageText = 'ERSU Catania - sede centrale\nSede presso Via Etnea, 570\nTel. 095/7517940 (ore 9:00/12:00)\nEmail: urp@ersucatania.gov.it\n\nOrari:\nLunedì: 09:00 - 12:00\nMercoledì: 15:30 - 18:00\nVenerdì: 09:00 - 12:00'
 			elif (text == '/ufficioersu' or text == '/ufficioersu@dmi_bot'):
-				messageText = 'ERSU Catania - Ufficio Tesserini\nSede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\nOrari:\nLunedì: 09:00 - 12:30\nMartedì: 09:00 - 12:30\nMercoledì: 09:00 - 12:30 & 15:30 - 18:00\nGiovedì: 09:00 - 12:30\nVenerdì: 09:00 - 12:30'
+				messageText = 'ERSU Catania - Ufficio Tesserini\nSede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\nOrari:\nmartedì-giovedì dalle 9.00 alle 12.30 \n\nUfficioErsu vicino la mensa Oberdan\nlunedì-mercoledì-venerdì dalle 09.00 alle 12.30 \nmercoledì 15:00 - 18.00:'
 			elif (text == '/urp' or text == '/urp@dmi_bot'):
 				messageText = 'URP Studenti\nSede in Via A.di Sangiuliano, 44\n\nTel. 800894327 (da fisso), 095 6139202/1/0\nEmail: urp-studenti@unict.it'
 			elif ('/professori' in text or '/professori@dmi_bot' in text or '/prof' in text or '/professore' in text or '/docente' in text or '/docenti' in text):
@@ -71,6 +71,8 @@ try:
 				messageText = "Orario Mensa\npranzo dalle ore 12,00 alle ore 14,30\ncena dalle ore 19,00 alle ore 21,30"
 			elif (text == '/biblioteca' or text == '/biblioteca@dmi_bot'):
 				messageText = "Sala Lettura:\nlunedì - venerdì 08.00 - 19.00 \n\nServizio Distribuzione: \nlunedì - giovedì 08.30 - 14.00 \nlunedì - giovedì 14.30 - 16.30 \nvenerdì  08.30 - 13.30"
+			elif (text == '/cus' or text == '/cus@dmi_bot'):
+				messageText = "CUS Catania\nViale A. Doria n° 6  - 95125 Catania \ntel. 095336327- fax 095336478 \ninfo@cuscatania.it\nhttp://www.cuscatania.it/Contatti.aspx";
 			elif (('/news' in text) and (chat_id == 26349488 or chat_id == 26879677)):
 				news = text.replace("/news ", "")
 				messageText = "News Aggiornata!"
