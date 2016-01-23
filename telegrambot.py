@@ -34,7 +34,7 @@ try:
 		text = text.lower()
 		if text.startswith('/'):
 			if (text == '/help' or text == '/help@dmi_bot'):
-				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\nCUS orari e contatti:\n/cus sede e contatti\n\n/urp - URP studenti\n\n     Coded By @Helias && @adriano_effe"
+				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/aulestudio - link google map che mostra tutte le aule studio a Catania\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\nCUS orari e contatti:\n/cus sede e contatti\n\n/urp - URP studenti\n/disablenews \n/enablenews\n\nCoded By @Helias && @adriano_effe"
 			elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
 				messageText = 'Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\nSig.ra Cristina Mele Tel. 095/7337227\nEmail: cmele@dmi.unict.it\n\nOrari:\nLunedì dalle 15:00 alle 17:00\nGiovedì dalle 10:00 alle 12:00'
 			elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):
@@ -65,6 +65,8 @@ try:
 				messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
 			elif (text == '/mesami' or text == '/mesami@dmi_bot'):
 				messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
+			elif (text == '/aulestudio')
+				messageText = 'https://www.google.com/maps/d/embed?mid=zDvkr49UHLkY.kdOIK97qyNFE'
 			elif (text == '/aulario' or text == '/aulario@dmi_bot'):
 				messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 			elif (text == '/mensa' or text == '/mensa@dmi_bot'):
