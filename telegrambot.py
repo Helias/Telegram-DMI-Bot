@@ -65,7 +65,7 @@ try:
 				messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
 			elif (text == '/mesami' or text == '/mesami@dmi_bot'):
 				messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
-			elif (text == '/aulestudio')
+			elif (text == '/aulestudio'):
 				messageText = 'https://www.google.com/maps/d/embed?mid=zDvkr49UHLkY.kdOIK97qyNFE'
 			elif (text == '/aulario' or text == '/aulario@dmi_bot'):
 				messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
