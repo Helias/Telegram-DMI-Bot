@@ -12,6 +12,9 @@ logs = 1 #disable/enable chatid logs (1 enabled, 0 disabled)
 
 news = "News"
 
+img = 0
+picture = ""
+
 bot = telegram.Bot(TOKEN)
 
 #debugging
@@ -34,7 +37,7 @@ try:
 		text = text.lower()
 		if text.startswith('/'):
 			if (text == '/help' or text == '/help@dmi_bot'):
-				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/aulestudio - link google map che mostra tutte le aule studio a Catania\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\nCUS orari e contatti:\n/cus sede e contatti\n\n/urp - URP studenti\n/disablenews \n/enablenews\n\nCoded By @Helias && @adriano_effe"
+				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/aulestudio - link google map che mostra tutte le aule studio a Catania\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\nCUS orari e contatti:\n/cus sede e contatti\n\n/urp - URP studenti\n\n ~Bot~\n/disablenews \n/enablenews\n\nCoded By @Helias && @adriano_effe"
 			elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
 				messageText = 'Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\nSig.ra Cristina Mele Tel. 095/7337227\nEmail: cmele@dmi.unict.it\n\nOrari:\nLunedì dalle 15:00 alle 17:00\nGiovedì dalle 10:00 alle 12:00'
 			elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):
@@ -75,10 +78,15 @@ try:
 				messageText = "Sala Lettura:\nlunedì - venerdì 08.00 - 19.00 \n\nServizio Distribuzione: \nlunedì - giovedì 08.30 - 14.00 \nlunedì - giovedì 14.30 - 16.30 \nvenerdì  08.30 - 13.30"
 			elif (text == '/cus' or text == '/cus@dmi_bot'):
 				messageText = "CUS Catania\nViale A. Doria n° 6  - 95125 Catania \ntel. 095336327- fax 095336478 \ninfo@cuscatania.it\nhttp://www.cuscatania.it/Contatti.aspx";
-			elif (('/news' in text) and (chat_id == 26349488 or chat_id == 26879677)):
+			elif (text == '/lista_dipartimento' or text == '/lista_dipartimento@dmi_bot'):
+				img = 1
+				picture = open("dipartimento.png", "rb")
+				messageText = "Lista dipartimento"
+			elif (('/news' in text) and (chat_id == 26349488)):
 				news = text.replace("/news ", "")
 				messageText = "News Aggiornata!"
-			elif (text == '/spamnews' and (chat_id == 26349488 or chat_id == 26879677) and news != "News"):
+			elif (text == '/spamnews' and chat_id == 26349488 and news != "News"):
+				news = news.capitalize()
 				chat_ids = open('log.txt', 'r').read()
 				chat_ids = chat_ids.split("\n")
 				for i in range((len(chat_ids)-1)):
@@ -111,8 +119,12 @@ try:
 				log = open("log.txt", "a+")
 				if not str(chat_id) in log.read():
 					log.write(str(chat_id)+"\n")
-
-			bot.sendMessage(chat_id=chat_id, text=messageText)
+			if (img == 1):
+				bot.sendPhoto(chat_id=chat_id, photo=picture)
+				img = 0
+				picture = ""
+			else:
+				bot.sendMessage(chat_id=chat_id, text=messageText)
 			LAST_UPDATE_ID = update_id + 1
 			text = ""
 
