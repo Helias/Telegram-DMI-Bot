@@ -78,10 +78,10 @@ try:
 				messageText = "Sala Lettura:\nlunedì - venerdì 08.00 - 19.00 \n\nServizio Distribuzione: \nlunedì - giovedì 08.30 - 14.00 \nlunedì - giovedì 14.30 - 16.30 \nvenerdì  08.30 - 13.30"
 			elif (text == '/cus' or text == '/cus@dmi_bot'):
 				messageText = "CUS Catania\nViale A. Doria n° 6  - 95125 Catania \ntel. 095336327- fax 095336478 \ninfo@cuscatania.it\nhttp://www.cuscatania.it/Contatti.aspx";
-			elif (text == '/lista_dipartimento' or text == '/lista_dipartimento@dmi_bot'):
+			elif (text == '/liste' or text == '/liste@dmi_bot'):
 				img = 1
-				picture = open("dipartimento.png", "rb")
-				messageText = "Lista dipartimento"
+				picture = open("liste.png", "rb")
+				messageText = "Liste e candidati"
 			elif (('/news' in text) and (chat_id == 26349488)):
 				news = text.replace("/news ", "")
 				messageText = "News Aggiornata!"
