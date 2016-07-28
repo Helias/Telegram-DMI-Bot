@@ -2,27 +2,25 @@
 import telegram
 from utilities import *
 
-tokenconf = open('token.conf', 'r').read()
-tokenconf = tokenconf.replace("\n", "")
-
-TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
-
 #chat_id log
 logs = 1 #disable/enable chatid logs (1 enabled, 0 disabled)
 
+#useful variables
 news = "News"
-
 img = 0
 picture = ""
+last_text = ""
 
+#token
+tokenconf = open('token.conf', 'r').read()
+tokenconf = tokenconf.replace("\n", "")
+TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 bot = telegram.Bot(TOKEN)
 
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
 
 LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
-
-last_text = ""
 
 try:
 	while True:
@@ -37,17 +35,66 @@ try:
 		text = text.lower()
 		if text.startswith('/'):
 			if (text == '/help' or text == '/help@dmi_bot'):
-				messageText = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì \n/esami - /mesami - linka il calendario degli esami  \n/aulario - linka l\'aulario \n/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n/aulestudio - link google map che mostra tutte le aule studio a Catania\n/mensa - orario mensa \n/biblioteca - orario biblioteca DMI \n\nSegreteria orari e contatti:\n/sdidattica - segreteria didattica \n/sstudenti - segreteria studenti \n ERSU orari e contatti \n/ersu - sede centrale\n/ufficioersu - (ufficio tesserini)\nCUS orari e contatti:\n/cus sede e contatti\n\n/urp - URP studenti\n\n ~Bot~\n/disablenews \n/enablenews\n\nCoded By @Helias && @adriano_effe"
+				messageText  = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n"
+				messageText += "/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì\n"
+				messageText += "/esami - /mesami - linka il calendario degli esami\n"
+				messageText += "/aulario - linka l\'aulario\n"
+				messageText += "/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n"
+				messageText += "/aulestudio - link google map che mostra tutte le aule studio a Catania\n"
+				messageText += "/mensa - orario mensa\n"
+				messageText += "/biblioteca - orario biblioteca DMI\n"
+				messageText += "\nSegreteria orari e contatti:\n"
+				messageText += "/sdidattica - segreteria didattica\n"
+				messageText += "/sstudenti - segreteria studenti\n"
+				messageText += "ERSU orari e contatti\n"
+				messageText += "\n/ersu - sede centrale\n"
+				messageText += "\n/ufficioersu - (ufficio tesserini)\n"
+				messageText += "\nCUS orari e contatti:\n"
+				messageText += "/cus sede e contatti\n\n"
+				messageText += "/urp - URP studenti\n\n"
+				messageText += "~Bot~\n"
+				messageText += "/disablenews \n"
+				messageText += "/enablenews\n\nCoded By @Helias && @adriano_effe"
 			elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
-				messageText = 'Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\nSig.ra Cristina Mele Tel. 095/7337227\nEmail: cmele@dmi.unict.it\n\nOrari:\nMartedì dalle 10:00 alle 12:00\nGiovedì dalle 10:00 alle 12:00'
+				messageText  = "Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\n"
+				messageText += "Sig.ra Cristina Mele Tel. 095/7337227\n"
+				messageText += "Email: cmele@dmi.unict.it\n\n"
+				messageText += "Orari:\n"
+				messageText += "Martedì dalle 10:00 alle 12:00\n"
+				messageText += "Giovedì dalle 10:00 alle 12:00"
 			elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):
-				messageText = 'Segreteria studenti\nSede presso la Cittadella Universitaria (vicino la mensa)\n\nVia S. Sofia, 64 ed. 11 - 95125 Catania\nTel. 095.7386103, 6119, 6109, 6125, 6129, 6123, 6122, 6106, 6107, 6121\nEmail: settore.scientifico@unict.it\n\nOrario invernale:\nLunedi\': 10:00 - 12.30\nMartedi\': 10:00 -12:30 | 15:00 - 16:30\nGiovedi\': 10:00 - 12:30 | 15:00 - 16:30\nVenerdi\': 10:00 - 12:30'
+				messageText  = "Segreteria studenti\n"
+				messageText += "Sede presso la Cittadella Universitaria (vicino la mensa)\n\n"
+				messageText += "Via S. Sofia, 64 ed. 11 - 95125 Catania\n"
+				messageText += "Tel. 095.7386103, 6119, 6109, 6125, 6129, 6123, 6122, 6106, 6107, 6121\n"
+				messageText += "Email: settore.scientifico@unict.it\n\n"
+				messageText += "Orario invernale:\n"
+				messageText += "Lunedi\': 10:00 - 12.30\n"
+				messageText += "Martedi\': 10:00 -12:30 | 15:00 - 16:30\n"
+				messageText += "Giovedi\': 10:00 - 12:30 | 15:00 - 16:30\n"
+				messageText += "Venerdi\': 10:00 - 12:30"
 			elif (text == '/ersu' or text == '/ersu@dmi_bot'):
-				messageText = 'ERSU Catania - sede centrale\nSede presso Via Etnea, 570\nTel. 095/7517940 (ore 9:00/12:00)\nEmail: urp@ersucatania.gov.it\n\nOrari:\nLunedì: 09:00 - 12:00\nMercoledì: 15:30 - 18:00\nVenerdì: 09:00 - 12:00'
+				messageText  = "ERSU Catania - sede centrale\n"
+				messageText += "Sede presso Via Etnea, 570\n"
+				messageText += "Tel. 095/7517940 (ore 9:00/12:00)\n"
+				messageText += "Email: urp@ersucatania.gov.it\n\n"
+				messageText += "Orari:\n"
+				messageText += "Lunedì: 09:00 - 12:00\n"
+				messageText += "Mercoledì: 15:30 - 18:00\n"
+				messageText += "Venerdì: 09:00 - 12:00"
 			elif (text == '/ufficioersu' or text == '/ufficioersu@dmi_bot'):
-				messageText = 'ERSU Catania - Ufficio Tesserini\nSede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\nOrari:\nmartedì-giovedì dalle 9.00 alle 12.30 \n\nUfficioErsu vicino la mensa Oberdan\nlunedì-mercoledì-venerdì dalle 09.00 alle 12.30 \nmercoledì 15:00 - 18.00:'
+				messageText  = "ERSU Catania - Ufficio Tesserini\n"
+                messageText += "Sede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\n"
+                messageText += "Orari:\n"
+                messageText += "martedì-giovedì dalle 9.00 alle 12.30 \n\n"
+                messageText += "UfficioErsu vicino la mensa Oberdan\n"
+                messageText += "lunedì-mercoledì-venerdì dalle 09.00 alle 12.30 \n"
+                messageText += "mercoledì 15:00 - 18.00:"
 			elif (text == '/urp' or text == '/urp@dmi_bot'):
-				messageText = 'URP Studenti\nSede in Via A.di Sangiuliano, 44\n\nTel. 800894327 (da fisso), 095 6139202/1/0\nEmail: urp-studenti@unict.it'
+				messageText = "URP Studenti\n"
+                messageText += "Sede in Via A.di Sangiuliano, 44\n\n"
+                messageText += "Tel. 800894327 (da fisso), 095 6139202/1/0\n"
+                messageText += "Email: urp-studenti@unict.it"
 			elif ('/professori' in text or '/professori@dmi_bot' in text or '/prof' in text or '/professore' in text or '/docente' in text or '/docenti' in text):
 				text = text.replace("@dmi_bot", "")
 				text = text.replace("/professori ", "")
@@ -73,11 +120,22 @@ try:
 			elif (text == '/aulario' or text == '/aulario@dmi_bot'):
 				messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 			elif (text == '/mensa' or text == '/mensa@dmi_bot'):
-				messageText = "Orario Mensa\npranzo dalle ore 12,00 alle ore 14,30\ncena dalle ore 19,00 alle ore 21,30"
+				messageText  = "Orario Mensa\n"
+                messageText += "pranzo dalle ore 12,00 alle ore 14,30\n"
+                messageText += "cena dalle ore 19,00 alle ore 21,30"
 			elif (text == '/biblioteca' or text == '/biblioteca@dmi_bot'):
-				messageText = "Sala Lettura:\nlunedì - venerdì 08.00 - 19.00 \n\nServizio Distribuzione: \nlunedì - giovedì 08.30 - 14.00 \nlunedì - giovedì 14.30 - 16.30 \nvenerdì  08.30 - 13.30"
+				messageText  = "Sala Lettura:\n"
+                messageText += "lunedì - venerdì 08.00 - 19.00 \n\n"
+                messageText += "Servizio Distribuzione: \n"
+                messageText += "lunedì - giovedì 08.30 - 14.00 \n"
+                messageText += "lunedì - giovedì 14.30 - 16.30 \n"
+                messageText += "venerdì  08.30 - 13.30"
 			elif (text == '/cus' or text == '/cus@dmi_bot'):
-				messageText = "CUS Catania\nViale A. Doria n° 6  - 95125 Catania \ntel. 095336327- fax 095336478 \ninfo@cuscatania.it\nhttp://www.cuscatania.it/Contatti.aspx";
+				messageText = "CUS Catania\n"
+                messageText += "Viale A. Doria n° 6  - 95125 Catania \n"
+                messageText += "tel. 095336327- fax 095336478 \n"
+                messageText += "info@cuscatania.it\n"
+                messageText += "http://www.cuscatania.it/Contatti.aspx";
 			elif (text == '/liste' or text == '/liste@dmi_bot'):
 				img = 1
 				picture = open("liste.png", "rb")
