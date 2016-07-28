@@ -84,17 +84,17 @@ try:
 				messageText += "Venerdì: 09:00 - 12:00"
 			elif (text == '/ufficioersu' or text == '/ufficioersu@dmi_bot'):
 				messageText  = "ERSU Catania - Ufficio Tesserini\n"
-                messageText += "Sede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\n"
-                messageText += "Orari:\n"
-                messageText += "martedì-giovedì dalle 9.00 alle 12.30 \n\n"
-                messageText += "UfficioErsu vicino la mensa Oberdan\n"
-                messageText += "lunedì-mercoledì-venerdì dalle 09.00 alle 12.30 \n"
-                messageText += "mercoledì 15:00 - 18.00:"
+				messageText += "Sede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\n"
+				messageText += "Orari:\n"
+				messageText += "martedì-giovedì dalle 9.00 alle 12.30 \n\n"
+				messageText += "UfficioErsu vicino la mensa Oberdan\n"
+				messageText += "lunedì-mercoledì-venerdì dalle 09.00 alle 12.30 \n"
+				messageText += "mercoledì 15:00 - 18.00:"
 			elif (text == '/urp' or text == '/urp@dmi_bot'):
 				messageText = "URP Studenti\n"
-                messageText += "Sede in Via A.di Sangiuliano, 44\n\n"
-                messageText += "Tel. 800894327 (da fisso), 095 6139202/1/0\n"
-                messageText += "Email: urp-studenti@unict.it"
+				messageText += "Sede in Via A.di Sangiuliano, 44\n\n"
+				messageText += "Tel. 800894327 (da fisso), 095 6139202/1/0\n"
+				messageText += "Email: urp-studenti@unict.it"
 			elif ('/professori' in text or '/professori@dmi_bot' in text or '/prof' in text or '/professore' in text or '/docente' in text or '/docenti' in text):
 				text = text.replace("@dmi_bot", "")
 				text = text.replace("/professori ", "")
@@ -121,21 +121,21 @@ try:
 				messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 			elif (text == '/mensa' or text == '/mensa@dmi_bot'):
 				messageText  = "Orario Mensa\n"
-                messageText += "pranzo dalle ore 12,00 alle ore 14,30\n"
-                messageText += "cena dalle ore 19,00 alle ore 21,30"
+				messageText += "pranzo dalle ore 12,00 alle ore 14,30\n"
+				messageText += "cena dalle ore 19,00 alle ore 21,30"
 			elif (text == '/biblioteca' or text == '/biblioteca@dmi_bot'):
 				messageText  = "Sala Lettura:\n"
-                messageText += "lunedì - venerdì 08.00 - 19.00 \n\n"
-                messageText += "Servizio Distribuzione: \n"
-                messageText += "lunedì - giovedì 08.30 - 14.00 \n"
-                messageText += "lunedì - giovedì 14.30 - 16.30 \n"
-                messageText += "venerdì  08.30 - 13.30"
+				messageText += "lunedì - venerdì 08.00 - 19.00 \n\n"
+				messageText += "Servizio Distribuzione: \n"
+				messageText += "lunedì - giovedì 08.30 - 14.00 \n"
+				messageText += "lunedì - giovedì 14.30 - 16.30 \n"
+				messageText += "venerdì  08.30 - 13.30"
 			elif (text == '/cus' or text == '/cus@dmi_bot'):
 				messageText = "CUS Catania\n"
-                messageText += "Viale A. Doria n° 6  - 95125 Catania \n"
-                messageText += "tel. 095336327- fax 095336478 \n"
-                messageText += "info@cuscatania.it\n"
-                messageText += "http://www.cuscatania.it/Contatti.aspx";
+				messageText += "Viale A. Doria n° 6  - 95125 Catania \n"
+				messageText += "tel. 095336327- fax 095336478 \n"
+				messageText += "info@cuscatania.it\n"
+				messageText += "http://www.cuscatania.it/Contatti.aspx";
 			elif (text == '/liste' or text == '/liste@dmi_bot'):
 				img = 1
 				picture = open("liste.png", "rb")
@@ -186,6 +186,5 @@ try:
 			LAST_UPDATE_ID = update_id + 1
 			text = ""
 
-except Exception as error:
+	except Exception as error:
 	open("errors.txt", "a+").write(str(error)+"\n")
-
