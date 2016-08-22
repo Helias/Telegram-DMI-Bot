@@ -20,7 +20,10 @@ bot = telegram.Bot(TOKEN)
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
 
-LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
+try:
+	LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
+except IndexError:
+	LAST_UPDATE_ID = 0
 
 try:
 	while True:
@@ -35,13 +38,12 @@ try:
 		text = text.lower()
 		if text.startswith('/'):
 			if (text == '/help' or text == '/help@dmi_bot'):
-				messageText  = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mlezioni): \n"
-				messageText += "/lezioni <anno> <giorno> (o /mlezioni per la magistrale) elenca le lezioni corrispondenti ai criteri scelti, <anno> deve essere \"primo\", \"secondo\" o \"terzo\", <giorno> deve essere \"oggi\", \"domani\", \"lunedì\", \"martedì\", \"mercoledì\", \"giovedì\" o \"venerdì\" - es. /lezioni secondo domani | /lezioni primo mercoledì\n"
+				messageText  = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mesami): \n\n"
 				messageText += "/esami - /mesami - linka il calendario degli esami\n"
 				messageText += "/aulario - linka l\'aulario\n"
 				messageText += "/prof <nome> - restituisce una lista dettagliata di professori i cui nomi e/o cognomi contengano <nome> - es. /prof Milici\n"
-				messageText += "/aulestudio - link google map che mostra tutte le aule studio a Catania\n"
 				messageText += "/mensa - orario mensa\n"
+				messageText += "/rappresentanti - elenco dei rappresentanti del Dipartimento e del corso di laurea Informatica/Matematica\n"
 				messageText += "/biblioteca - orario biblioteca DMI\n"
 				messageText += "\nSegreteria orari e contatti:\n"
 				messageText += "/sdidattica - segreteria didattica\n"
@@ -55,6 +57,37 @@ try:
 				messageText += "~Bot~\n"
 				messageText += "/disablenews \n"
 				messageText += "/enablenews\n\nCoded By @Helias && @adriano_effe"
+			elif (text == '/rappresentanti' or text == '/rappresentanti@dmi_bot'):
+				messageText = "Usa uno dei seguenti comandi per mostrare i rispettivi rappresentanti\n"
+				messageText += "/rappresentanti_dmi\n"
+				messageText += "/rappresentanti_informatica\n"
+				messageText += "/rappresentanti_matematica"
+			elif (text == '/rappresentanti_dmi' or text == '/rappresentanti_dmi@dmi_bot'):
+				messageText =  "Rappresentanti DMI\n"
+				messageText += "Apa Marco - @MarcoApa\n"
+				messageText += "Aliperti Vincenzo - @VAliperti\n"
+				messageText += "Borzì Stefano - @Helias\n"
+				messageText += "Costa Alberto - @knstrct\n"
+				messageText += "Presenta Fabrizio\n"
+				messageText += "Marroccia Marco - @MarcoLebon\n"
+				messageText += "Rapisarda Simone - @CarlinoMalvagio\n"
+				messageText += "Petralia Luca- @lucapppla\n"
+				messageText += "Ferdinando Alessandro- @Juzaz\n"
+				messageText += "Ricordo che per segnalare qualcosa a tutti i rappresentanti si può utilizzare l'email reportdmiunict@gmail.com"
+			elif (text == '/rappresentanti_informatica' or text == '/rappresentanti_informatica@dmi_bot'):
+				messageText =  "Rappresentanti Inforamtica\n"
+				messageText += "Apa Marco - @MarcoApa\n"
+				messageText += "Aliperti Vincenzo - @VAliperti\n"
+				messageText += "Borzì Stefano - @Helias\n"
+				messageText += "Costa Alberto - @knstrct\n"
+				messageText += "Giangreco Antonio - @Antonio0793\n"
+				messageText += "Marroccia Marco - @MarcoLebon\n"
+			elif (text == '/rappresentanti_matematica' or text == '/rappresentanti_matematica@dmi_bot'):
+				messageText =  "Rappresentanti Matematica\n"
+				messageText += "Alessandro Massimiliano\n"
+				messageText += "De Cristofaro Gaetano\n"
+				messageText += "Pratissoli Mirco\n"
+				messageText += "Sciuto Rita - @RitaSciuto"
 			elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
 				messageText  = "Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\n"
 				messageText += "Sig.ra Cristina Mele Tel. 095/7337227\n"
@@ -103,20 +136,10 @@ try:
 				text = text.replace("/docente ", "")
 				text = text.replace("/prof ", "")
 				messageText = getProfessori(text)
-			elif ('/lezioni' in text):
-				text = text.replace("@dmi_bot", "")
-				text = text.replace("/lezioni ", "")
-				messageText = lezioni(text,"triennale")
-			elif ('/mlezioni' in text):
-				text = text.replace("@dmi_bot", "")
-				text = text.replace("/mlezioni ", "")
-				messageText = lezioni(text,"magistrale")
 			elif (text == '/esami' or text == '/esami@dmi_bot'):
 				messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
 			elif (text == '/mesami' or text == '/mesami@dmi_bot'):
 				messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
-			elif (text == '/aulestudio'):
-				messageText = 'https://www.google.com/maps/d/embed?mid=zDvkr49UHLkY.kdOIK97qyNFE'
 			elif (text == '/aulario' or text == '/aulario@dmi_bot'):
 				messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 			elif (text == '/mensa' or text == '/mensa@dmi_bot'):
@@ -186,5 +209,5 @@ try:
 			LAST_UPDATE_ID = update_id + 1
 			text = ""
 
-	except Exception as error:
+except Exception as error:
 	open("errors.txt", "a+").write(str(error)+"\n")
