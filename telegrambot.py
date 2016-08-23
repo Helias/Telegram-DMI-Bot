@@ -75,8 +75,8 @@ try:
 				messageText += "Ricordo che per segnalare qualcosa a tutti i rappresentanti si può utilizzare l'email reportdmiunict@gmail.com"
 			elif (text == '/rappresentanti_informatica' or text == '/rappresentanti_informatica@dmi_bot'):
 				messageText =  "Rappresentanti Inforamtica\n"
-				messageText += "Apa Marco - @MarcoApa\n"
 				messageText += "Aliperti Vincenzo - @VAliperti\n"
+				messageText += "Apa Marco - @MarcoApa\n"
 				messageText += "Borzì Stefano - @Helias\n"
 				messageText += "Costa Alberto - @knstrct\n"
 				messageText += "Giangreco Antonio - @Antonio0793\n"
