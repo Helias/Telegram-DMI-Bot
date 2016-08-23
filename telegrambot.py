@@ -67,7 +67,7 @@ try:
 				messageText += "Apa Marco - @MarcoApa\n"
 				messageText += "Borzì Stefano - @Helias\n"
 				messageText += "Costa Alberto - @knstrct\n"
-				messageText += "Ferdinando Alessandro- @Juzaz\n"
+				messageText += "Ferdinando Alessandro Mattia - @Juzaz\n"
 				messageText += "Marroccia Marco - @MarcoLebon\n"
 				messageText += "Presente Fabrizio\n"
 				messageText += "Petralia Luca- @lucapppla\n"
