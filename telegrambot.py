@@ -63,15 +63,15 @@ try:
 				messageText += "/rappresentanti_matematica"
 			elif (text == '/rappresentanti_dmi' or text == '/rappresentanti_dmi@dmi_bot'):
 				messageText =  "Rappresentanti DMI\n"
-				messageText += "Apa Marco - @MarcoApa\n"
 				messageText += "Aliperti Vincenzo - @VAliperti\n"
+				messageText += "Apa Marco - @MarcoApa\n"
 				messageText += "Borzì Stefano - @Helias\n"
 				messageText += "Costa Alberto - @knstrct\n"
-				messageText += "Presenta Fabrizio\n"
-				messageText += "Marroccia Marco - @MarcoLebon\n"
-				messageText += "Rapisarda Simone - @CarlinoMalvagio\n"
-				messageText += "Petralia Luca- @lucapppla\n"
 				messageText += "Ferdinando Alessandro- @Juzaz\n"
+				messageText += "Marroccia Marco - @MarcoLebon\n"
+				messageText += "Presente Fabrizio\n"
+				messageText += "Petralia Luca- @lucapppla\n"
+				messageText += "Rapisarda Simone - @CarlinoMalvagio\n"
 				messageText += "Ricordo che per segnalare qualcosa a tutti i rappresentanti si può utilizzare l'email reportdmiunict@gmail.com"
 			elif (text == '/rappresentanti_informatica' or text == '/rappresentanti_informatica@dmi_bot'):
 				messageText =  "Rappresentanti Inforamtica\n"
@@ -83,9 +83,9 @@ try:
 				messageText += "Marroccia Marco - @MarcoLebon\n"
 			elif (text == '/rappresentanti_matematica' or text == '/rappresentanti_matematica@dmi_bot'):
 				messageText =  "Rappresentanti Matematica\n"
-				messageText += "Alessandro Massimiliano\n"
+				messageText += "Alessandro Massimiliano - @massi_94\n"
 				messageText += "De Cristofaro Gaetano\n"
-				messageText += "Pratissoli Mirco\n"
+				messageText += "Pratissoli Mirco - @Mirko291194\n"
 				messageText += "Sciuto Rita - @RitaSciuto"
 			elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
 				messageText  = "Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\n"
