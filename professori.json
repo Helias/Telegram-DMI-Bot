@@ -693,6 +693,15 @@
     "SchedaDMI": "http://web.dmi.unict.it/?q=Docenti/Informazioni%20docenti&key=UExWTFJENzRTMTZDMzUxRg=="
   },
   {
+    "ID": "78",
+    "Ruolo": "Associato",
+    "Nome": "Daniela",
+    "Cognome": "Saitta",
+    "Email": "danisaitta@unict.it",
+    "Sito": "",
+    "SchedaDMI": ""
+  },
+  {
     "ID": "-1",
     "Ruolo": "nil",
     "Nome": "nil",
