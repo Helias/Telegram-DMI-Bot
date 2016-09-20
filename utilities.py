@@ -6,7 +6,7 @@ import datetime
 import urllib2
 import re
 from bs4 import BeautifulSoup
-    
+from classes.StringParser import StringParser
 def getProfessori(input):
     with open("data/json/professori.json") as data_file:
         professori_data = json.load(data_file)
@@ -92,7 +92,7 @@ def forum(sezione):
 
     response = urllib2.urlopen("http://forum.informatica.unict.it/")
     html_doc = response.read()
-
+    
     #print(html_doc)
     s = BeautifulSoup(html_doc, 'html.parser')
     s.prettify()
@@ -102,14 +102,8 @@ def forum(sezione):
             for spanUnder in tdOfTable.findAll("span", class_="smalltext"):
                 for anchorTags in spanUnder.find_all('a'):
                     anchorTagsSplitted = anchorTags.string.split(",")
-                    #anchorTagsWithoutCFU = re.sub('(.*).*9 cfu',"",anchorTagsSplitted[0])
-                    anchorTagsWithoutCFU = anchorTagsSplitted[0].split(",")
-                    anchorTagsWithoutCFU = anchorTagsWithoutCFU[0]
-
-                    #print str(anchorTagsWithoutCFU.lower())+": "+str(anchorTags['href'])+"\n"
-                    #dictionary.update({anchorTagsWithoutCFU.lower(), str(anchorTags['href'])})
-
-                    
+                    anchorTagsWithoutCFU = StringParser.removeCFU(anchorTagsSplitted[0])
+                    print anchorTagsWithoutCFU
                     if(sezione == anchorTagsWithoutCFU.lower()):
                         dictionary[anchorTagsWithoutCFU.lower()] = anchorTags['href']
                         return dictionary
