@@ -97,13 +97,15 @@ def forum(sezione):
     s = BeautifulSoup(html_doc, 'html.parser')
     s.prettify()
     dictionary = {}
-    for mainTable in s.findAll("div", class_="tborder"):
+    for rangeLimit,mainTable in enumerate(s.findAll("div", class_="tborder")):
+        if(rangeLimit >= 3): #If che limita le sezioni a quelle interessate, evitando di stampare sottosezioni come "News" della categoria "Software"
+            break
         for tdOfTable in mainTable.findAll("td", class_="windowbg3"):
             for spanUnder in tdOfTable.findAll("span", class_="smalltext"):
                 for anchorTags in spanUnder.find_all('a'):
                     anchorTagsSplitted = anchorTags.string.split(",")
                     anchorTagsWithoutCFU = StringParser.removeCFU(anchorTagsSplitted[0])
-                    print anchorTagsWithoutCFU
+                   
                     if(sezione == anchorTagsWithoutCFU.lower()):
                         dictionary[anchorTagsWithoutCFU.lower()] = anchorTags['href']
                         return dictionary
