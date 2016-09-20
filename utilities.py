@@ -3,6 +3,9 @@
 
 import json
 import datetime
+import urllib2
+import re
+from bs4 import BeautifulSoup
     
 def getProfessori(input):
     with open("data/json/professori.json") as data_file:
@@ -84,4 +87,32 @@ def lezioni(input,corso):
     #Chiama la funzione apposita con gli argomenti correttamente interpretati
     return getLezioni(anno,semestre,giorno,corso)
 
+
+def forum(sezione):
+
+    response = urllib2.urlopen("http://forum.informatica.unict.it/")
+    html_doc = response.read()
+
+    #print(html_doc)
+    s = BeautifulSoup(html_doc, 'html.parser')
+    s.prettify()
+    dictionary = {}
+    for mainTable in s.findAll("div", class_="tborder"):
+        for tdOfTable in mainTable.findAll("td", class_="windowbg3"):
+            for spanUnder in tdOfTable.findAll("span", class_="smalltext"):
+                for anchorTags in spanUnder.find_all('a'):
+                    anchorTagsSplitted = anchorTags.string.split(",")
+                    #anchorTagsWithoutCFU = re.sub('(.*).*9 cfu',"",anchorTagsSplitted[0])
+                    anchorTagsWithoutCFU = anchorTagsSplitted[0].split(",")
+                    anchorTagsWithoutCFU = anchorTagsWithoutCFU[0]
+
+                    #print str(anchorTagsWithoutCFU.lower())+": "+str(anchorTags['href'])+"\n"
+                    #dictionary.update({anchorTagsWithoutCFU.lower(), str(anchorTags['href'])})
+
+                    
+                    if(sezione == anchorTagsWithoutCFU.lower()):
+                        dictionary[anchorTagsWithoutCFU.lower()] = anchorTags['href']
+                        return dictionary
+
+    return False
 
