@@ -195,11 +195,13 @@ while True:
 				messageText = "News già abilitate!"
 		elif ('/forum' in text):
 			text = text.replace("/forum ","")
-			
 			dictUrlSezioni = forum(text)
 			if not (dictUrlSezioni == False):
 				for titoli in dictUrlSezioni:	
-					messageText = titoli+": "+str(dictUrlSezioni[x])
+					messageText = titoli+": "+str(dictUrlSezioni[titoli])
+			else:
+				messageText = "La sezione non e' stata trovata."
+
 
 	if messageText != "":
 		if logs != 0:
