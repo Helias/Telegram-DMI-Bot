@@ -12,7 +12,7 @@ picture = ""
 last_text = ""
 
 #token
-tokenconf = open('token.conf', 'r').read()
+tokenconf = open('config/token.conf', 'r').read()
 tokenconf = tokenconf.replace("\n", "")
 TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 bot = telegram.Bot(TOKEN)
@@ -25,6 +25,7 @@ try:
 except IndexError:
 	LAST_UPDATE_ID = 0
 
+text = ""
 try:
 	while True:
 		messageText = ""
@@ -160,43 +161,51 @@ try:
 				messageText += "http://www.cuscatania.it/Contatti.aspx";
 			elif (text == '/liste' or text == '/liste@dmi_bot'):
 				img = 1
-				picture = open("liste.png", "rb")
+				picture = open("/data/img/liste.png", "rb")
 				messageText = "Liste e candidati"
 			elif (('/news' in text) and (chat_id == 26349488)):
 				news = text.replace("/news ", "")
 				messageText = "News Aggiornata!"
 			elif (text == '/spamnews' and chat_id == 26349488 and news != "News"):
 				news = news.capitalize()
-				chat_ids = open('log.txt', 'r').read()
+				chat_ids = open('logs/log.txt', 'r').read()
 				chat_ids = chat_ids.split("\n")
 				for i in range((len(chat_ids)-1)):
 					try:
 						if not "+" in chat_ids[i]:
 							bot.sendMessage(chat_id=chat_ids[i], text=news)
 					except Exception as error:
-						open("errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
+						open("logs/errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
 				messageText = "News spammata!"
 			elif (text == '/disablenews' or text == '/disablenews@dmi_bot'):
-				chat_ids = open('log.txt', 'r').read()
+				chat_ids = open('logs/log.txt', 'r').read()
 				if not ("+"+str(chat_id)) in chat_ids:
 					chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
 					messageText = "News disabilitate!"
-					open('log.txt', 'w').write(chat_ids)
+					open('logs/log.txt', 'w').write(chat_ids)
 				else:
 					messageText = "News già disabilitate!"
 			elif (text == '/enablenews' or text == '/enablenews@dmi_bot'):
-				chat_ids = open('log.txt', 'r').read()
+				chat_ids = open('logs/log.txt', 'r').read()
 				if ("+"+str(chat_id)) in chat_ids:
 					chat_ids = chat_ids.replace("+"+str(chat_id), str(chat_id))
 					messageText = "News abilitate!"
-					open('log.txt', 'w').write(chat_ids)
+					open('logs/log.txt', 'w').write(chat_ids)
 				else:
 					messageText = "News già abilitate!"
+			elif ('/forum' in text):
+				text = text.replace("/forum ","")
+				dictUrlSezioni = forum(text)
+				if not (dictUrlSezioni == False):
+					for titoli in dictUrlSezioni:	
+						messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
+				else:
+					messageText = "La sezione non e' stata trovata."
 
 
 		if messageText != "":
 			if logs != 0:
-				log = open("log.txt", "a+")
+				log = open("logs/log.txt", "a+")
 				if not str(chat_id) in log.read():
 					log.write(str(chat_id)+"\n")
 			if (img == 1):
@@ -207,6 +216,5 @@ try:
 				bot.sendMessage(chat_id=chat_id, text=messageText)
 			LAST_UPDATE_ID = update_id + 1
 			text = ""
-
 except Exception as error:
-	open("errors.txt", "a+").write(str(error)+"\n")
+	open("logs/errors.txt","a+").write(str(error)+"\n")
