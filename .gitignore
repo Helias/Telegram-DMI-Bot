@@ -1,1 +1,4 @@
-/config/token.conf
+config/token.conf
+logs/errors.txt
+logs/log.txt
+
