@@ -161,7 +161,7 @@ try:
 				messageText += "http://www.cuscatania.it/Contatti.aspx";
 			elif (text == '/liste' or text == '/liste@dmi_bot'):
 				img = 1
-				picture = open("/data/img/liste.png", "rb")
+				picture = open("data/img/liste.png", "rb")
 				messageText = "Liste e candidati"
 			elif (('/news' in text) and (chat_id == 26349488)):
 				news = text.replace("/news ", "")
