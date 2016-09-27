@@ -10,27 +10,26 @@ from classes.StringParser import StringParser
 def getProfessori(input):
     with open("data/json/professori.json") as data_file:
         professori_data = json.load(data_file)
+
     output = ""
     i = 0
-    risultati = 0
-    stopWhile = False
-    while(professori_data[i]["ID"] != "-1") :
-        if(input == "/prof" and stopWhile == False):
-            output += "La sintassi del comando è: /prof <nomeprofessore>"
-            risultati += 1
-            stopWhile = True
-        elif(input.lower() in professori_data[i]["Nome"].lower() or input.lower() in professori_data[i]["Cognome"].lower()):
+
+    while(professori_data[i]["ID"] != "-1"):
+        if (input == "/prof"):
+	    return "La sintassi del comando è: /prof <nomeprofessore>"
+	if len(input) < 3:
+            return "Inserisci almeno 3 caratteri come nome/cognome del professore"
+        elif (( input.lower() in professori_data[i]["Nome"].lower() ) or ( input.lower() in professori_data[i]["Cognome"].lower() )):
             output += "Ruolo: " + professori_data[i]["Ruolo"] + "\n"
             output += "Cognome: " + professori_data[i]["Cognome"] + "\n"
             output += "Nome: " + professori_data[i]["Nome"] + "\n"
             output += "Indirizzo email : " + professori_data[i]["Email"] + "\n"
             output += "Sito web: " + professori_data[i]["Sito"] + "\n"
             output += "Scheda DMI: " + professori_data[i]["SchedaDMI"] + "\n\n"
-            risultati += 1
-            stopWhile = True
         i += 1
-    if (risultati == 0) :
-        output = "\nNon sono stati trovati risultati :(\n\n"
+    if output == "":
+        return "\nNon sono stati trovati risultati :(\n\n"
+
     return output
 
 def getLezioni(anno,semestre,giorno,corso):
