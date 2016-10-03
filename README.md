@@ -5,14 +5,20 @@
 ###Setting up a local istance
 If you want to test the bot by creating your personal istance, follow this steps:
 * **Clone this repository** or download it as zip.
-* **Edit "token.conf" to include your token.** (If you don't have a token, message Telegram's @BotFather to create a bot and get a token for it)
+* **Copy config/token.conf.dist into "token.conf" and write your telegram bot toke here.** (If you don't have a token, message Telegram's @BotFather to create a bot and get a token for it)
 * **Send a message to your bot** on Telegram, even '/start' will do. If you don't, you could get an error.
 * If your system supports bash shell scripting, **launch "restarter.sh"**. Alternatively, you can launch "telegrambot.py" with your Python interpreter, even if doing so will not restart the bot in the event of a crash.
 
-Fot the bot istance to be executed, your system must have a Python 2 interpreter.
+For the bot istance to be executed, your system need:
+
+- Python 2
+- python-pip
+- python-bs4
+- python-beautifulsoup
+- python-telegram-bot (use $ pip install python-telegram-bot)
 
 ###Using the live version
-The bot is live on Telegram with the username [@DMI_bot](https://web.telegram.org/#/im?p=@DMI_Bot).
+The bot is live on Telegram with the username [@DMI_Bot](https://web.telegram.org/#/im?p=@DMI_Bot).
 Send **'/start'** to start it, **'/help'** to see a list of commands.
 
 Please note that the commands and their answers are in Italian.
@@ -21,4 +27,5 @@ Please note that the commands and their answers are in Italian.
 This open-source software is published under the GNU General Public License (GNU GPL) version 3. Please refer to the "LICENSE" file of this project for the full text.
 
 ###Credits
-This project is made possible thanks to the contributions of Stefano Borzì (Helias), Adriano Ferraguto (adrianoferraguto) and Luca Cavallaro (lucacavallaro).
+This project is made possible thanks to the contributions of [Stefano Borzì](https://github.com/Helias), [Adriano Ferraguto](https://github.com/adrianoferraguto) and [Vincenzo Filetti](https://github.com/veeenz).
+
