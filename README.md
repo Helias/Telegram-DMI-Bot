@@ -5,11 +5,11 @@
 ###Setting up a local istance
 If you want to test the bot by creating your personal istance, follow this steps:
 * **Clone this repository** or download it as zip.
-* **Copy config/token.conf.dist into "token.conf" and write your telegram bot toke here.** (If you don't have a token, message Telegram's @BotFather to create a bot and get a token for it)
+* **Copy config/token.conf.dist into "token.conf" and write your telegram bot token here.** (If you don't have a token, message Telegram's @BotFather to create a bot and get a token for it)
 * **Send a message to your bot** on Telegram, even '/start' will do. If you don't, you could get an error.
 * If your system supports bash shell scripting, **launch "restarter.sh"**. Alternatively, you can launch "telegrambot.py" with your Python interpreter, even if doing so will not restart the bot in the event of a crash.
 
-For the bot istance to be executed, your system need:
+For the bot istance to be executed, your system needs:
 
 - Python 2
 - python-pip
