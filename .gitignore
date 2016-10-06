@@ -1,4 +1,6 @@
 config/token.conf
 logs/errors.txt
 logs/log.txt
-
+classes/StringParser.pyc
+classes/__init__.pyc
+utilities.pyc
