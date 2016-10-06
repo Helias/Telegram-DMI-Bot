@@ -36,7 +36,10 @@ try:
 
 		if text != last_text and text != "":
 			last_text = text
+
+		originalText = text
 		text = text.lower()
+
 		if text.startswith('/'):
 			if (text == '/help' or text == '/help@dmi_bot'):
 				messageText  = "@DMI_Bot risponde ai seguenti comandi (per la magistrale scrivete una \"m\" davanti ad ogni comando per esempio /mesami): \n\n"
@@ -164,10 +167,9 @@ try:
 				picture = open("data/img/liste.png", "rb")
 				messageText = "Liste e candidati"
 			elif (('/news' in text) and (chat_id == 26349488)):
-				news = text.replace("/news ", "")
+				news = originalText.replace("/news ", "")
 				messageText = "News Aggiornata!"
 			elif (text == '/spamnews' and chat_id == 26349488 and news != "News"):
-				news = news.capitalize()
 				chat_ids = open('logs/log.txt', 'r').read()
 				chat_ids = chat_ids.split("\n")
 				for i in range((len(chat_ids)-1)):
