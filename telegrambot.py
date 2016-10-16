@@ -164,6 +164,17 @@ try:
 				messageText += "tel. 095336327- fax 095336478 \n"
 				messageText += "info@cuscatania.it\n"
 				messageText += "http://www.cuscatania.it/Contatti.aspx";
+			elif (text == '/smonta_portoni' or text == '/smonta_portoni@dmi_bot'):
+				r = random.randint(0,13)
+				if (r >= 0 and r <= 3):
+					messageText = "$ sudo umount portoni"
+				elif (r > 3 and r < 10):
+					messageText = "@TkdAlex"
+				elif (r == 11):
+					messageText = "https://s16.postimg.org/5a6khjb5h/smonta_portoni.jpg"
+				else:
+					messageText = "https://s16.postimg.org/rz8117y9x/idraulico.jpg"
+				#chat_id = user
 			elif (text == '/liste' or text == '/liste@dmi_bot'):
 				img = 1
 				picture = open("data/img/liste.png", "rb")
