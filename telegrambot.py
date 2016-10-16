@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import telegram
+import random
 from utilities import *
 
 #chat_id log
@@ -33,6 +34,7 @@ try:
 			text = update.message.text
 			chat_id = update.message.chat.id
 			update_id = update.update_id
+			user = update.message.from_user.id
 
 		if text != last_text and text != "":
 			last_text = text
@@ -96,8 +98,8 @@ try:
 				messageText += "Sig.ra Cristina Mele Tel. 095/7337227\n"
 				messageText += "Email: cmele@dmi.unict.it\n\n"
 				messageText += "Orari:\n"
-				messageText += "Martedì dalle 10:00 alle 12:00\n"
-				messageText += "Giovedì dalle 10:00 alle 12:00"
+				messageText += "Martedì dalle 10:30 alle 12:30\n"
+				messageText += "Giovedì dalle 10:30 alle 12:30"
 			elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):
 				messageText  = "Segreteria studenti\n"
 				messageText += "Sede presso la Cittadella Universitaria (vicino la mensa)\n\n"
@@ -199,7 +201,7 @@ try:
 				text = text.replace("/forum ","")
 				dictUrlSezioni = forum(text)
 				if not (dictUrlSezioni == False):
-					for titoli in dictUrlSezioni:	
+					for titoli in dictUrlSezioni:
 						messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
 				else:
 					messageText = "La sezione non e' stata trovata."
