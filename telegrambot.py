@@ -2,6 +2,14 @@
 import telegram
 import random
 from utilities import *
+import telegram.ext
+import requests
+import os,sys
+from pydrive.drive import GoogleDrive
+from pydrive.auth import GoogleAuth
+
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
 #chat_id log
 logs = 1 #disable/enable chatid logs (1 enabled, 0 disabled)
@@ -12,6 +20,12 @@ img = 0
 picture = ""
 last_text = ""
 
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()
+
+drive = GoogleDrive(gauth)
+
+
 #token
 tokenconf = open('config/token.conf', 'r').read()
 tokenconf = tokenconf.replace("\n", "")
@@ -20,6 +34,7 @@ bot = telegram.Bot(TOKEN)
 
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
+IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
 
 try:
 	LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
@@ -31,6 +46,7 @@ try:
 	while True:
 		messageText = ""
 		for update in bot.getUpdates(offset=LAST_UPDATE_ID, timeout=2):
+
 			text = update.message.text
 			chat_id = update.message.chat.id
 			update_id = update.update_id
@@ -216,6 +232,37 @@ try:
 						messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
 				else:
 					messageText = "La sezione non e' stata trovata."
+			elif ('/drive' in text):
+
+				keyboard2=[[]];
+				#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+				file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false"}).GetList()
+				j=0
+				k=0
+				for file1 in file_list:
+					fileN=""
+					print "id: "+file1['id']+" title"+file1['title']
+					if(len(file1['title'])>64):
+						fileN=file1['title'][:60]+file1['title'][-4:]
+					else:
+						fileN=file1['title']
+					if j>=4:
+						if file1['mimeType']=="application/vnd.google-apps.folder":
+							keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=file1['id'])])
+						else:
+							keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=fileN)])
+						j=0
+						k+=1
+					else:
+						if file1['mimeType']=="application/vnd.google-apps.folder":
+							keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=file1['id']))
+						else:
+							keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=fileN))
+					j+=1
+				reply_markup3 = InlineKeyboardMarkup(keyboard2)
+				bot.sendMessage(chat_id=chat_id,text="Folder:", reply_markup=reply_markup3)
+				LAST_UPDATE_ID = update_id + 1
+				messageText=""
 
 
 		if messageText != "":
@@ -233,3 +280,4 @@ try:
 			text = ""
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
+	print str(error)
