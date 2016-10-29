@@ -1,0 +1,2 @@
+'ascii' codec can't encode character u'\xec' in position 16: ordinal not in range(128)
+No downloadLink/exportLinks for mimetype found in metadataLeggimi.txt

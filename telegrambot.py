@@ -11,6 +11,11 @@ from pydrive.auth import GoogleAuth
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
+
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 #chat_id log
 logs = 1 #disable/enable chatid logs (1 enabled, 0 disabled)
 
@@ -53,6 +58,7 @@ try:
 
 			if update.callback_query:
 				keyboard2=[[]];
+				icona=""
 				j=0
 				k=0
 				print "entra"
@@ -63,16 +69,34 @@ try:
 					file_list2= drive.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false"}).GetList()
 					for file2 in file_list2:
 						fileN=""
-						if j>=1:
-							keyboard2.append([InlineKeyboardButton(file2['title'], callback_data=file2['id'])])
-							j=0
-							k+=1
+
+						if "pdf" in file2['mimeType']:
+							icona="📕 "
+						elif "doc" in file2['mimeType'] or "docx" in file2['mimeType']:
+							icona="📘 "
+
+
+						if file2['mimeType']=="application/vnd.google-apps.folder":
+							if j>=1:
+								keyboard2.append([InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id'])])
+								j=0
+								k+=1
+							else:
+								keyboard2[k].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
+								j+=1
 						else:
-							keyboard2[k].append(InlineKeyboardButton(file2['title'], callback_data=file2['id']))
-							j+=1
+							if j>=1:
+								keyboard2.append([InlineKeyboardButton(icona+file2['title'], callback_data=file2['id'])])
+								j=0
+								k+=1
+							else:
+								keyboard2[k].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
+								j+=1
+
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
 					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Folder:", reply_markup=reply_markup3)
-
+				elif file1['mimeType'] == "application/vnd.google-apps.document":
+					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document")
 				else:
 					try:
 						fileD=drive.CreateFile({'id':file1['id']})
@@ -84,6 +108,7 @@ try:
 						print "fine"
 					except Exception as e:
 						bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
+						open("logs/errors2.txt","a+").write(str(e)+str(fileD['title'])+"\n")
 
 
 				LAST_UPDATE_ID = update_id + 1
@@ -278,7 +303,6 @@ try:
 					else:
 						messageText = "La sezione non e' stata trovata."
 				elif ('/drive' in text):
-
 					keyboard2=[[]];
 					#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
 					file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false"}).GetList()
@@ -287,17 +311,23 @@ try:
 					for file1 in file_list:
 						fileN=""
 						#print "id: "+file1['id']+" title"+file1['title']
-						if(len(file1['title'])>64):
-							fileN=file1['title'][:60]+file1['title'][-4:]
+						if file1['mimeType']=="application/vnd.google-apps.folder":
+							if j>=3:
+								keyboard2.append([InlineKeyboardButton("🗂 "+file1['title'], callback_data=file1['id'])])
+								j=0
+								k+=1
+							else:
+								keyboard2[k].append(InlineKeyboardButton("🗂 "+file1['title'],callback_data=file1['id']))
+								j+=1
 						else:
-							fileN=file1['title']
-						if j>=3:
-							keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=file1['id'])])
-							j=0
-							k+=1
-						else:
-							keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=file1['id']))
-							j+=1
+							if j>=3:
+								keyboard2.append([InlineKeyboardButton("📃 "+file1['title'], callback_data=file1['id'])])
+								j=0
+								k+=1
+							else:
+								keyboard2[k].append(InlineKeyboardButton("📃 "+file1['title'],callback_data=file1['id']))
+								j+=1
+
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
 					bot.sendMessage(chat_id=chat_id,text="Folder:", reply_markup=reply_markup3)
 					LAST_UPDATE_ID = update_id + 1

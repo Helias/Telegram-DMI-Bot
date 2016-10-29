@@ -1,0 +1,60 @@
+name 'keyboard2' is not defined
+u'REPLY_MARKUP_INVALID'
+u'REPLY_MARKUP_INVALID'
+'NoneType' object has no attribute 'text'
+name 'keyboard2' is not defined
+list index out of range
+list index out of range
+name 'j' is not defined
+u'REPLY_MARKUP_INVALID'
+name 'chat_id' is not defined
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27alberi.cpp%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27alberi.cpp%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27Leggimi.txt%27+in+parents+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "File not found:">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+%3D+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and++trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+%3D+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and++trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+%3D+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+has+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+in+id+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+%3D+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=+id+%3D+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=+id++%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=+id+%3D+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+in+id+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+contains+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=id+contains+%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=alternateLink+contains%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=fullText+contains%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+<HttpError 400 when requesting https://www.googleapis.com/drive/v2/files?q=fullText+contains%270B8gip6cH-PvOLW1FcURLU3dGZHM%27+and+trashed%3Dfalse&alt=json&maxResults=1000 returned "Invalid query">
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+u'Bad Request: File must be non-empty'
+u'Bad Request: File must be non-empty'
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+No downloadLink/exportLinks for mimetype found in metadata
+'ascii' codec can't encode character u'\xec' in position 64: ordinal not in range(128)
+'ascii' codec can't encode character u'\xec' in position 64: ordinal not in range(128)
+u'Bad Request: File must be non-empty'
+'ascii' codec can't encode character u'\xec' in position 64: ordinal not in range(128)
+'ascii' codec can't encode character u'\xec' in position 19: ordinal not in range(128)
+'downloadUrl'
+'downloadUrl'
+KeyError('downloadUrl',)
+name 'error' is not defined
