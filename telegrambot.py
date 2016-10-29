@@ -31,7 +31,7 @@ tokenconf = open('config/token.conf', 'r').read()
 tokenconf = tokenconf.replace("\n", "")
 TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 bot = telegram.Bot(TOKEN)
-
+bot.sendMessage(chat_id=46806104,text="Sono online")
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
 IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
@@ -53,58 +53,43 @@ try:
 
 			if update.callback_query:
 				keyboard2=[[]];
+				j=0
+				k=0
 				print "entra"
 				update_id = update.update_id
-				try:
-					file_list = drive.ListFile({'q': "trashed=false"}).GetList()
-					fileS=""
-					for file1 in file_list:
-						if len(file1['title'])>64:
-							if file1['title'][:60]+file1['title'][-4:] == update.callback_query.data:
-								file6 = drive.CreateFile({'id':file1['id']})
-								file6.GetContentFile('file/'+file1['title'])
-								fileS=file1['title']
-								break
-						else:
-							if file1['title'] == update.callback_query.data:
-								file6 = drive.CreateFile({'id':file1['id']})
-								file6.GetContentFile('file/'+file1['title'])
-								fileS=file1['title']
-								break
-
-					filex=open(str("file/"+fileS),"rb")
-					bot.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
-					os.remove(str("file/"+fileS))
-					LAST_UPDATE_ID = update_id + 1
-					text = ""
-					break
-				except Exception as error:
-					file_list = drive.ListFile({'q': "'"+update.callback_query.data+"' in parents and trashed=false"}).GetList()
-					fileS=""
-					for file1 in file_list:
+				print update.callback_query.data
+				file1=drive.CreateFile({'id':update.callback_query.data})
+				if file1['mimeType']=="application/vnd.google-apps.folder":
+					file_list2= drive.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false"}).GetList()
+					for file2 in file_list2:
 						fileN=""
-						if(len(file1['title'])>64):
-							fileN=file1['title'][:60]+file1['title'][-4:]
-						else:
-							fileN=file1['title']
-						if j>=4:
-							if file1['mimeType']=="application/vnd.google-apps.folder":
-								keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=file1['id'])])
-							else:
-								keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=fileN)])
+						if j>=1:
+							keyboard2.append([InlineKeyboardButton(file2['title'], callback_data=file2['id'])])
 							j=0
 							k+=1
 						else:
-							if file1['mimeType']=="application/vnd.google-apps.folder":
-								keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=file1['id']))
-							else:
-								keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=fileN))
-						j+=1
+							keyboard2[k].append(InlineKeyboardButton(file2['title'], callback_data=file2['id']))
+							j+=1
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
-					bot.sendMessage(chat_id=chat_id,text="Folder:", reply_markup=reply_markup3)
-					LAST_UPDATE_ID = update_id + 1
-					messageText=""
-					text=""
+					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Folder:", reply_markup=reply_markup3)
+
+				else:
+					try:
+						fileD=drive.CreateFile({'id':file1['id']})
+						fileD.GetContentFile('file/'+file1['title'])
+						fileS=file1['title']
+						filex=open(str("file/"+fileS),"rb")
+						bot.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
+						os.remove(str("file/"+fileS))
+						print "fine"
+					except Exception as e:
+						bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
+
+
+				LAST_UPDATE_ID = update_id + 1
+				text = ""
+				messageText = ""
+				break
 			else:
 				text = update.message.text
 				chat_id = update.message.chat.id
@@ -306,19 +291,13 @@ try:
 							fileN=file1['title'][:60]+file1['title'][-4:]
 						else:
 							fileN=file1['title']
-						if j>=4:
-							if file1['mimeType']=="application/vnd.google-apps.folder":
-								keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=file1['id'])])
-							else:
-								keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=fileN)])
+						if j>=3:
+							keyboard2.append([InlineKeyboardButton(file1['title'], callback_data=file1['id'])])
 							j=0
 							k+=1
 						else:
-							if file1['mimeType']=="application/vnd.google-apps.folder":
-								keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=file1['id']))
-							else:
-								keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=fileN))
-						j+=1
+							keyboard2[k].append(InlineKeyboardButton(file1['title'], callback_data=file1['id']))
+							j+=1
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
 					bot.sendMessage(chat_id=chat_id,text="Folder:", reply_markup=reply_markup3)
 					LAST_UPDATE_ID = update_id + 1
