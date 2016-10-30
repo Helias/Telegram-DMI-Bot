@@ -65,72 +65,84 @@ try:
 				k=0
 				print "entra"
 				update_id = update.update_id
-				print update.callback_query.data
-				file1=drive.CreateFile({'id':update.callback_query.data})
-				if file1['mimeType']=="application/vnd.google-apps.folder":
-					file_list2= drive.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
-					for file2 in file_list2:
-						fileN=""
+				#print update.callback_query.data
+				if(os.fork()==0):
 
 
-						if file2['mimeType']=="application/vnd.google-apps.folder":
-							if j>=1:
-								keyboard2.append([InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id'])])
-								j=0
-								k+=1
+					gauth2 = GoogleAuth()
+					gauth2.LocalWebserverAuth()
+
+					drive2 = GoogleDrive(gauth2)
+					bot2 = telegram.Bot(TOKEN)
+
+
+
+					file1=drive2.CreateFile({'id':update.callback_query.data})
+					if file1['mimeType']=="application/vnd.google-apps.folder":
+						file_list2= drive2.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
+						for file2 in file_list2:
+							fileN=""
+
+
+							if file2['mimeType']=="application/vnd.google-apps.folder":
+								if j>=1:
+									keyboard2.append([InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id'])])
+									j=0
+									k+=1
+								else:
+									keyboard2[k].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
+									j+=1
 							else:
-								keyboard2[k].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
-								j+=1
-						else:
-							if  ".pdf" in file2['title']:
-								icona="📕 "
-							elif ".doc" in file2['title'] or ".docx" in file2['title'] or ".txt" in file2['title'] :
-								icona="📘 "
-							elif ".jpg" in file2['title'] or ".png" in file2['title'] or ".gif" in  file2['title']:
-								icona="📷 "
-							elif ".rar" in file2['title'] or ".zip" in file2['title']:
-								icona="🗄 "
-							elif ".out" in file2['title'] or ".exe" in file2['title']:
-								icona="⚙ "
-							elif ".c" in file2['title'] or ".cpp" in file2['title'] or ".py" in file2['title'] or ".java" in file2['title'] or ".js" in file2['title'] or ".html" in file2['title'] or ".php" in file2['title']:
-								icona="💻 "
-							else:
-								icona="📄 "
-							if j>=1:
-								keyboard2.append([InlineKeyboardButton(icona+file2['title'], callback_data=file2['id'])])
-								j=0
-								k+=1
-							else:
-								keyboard2[k].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
-								j+=1
+								if  ".pdf" in file2['title']:
+									icona="📕 "
+								elif ".doc" in file2['title'] or ".docx" in file2['title'] or ".txt" in file2['title'] :
+									icona="📘 "
+								elif ".jpg" in file2['title'] or ".png" in file2['title'] or ".gif" in  file2['title']:
+									icona="📷 "
+								elif ".rar" in file2['title'] or ".zip" in file2['title']:
+									icona="🗄 "
+								elif ".out" in file2['title'] or ".exe" in file2['title']:
+									icona="⚙ "
+								elif ".c" in file2['title'] or ".cpp" in file2['title'] or ".py" in file2['title'] or ".java" in file2['title'] or ".js" in file2['title'] or ".html" in file2['title'] or ".php" in file2['title']:
+									icona="💻 "
+								else:
+									icona="📄 "
+								if j>=1:
+									keyboard2.append([InlineKeyboardButton(icona+file2['title'], callback_data=file2['id'])])
+									j=0
+									k+=1
+								else:
+									keyboard2[k].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
+									j+=1
 
-					if file1['parents'][0]['id'] != '0ADXK_Yx5406vUk9PVA':
-						keyboard2.append([InlineKeyboardButton("🔙", callback_data=file1['parents'][0]['id'])])
-					reply_markup3 = InlineKeyboardMarkup(keyboard2)
-					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=file1['title'], reply_markup=reply_markup3)
+						if file1['parents'][0]['id'] != '0ADXK_Yx5406vUk9PVA':
+							keyboard2.append([InlineKeyboardButton("🔙", callback_data=file1['parents'][0]['id'])])
+						reply_markup3 = InlineKeyboardMarkup(keyboard2)
+						bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=file1['title']+":", reply_markup=reply_markup3)
 
-				elif file1['mimeType'] == "application/vnd.google-apps.document":
-					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document, Andare sul seguente link")
-					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'], text=file1['exportLinks']['application/pdf'])
+					elif file1['mimeType'] == "application/vnd.google-apps.document":
+						bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document, Andare sul seguente link")
+						bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text=file1['exportLinks']['application/pdf'])
 
+					else:
+						try:
+							fileD=drive2.CreateFile({'id':file1['id']})
+							fileD.GetContentFile('file/'+file1['title'])
+							fileS=file1['title']
+							filex=open(str("file/"+fileS),"rb")
+							bot2.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
+							os.remove(str("file/"+fileS))
+							print "fine"
+						except Exception as e:
+							bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
+							open("logs/errors2.txt","a+").write(str(e)+str(fileD['title'])+"\n")
+
+					sys.exit(0)
 				else:
-					try:
-						fileD=drive.CreateFile({'id':file1['id']})
-						fileD.GetContentFile('file/'+file1['title'])
-						fileS=file1['title']
-						filex=open(str("file/"+fileS),"rb")
-						bot.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
-						os.remove(str("file/"+fileS))
-						print "fine"
-					except Exception as e:
-						bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
-						open("logs/errors2.txt","a+").write(str(e)+str(fileD['title'])+"\n")
-
-
-				LAST_UPDATE_ID = update_id + 1
-				text = ""
-				messageText = ""
-				break
+					LAST_UPDATE_ID = update_id + 1
+					text = ""
+					messageText = ""
+					break
 			else:
 				text = update.message.text
 				chat_id = update.message.chat.id
@@ -321,7 +333,7 @@ try:
 				elif ('/drive' in text):
 					keyboard2=[[]];
 					#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
-					file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder'}).GetList()
+					file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
 					j=0
 					k=0
 					for file1 in file_list:
@@ -345,7 +357,7 @@ try:
 								j+=1
 
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
-					bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse", reply_markup=reply_markup3)
+					bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse:", reply_markup=reply_markup3)
 					LAST_UPDATE_ID = update_id + 1
 					messageText=""
 					text=""
@@ -366,4 +378,5 @@ try:
 			text = ""
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
+	bot.sendMessage(chat_id=46806104,text="Arresto Forzato")
 	print str(error)
