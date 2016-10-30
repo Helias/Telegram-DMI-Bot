@@ -11,6 +11,8 @@ from pydrive.auth import GoogleAuth
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
+## METTERE IL PULSANTE PER ANDARE INDIETRO
+#ORDER BY
 
 
 reload(sys)
@@ -66,14 +68,9 @@ try:
 				print update.callback_query.data
 				file1=drive.CreateFile({'id':update.callback_query.data})
 				if file1['mimeType']=="application/vnd.google-apps.folder":
-					file_list2= drive.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false"}).GetList()
+					file_list2= drive.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
 					for file2 in file_list2:
 						fileN=""
-
-						if "pdf" in file2['mimeType']:
-							icona="📕 "
-						elif "doc" in file2['mimeType'] or "docx" in file2['mimeType']:
-							icona="📘 "
 
 
 						if file2['mimeType']=="application/vnd.google-apps.folder":
@@ -85,6 +82,20 @@ try:
 								keyboard2[k].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
 								j+=1
 						else:
+							if  ".pdf" in file2['title']:
+								icona="📕 "
+							elif ".doc" in file2['title'] or ".docx" in file2['title'] or ".txt" in file2['title'] :
+								icona="📘 "
+							elif ".jpg" in file2['title'] or ".png" in file2['title'] or ".gif" in  file2['title']:
+								icona="📷 "
+							elif ".rar" in file2['title'] or ".zip" in file2['title']:
+								icona="🗄 "
+							elif ".out" in file2['title'] or ".exe" in file2['title']:
+								icona="⚙ "
+							elif ".c" in file2['title'] or ".cpp" in file2['title'] or ".py" in file2['title'] or ".java" in file2['title'] or ".js" in file2['title'] or ".html" in file2['title'] or ".php" in file2['title']:
+								icona="💻 "
+							else:
+								icona="📄 "
 							if j>=1:
 								keyboard2.append([InlineKeyboardButton(icona+file2['title'], callback_data=file2['id'])])
 								j=0
@@ -93,10 +104,15 @@ try:
 								keyboard2[k].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
 								j+=1
 
+					if file1['parents'][0]['id'] != '0ADXK_Yx5406vUk9PVA':
+						keyboard2.append([InlineKeyboardButton("🔙", callback_data=file1['parents'][0]['id'])])
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
-					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Folder:", reply_markup=reply_markup3)
+					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=file1['title'], reply_markup=reply_markup3)
+
 				elif file1['mimeType'] == "application/vnd.google-apps.document":
-					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document")
+					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document, Andare sul seguente link")
+					bot.sendMessage(chat_id=update['callback_query']['from_user']['id'], text=file1['exportLinks']['application/pdf'])
+
 				else:
 					try:
 						fileD=drive.CreateFile({'id':file1['id']})
@@ -305,7 +321,7 @@ try:
 				elif ('/drive' in text):
 					keyboard2=[[]];
 					#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
-					file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false"}).GetList()
+					file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder'}).GetList()
 					j=0
 					k=0
 					for file1 in file_list:
@@ -329,7 +345,7 @@ try:
 								j+=1
 
 					reply_markup3 = InlineKeyboardMarkup(keyboard2)
-					bot.sendMessage(chat_id=chat_id,text="Folder:", reply_markup=reply_markup3)
+					bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse", reply_markup=reply_markup3)
 					LAST_UPDATE_ID = update_id + 1
 					messageText=""
 					text=""
