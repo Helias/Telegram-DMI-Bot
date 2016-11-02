@@ -368,6 +368,10 @@ try:
 
 					if chat_id < 0:
 						bot.sendMessage(chat_id=chat_id,text="LA FUNZIONE /drive NON È AMMESSA NEI GRUPPI")
+						LAST_UPDATE_ID = update_id + 1
+						messageText=""
+						text=""
+						break
 					else:
 						for row in conn.execute("SELECT Chat_id FROM 'Chat_id_List' "):
 							if row[0] == chat_id:
