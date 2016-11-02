@@ -79,6 +79,8 @@ try:
 						if len(ArrayValue)==5:
 							conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+update.callback_query.data+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
 							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
+							bot.sendMessage(chat_id=46806104,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
+							bot.sendMessage(chat_id=26349488,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
 						elif len(ArrayValue)==4:
 							conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+update.callback_query.data+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
 							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
