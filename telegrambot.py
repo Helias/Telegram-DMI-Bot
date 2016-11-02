@@ -68,15 +68,12 @@ try:
 				icona=""
 				j=0
 				k=0
-				print "entra"
 				update_id = update.update_id
 
 
 				if len(update.callback_query.data)<13:
-					#print update
-					print "/request"
+
 					#conn.execute("DELETE FROM 'Chat_id_List'")
-					#print update['callback_query']['message']['text']
 					ArrayValue=update['callback_query']['message']['text'].split(" ")
 					try:
 						if len(ArrayValue)==5:
@@ -102,7 +99,6 @@ try:
 					break
 
 				else:
-				#print update.callback_query.data
 					if(os.fork()==0):
 
 
@@ -170,7 +166,6 @@ try:
 								filex=open(str("file/"+fileS),"rb")
 								bot2.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
 								os.remove(str("file/"+fileS))
-								print "fine"
 							except Exception as e:
 								bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
 								open("logs/errors2.txt","a+").write(str(e)+str(fileD['title'])+"\n")
@@ -378,7 +373,6 @@ try:
 							if row[0] == chat_id:
 								TestDB=1;
 						if TestDB==1:
-							print "CHAT ID PRENSENTE NEL DB"
 							keyboard2=[[]];
 							#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
 							file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
@@ -386,7 +380,6 @@ try:
 							k=0
 							for file1 in file_list:
 								fileN=""
-								#print "id: "+file1['id']+" title"+file1['title']
 								if file1['mimeType']=="application/vnd.google-apps.folder":
 									if j>=3:
 										keyboard2.append([InlineKeyboardButton("🗂 "+file1['title'], callback_data=file1['id'])])
@@ -410,7 +403,6 @@ try:
 							messageText=""
 							text=""
 						else:
-							print "VALORE NON PRESENTE NEL DB"
 							bot.sendMessage(chat_id=chat_id,text="Non hai i permesse per utilizzare la funzione /drive,\n Utilizzare il comando /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro) ")
 							LAST_UPDATE_ID = update_id + 1
 							messageText=""
@@ -435,7 +427,6 @@ try:
 					break
 				elif ("/adddb" in text and (chat_id==26349488 or chat_id==46806104)):
 					ArrayValue=text.split(" ") #/add nome cognome e-mail username chatid
-					print ArrayValue[5]
 					if len(ArrayValue)==6:
 						conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+ArrayValue[5]+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
 						bot.sendMessage(chat_id=int(ArrayValue[5]),text= "La tua richiesta è stata accettata")
