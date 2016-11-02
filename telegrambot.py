@@ -79,19 +79,17 @@ try:
 						if len(ArrayValue)==5:
 							conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+update.callback_query.data+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
 							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
-							bot.sendMessage(chat_id=46806104,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
-							bot.sendMessage(chat_id=26349488,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
+							bot.sendMessage(chat_id=-1001095167198,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
+
 						elif len(ArrayValue)==4:
 							conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+update.callback_query.data+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
 							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
 
 						else:
-							bot.sendMessage(chat_id=46806104,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
-							bot.sendMessage(chat_id=26349488,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+							bot.sendMessage(chat_id=-1001095167198,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
 						conn.commit()
 					except Exception as error:
-						bot.sendMessage(chat_id=46806104,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
-						bot.sendMessage(chat_id=26349488,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+						bot.sendMessage(chat_id=-1001095167198,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
 
 
 
@@ -416,21 +414,28 @@ try:
 							break
 
 				elif ("/request" in text):
-					messageText="Richiesta inviata"
-					keyboard=[[]]
 
-					if (update['message']['from_user']['username']):
-						username= update['message']['from_user']['username']
+
+					if (chat_id>0):
+						messageText="Richiesta inviata"
+						keyboard=[[]]
+						if (update['message']['from_user']['username']):
+							username= update['message']['from_user']['username']
+						else:
+							username=""
+						textSend=str(text)+" "+username
+						keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
+						reply_markup2=InlineKeyboardMarkup(keyboard)
+
+						bot.sendMessage(chat_id=-1001095167198,text=textSend,reply_markup=reply_markup2)
+						text=""
+						break
 					else:
-						username=""
-					textSend=str(text)+" "+username
-					keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
-					reply_markup2=InlineKeyboardMarkup(keyboard)
+						messageText="Non è possibile utilizzare /request in un gruppo"
+						text=""
+						break
 
-					bot.sendMessage(chat_id=46806104,text=textSend,reply_markup=reply_markup2)
-					bot.sendMessage(chat_id=26349488,text=textSend,reply_markup=reply_markup2)
-					text=""
-					break
+
 				elif ("/adddb" in text and (chat_id==26349488 or chat_id==46806104)):
 					ArrayValue=text.split(" ") #/add nome cognome e-mail username chatid
 					if len(ArrayValue)==6:
@@ -465,6 +470,6 @@ try:
 			text = ""
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
-	bot.sendMessage(chat_id=46806104,text="Arresto Forzato")
-	bot.sendMessage(chat_id=26349488,text="Arresto Forzato")
+	bot.sendMessage(chat_id=-1001095167198,text="Arresto Forzato")
+	bot.sendMessage(chat_id=-1001095167198,text="Arresto Forzato")
 	print str(error)
