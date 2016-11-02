@@ -8,6 +8,10 @@ import os,sys
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
 
+import sqlite3
+conn = sqlite3.connect('DMI_DB.db')
+
+#conn.execute("CREATE TABLE IF NOT EXISTS 'Chat_id_List' ('Chat_id' int(11) NOT NULL,'Username' text,'Nome' text NOT NULL,'Cognome' text NOT NULL,'Email' text NOT NULL);"  )
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
@@ -28,7 +32,7 @@ picture = ""
 last_text = ""
 
 gauth = GoogleAuth()
-gauth.LocalWebserverAuth()
+gauth.LoadCredentialsFile("config/mycreds.txt")
 
 drive = GoogleDrive(gauth)
 
@@ -71,15 +75,27 @@ try:
 				if len(update.callback_query.data)<13:
 					#print update
 					print "/request"
+					#conn.execute("DELETE FROM 'Chat_id_List'")
 					#print update['callback_query']['message']['text']
 					ArrayValue=update['callback_query']['message']['text'].split(" ")
-					print ArrayValue[0]
-					print ArrayValue[1]
-					print ArrayValue[2]
-					print ArrayValue[3]
-					print ArrayValue[4]
-					#print ArrayValue[5]
-					 #PRENDERE DA TEXT I RESTANTI VALORI
+					try:
+						if len(ArrayValue)==5:
+							conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+update.callback_query.data+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
+							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
+						elif len(ArrayValue)==4:
+							conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+update.callback_query.data+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
+							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
+
+						else:
+							bot.sendMessage(chat_id=46806104,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+							bot.sendMessage(chat_id=26349488,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+						conn.commit()
+					except Exception as error:
+						bot.sendMessage(chat_id=46806104,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+						bot.sendMessage(chat_id=26349488,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+
+
+
 					LAST_UPDATE_ID = update_id + 1
 					text = ""
 					messageText = ""
@@ -91,7 +107,7 @@ try:
 
 
 						gauth2 = GoogleAuth()
-						gauth2.LocalWebserverAuth()
+						gauth2.LoadCredentialsFile("config/mycreds.txt")
 
 						drive2 = GoogleDrive(gauth2)
 						bot2 = telegram.Bot(TOKEN)
@@ -353,53 +369,87 @@ try:
 					else:
 						messageText = "La sezione non e' stata trovata."
 				elif ('/drive' in text):
-					keyboard2=[[]];
-					#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
-					file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
-					j=0
-					k=0
-					for file1 in file_list:
-						fileN=""
-						#print "id: "+file1['id']+" title"+file1['title']
-						if file1['mimeType']=="application/vnd.google-apps.folder":
-							if j>=3:
-								keyboard2.append([InlineKeyboardButton("🗂 "+file1['title'], callback_data=file1['id'])])
-								j=0
-								k+=1
-							else:
-								keyboard2[k].append(InlineKeyboardButton("🗂 "+file1['title'],callback_data=file1['id']))
-								j+=1
-						else:
-							if j>=3:
-								keyboard2.append([InlineKeyboardButton("📃 "+file1['title'], callback_data=file1['id'])])
-								j=0
-								k+=1
-							else:
-								keyboard2[k].append(InlineKeyboardButton("📃 "+file1['title'],callback_data=file1['id']))
-								j+=1
+					TestDB=0
 
-					reply_markup3 = InlineKeyboardMarkup(keyboard2)
-					bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse:", reply_markup=reply_markup3)
-					LAST_UPDATE_ID = update_id + 1
-					messageText=""
-					text=""
+					if chat_id < 0:
+						bot.sendMessage(chat_id=chat_id,text="LA FUNZIONE /drive NON È AMMESSA NEI GRUPPI")
+					else:
+						for row in conn.execute("SELECT Chat_id FROM 'Chat_id_List' "):
+							if row[0] == chat_id:
+								TestDB=1;
+						if TestDB==1:
+							print "CHAT ID PRENSENTE NEL DB"
+							keyboard2=[[]];
+							#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+							file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
+							j=0
+							k=0
+							for file1 in file_list:
+								fileN=""
+								#print "id: "+file1['id']+" title"+file1['title']
+								if file1['mimeType']=="application/vnd.google-apps.folder":
+									if j>=3:
+										keyboard2.append([InlineKeyboardButton("🗂 "+file1['title'], callback_data=file1['id'])])
+										j=0
+										k+=1
+									else:
+										keyboard2[k].append(InlineKeyboardButton("🗂 "+file1['title'],callback_data=file1['id']))
+										j+=1
+								else:
+									if j>=3:
+										keyboard2.append([InlineKeyboardButton("📃 "+file1['title'], callback_data=file1['id'])])
+										j=0
+										k+=1
+									else:
+										keyboard2[k].append(InlineKeyboardButton("📃 "+file1['title'],callback_data=file1['id']))
+										j+=1
+
+							reply_markup3 = InlineKeyboardMarkup(keyboard2)
+							bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse:", reply_markup=reply_markup3)
+							LAST_UPDATE_ID = update_id + 1
+							messageText=""
+							text=""
+						else:
+							print "VALORE NON PRESENTE NEL DB"
+							bot.sendMessage(chat_id=chat_id,text="Non hai i permesse per utilizzare la funzione /drive,\n Utilizzare il comando /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro) ")
+							LAST_UPDATE_ID = update_id + 1
+							messageText=""
+							text=""
+							break
+
 				elif ("/request" in text):
 					messageText="Richiesta inviata"
 					keyboard=[[]]
 
 					if (update['message']['from_user']['username']):
-						print "Lo trova"
 						username= update['message']['from_user']['username']
 					else:
-						print "NIENTE"
 						username=""
 					textSend=str(text)+" "+username
 					keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
 					reply_markup2=InlineKeyboardMarkup(keyboard)
 
 					bot.sendMessage(chat_id=46806104,text=textSend,reply_markup=reply_markup2)
+					bot.sendMessage(chat_id=26349488,text=textSend,reply_markup=reply_markup2)
 					text=""
 					break
+				elif ("/adddb" in text and (chat_id==26349488 or chat_id==46806104)):
+					ArrayValue=text.split(" ") #/add nome cognome e-mail username chatid
+					print ArrayValue[5]
+					if len(ArrayValue)==6:
+						conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+ArrayValue[5]+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
+						bot.sendMessage(chat_id=int(ArrayValue[5]),text= "La tua richiesta è stata accettata")
+						conn.commit()
+					elif len(ArrayValue)==5:
+						conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+ArrayValue[4]+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
+						bot.sendMessage(chat_id=int(ArrayValue[4]),text= "La tua richiesta è stata accettata")
+						conn.commit()
+					else:
+						bot.sendMessage(chat_id=chat_id,text="/adddb <nome> <cognome> <e-mail> <username> <chat_id>")
+					text=""
+					LAST_UPDATE_ID = update_id + 1
+					break
+
 
 
 
@@ -419,4 +469,5 @@ try:
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
 	bot.sendMessage(chat_id=46806104,text="Arresto Forzato")
+	bot.sendMessage(chat_id=26349488,text="Arresto Forzato")
 	print str(error)
