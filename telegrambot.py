@@ -66,8 +66,8 @@ try:
 			if update.callback_query:
 				keyboard2=[[]];
 				icona=""
-				j=0
-				k=0
+				NumberRow=0
+				NumberArray=0
 				update_id = update.update_id
 
 
@@ -114,17 +114,18 @@ try:
 						if file1['mimeType']=="application/vnd.google-apps.folder":
 							file_list2= drive2.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
 							for file2 in file_list2:
+								
 								fileN=""
 
 
 								if file2['mimeType']=="application/vnd.google-apps.folder":
-									if j>=1:
+									if NumberRow>=1:
 										keyboard2.append([InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id'])])
-										j=0
-										k+=1
+										NumberRow=0
+										NumberArray+=1
 									else:
-										keyboard2[k].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
-										j+=1
+										keyboard2[NumberArray].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
+										NumberRow+=1
 								else:
 									if  ".pdf" in file2['title']:
 										icona="📕 "
@@ -140,13 +141,13 @@ try:
 										icona="💻 "
 									else:
 										icona="📄 "
-									if j>=1:
+									if NumberRow>=1:
 										keyboard2.append([InlineKeyboardButton(icona+file2['title'], callback_data=file2['id'])])
-										j=0
-										k+=1
+										NumberRow=0
+										NumberArray+=1
 									else:
-										keyboard2[k].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
-										j+=1
+										keyboard2[NumberArray].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
+										NumberRow+=1
 
 							if file1['parents'][0]['id'] != '0ADXK_Yx5406vUk9PVA':
 								keyboard2.append([InlineKeyboardButton("🔙", callback_data=file1['parents'][0]['id'])])
@@ -161,12 +162,17 @@ try:
 						else:
 							try:
 								fileD=drive2.CreateFile({'id':file1['id']})
-								fileD.GetContentFile('file/'+file1['title'])
-								fileS=file1['title']
-								filex=open(str("file/"+fileS),"rb")
-								bot2.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
-								os.remove(str("file/"+fileS))
+								if int(fileD['fileSize']) < 5e+7:
+									fileD.GetContentFile('file/'+file1['title'])
+									fileS=file1['title']
+									filex=open(str("file/"+fileS),"rb")
+									bot2.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
+									os.remove(str("file/"+fileS))
+								else:
+									bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="File troppo grande per il download diretto, scarica dal seguente link")
+									bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=fileD['alternateLink']) ##fileD['downloadUrl']
 							except Exception as e:
+								print str(e)
 								bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
 								open("logs/errors2.txt","a+").write(str(e)+str(fileD['title'])+"\n")
 
@@ -380,26 +386,26 @@ try:
 							keyboard2=[[]];
 							#file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
 							file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
-							j=0
-							k=0
+							NumberRow=0
+							NumberArray=0
 							for file1 in file_list:
 								fileN=""
 								if file1['mimeType']=="application/vnd.google-apps.folder":
-									if j>=3:
+									if NumberRow>=3:
 										keyboard2.append([InlineKeyboardButton("🗂 "+file1['title'], callback_data=file1['id'])])
-										j=0
-										k+=1
+										NumberRow=0
+										NumberArray+=1
 									else:
-										keyboard2[k].append(InlineKeyboardButton("🗂 "+file1['title'],callback_data=file1['id']))
-										j+=1
+										keyboard2[NumberArray].append(InlineKeyboardButton("🗂 "+file1['title'],callback_data=file1['id']))
+										NumberRow+=1
 								else:
-									if j>=3:
+									if NumberRow>=3:
 										keyboard2.append([InlineKeyboardButton("📃 "+file1['title'], callback_data=file1['id'])])
-										j=0
-										k+=1
+										NumberRow=0
+										NumberArray+=1
 									else:
-										keyboard2[k].append(InlineKeyboardButton("📃 "+file1['title'],callback_data=file1['id']))
-										j+=1
+										keyboard2[NumberArray].append(InlineKeyboardButton("📃 "+file1['title'],callback_data=file1['id']))
+										NumberRow+=1
 
 							reply_markup3 = InlineKeyboardMarkup(keyboard2)
 							bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse:", reply_markup=reply_markup3)
@@ -470,6 +476,6 @@ try:
 			text = ""
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
-	bot.sendMessage(chat_id=-1001095167198,text="Arresto Forzato")
-	bot.sendMessage(chat_id=-1001095167198,text="Arresto Forzato")
+	bot.sendMessage(chat_id=46806104,text="Arresto Forzato")
+
 	print str(error)
