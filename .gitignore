@@ -4,3 +4,5 @@ logs/log.txt
 classes/StringParser.pyc
 classes/__init__.pyc
 utilities.pyc
+config/drive_credentials.json
+config/settings.yaml

@@ -1,0 +1,11 @@
+client_config_backend: settings
+client_config:
+  client_id:  <CLIENT ID>
+  client_secret: <SECRET ID>
+  redirect_uri: http://locahost:8080/
+
+save_credentials: True
+save_credentials_backend: file
+save_credentials_file: config/drive_credentials.json
+
+get_refresh_token: True
