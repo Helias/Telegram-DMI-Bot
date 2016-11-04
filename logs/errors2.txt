@@ -1,0 +1,11 @@
+'ascii' codec can't encode character u'\xec' in position 16: ordinal not in range(128)
+No downloadLink/exportLinks for mimetype found in metadataLeggimi.txt
+u'Bad Request: File must be non-empty'Diario Lezioni.txt
+u'Bad Request: File must be non-empty'Diario Lezioni.txt
+u'Bad Request: File must be non-empty'Diario Lezioni.txt
+urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw/sendDocument (Caused by ProtocolError('Connection aborted.', error(104, 'Connection reset by peer')))Cormen Leiserson Rivest Stein - Introduzione Agli Algoritmi E Strutture Dati-2Nd Ed.pdf
+urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw/sendDocument (Caused by ProtocolError('Connection aborted.', error(104, 'Connection reset by peer')))Cormen Leiserson Rivest Stein - Introduzione Agli Algoritmi E Strutture Dati-2Nd Ed.pdf
+urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw/sendDocument (Caused by ProtocolError('Connection aborted.', error(104, 'Connection reset by peer')))[Single Page] Tanenbaum Sistemi operativi.pdf
+urllib3 HTTPError [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:1752)[Single Page] Tanenbaum Sistemi operativi.pdf
+urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw/sendDocument (Caused by ProtocolError('Connection aborted.', error(104, 'Connection reset by peer')))[Single Page] Tanenbaum Sistemi operativi.pdf
+urllib3 HTTPError [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:1752)[Single Page] Tanenbaum Sistemi operativi.pdf

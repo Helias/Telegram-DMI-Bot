@@ -15,10 +15,13 @@ For the bot istance to be executed, your system needs:
 - python-pip
 - python-bs4
 - python-beautifulsoup
-- python-telegram-bot (use $ pip install python-telegram-bot)
+
+install with *pip*
+- python-telegram-bot
+- pydrive
 
 ###Using the live version
-The bot is live on Telegram with the username [@DMI_Bot](https://web.telegram.org/#/im?p=@DMI_Bot).
+The bot is live on Telegram with the username [@DMI_Bot](https://telegram.me/DMI_Bot).
 Send **'/start'** to start it, **'/help'** to see a list of commands.
 
 Please note that the commands and their answers are in Italian.
@@ -27,5 +30,4 @@ Please note that the commands and their answers are in Italian.
 This open-source software is published under the GNU General Public License (GNU GPL) version 3. Please refer to the "LICENSE" file of this project for the full text.
 
 ###Credits
-This project is made possible thanks to the contributions of [Stefano Borzì](https://github.com/Helias), [Adriano Ferraguto](https://github.com/adrianoferraguto) and [Vincenzo Filetti](https://github.com/veeenz).
-
+This project is made possible thanks to the contributions of [Stefano Borzì](https://github.com/Helias), [Adriano Ferraguto](https://github.com/adrianoferraguto),[Vincenzo Filetti](https://github.com/veeenz) and [Simone Di Mauro](https://github.com/simone989).
