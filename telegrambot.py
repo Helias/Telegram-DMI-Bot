@@ -85,12 +85,12 @@ try:
 					try:
 						if len(ArrayValue)==5:
 							conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+update.callback_query.data+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
-							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
+							bot.sendMessage(chat_id=update.callback_query.data,text= "🔓 La tua richiesta è stata accettata")
 							bot.sendMessage(chat_id=-1001095167198,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
 
 						elif len(ArrayValue)==4:
 							conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+update.callback_query.data+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
-							bot.sendMessage(chat_id=update.callback_query.data,text= "La tua richiesta è stata accettata")
+							bot.sendMessage(chat_id=update.callback_query.data,text= "🔓 La tua richiesta è stata accettata")
 
 						else:
 							bot.sendMessage(chat_id=-1001095167198,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
@@ -321,10 +321,61 @@ try:
 							messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
 					else:
 						messageText = "La sezione non e' stata trovata."
+				elif (text == '/smonta_portoni' or text == '/smonta_portoni@dmi_bot'):
+					r = random.randint(0,13)
+					if (r >= 0 and r <= 3):
+						messageText = "$ sudo umount portoni"
+					elif (r > 3 and r < 10):
+						messageText = "@TkdAlex"
+					elif (r == 11):
+						messageText = "https://s16.postimg.org/5a6khjb5h/smonta_portoni.jpg"
+					else:
+						messageText = "https://s16.postimg.org/rz8117y9x/idraulico.jpg"
+				elif (text == '/liste' or text == '/liste@dmi_bot'):
+					img = 1
+					picture = open("data/img/liste.png", "rb")
+					messageText = "Liste e candidati"
 				elif (text == '/contributors' or text == '/contributors@dmi_bot'):
 					messageText = "@Helias, @adriano_effe, @Veenz, @simone989\n"
 					messageText +="https://github.com/Helias/telegram-dmi-bot"
-				elif ('/drive' in text):
+				elif ('/forum' in text or '/forum@dmi_bot' in text):
+					text = text.replace("/forum ","")
+					dictUrlSezioni = forum(text)
+					if not (dictUrlSezioni == False):
+						for titoli in dictUrlSezioni:
+							messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
+					else:
+						messageText = "La sezione non e' stata trovata."
+				elif (('/news' in text) and (chat_id == 26349488)):
+					news = originalText.replace("/news ", "")
+					messageText = "News Aggiornata!"
+				elif ((text == '/spamnews' or text == '/spamnews@dmi_bot') and chat_id == 26349488 and news != "News"):
+					chat_ids = open('logs/log.txt', 'r').read()
+					chat_ids = chat_ids.split("\n")
+					for i in range((len(chat_ids)-1)):
+						try:
+							if not "+" in chat_ids[i]:
+								bot.sendMessage(chat_id=chat_ids[i], text=news)
+						except Exception as error:
+							open("logs/errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
+					messageText = "News spammata!"
+				elif (text == '/disablenews' or text == '/disablenews@dmi_bot'):
+					chat_ids = open('logs/log.txt', 'r').read()
+					if not ("+"+str(chat_id)) in chat_ids:
+						chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
+						messageText = "News disabilitate!"
+						open('logs/log.txt', 'w').write(chat_ids)
+					else:
+						messageText = "News già disabilitate!"
+				elif (text == '/enablenews' or text == '/enablenews@dmi_bot'):
+					chat_ids = open('logs/log.txt', 'r').read()
+					if ("+"+str(chat_id)) in chat_ids:
+						chat_ids = chat_ids.replace("+"+str(chat_id), str(chat_id))
+						messageText = "News abilitate!"
+						open('logs/log.txt', 'w').write(chat_ids)
+					else:
+						messageText = "News già abilitate!"
+				elif (text == '/drive' or text == '/drive@dmi_bot'):
 					TestDB=0
 
 					if chat_id < 0:
