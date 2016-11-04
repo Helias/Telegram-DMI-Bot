@@ -1,23 +1,22 @@
 # -*- coding: utf-8 -*-
-import telegram
 import random
-from utilities import *
-import telegram.ext
 import requests
 import os,sys
+
+from utilities import *
+
+import telegram.ext
+import telegram
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
+
+
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
 
 import sqlite3
 conn = sqlite3.connect('DMI_DB.db')
-
 #conn.execute("CREATE TABLE IF NOT EXISTS 'Chat_id_List' ('Chat_id' int(11) NOT NULL,'Username' text,'Nome' text NOT NULL,'Cognome' text NOT NULL,'Email' text NOT NULL);"  )
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
-
-## METTERE IL PULSANTE PER ANDARE INDIETRO
-#ORDER BY
-
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -31,21 +30,22 @@ img = 0
 picture = ""
 last_text = ""
 
-gauth = GoogleAuth()
-gauth.LoadCredentialsFile("config/mycreds.txt")
+settings_file = "config/settings.yaml"
 
+gauth = GoogleAuth(settings_file=settings_file)
+gauth.CommandLineAuth()
 drive = GoogleDrive(gauth)
-
+IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
 
 #token
 tokenconf = open('config/token.conf', 'r').read()
 tokenconf = tokenconf.replace("\n", "")
 TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
 bot = telegram.Bot(TOKEN)
-bot.sendMessage(chat_id=46806104,text="Sono online")
+
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
-IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
+#bot.sendMessage(chat_id=46806104,text="Sono online")
 
 CUSicon = {0 : "🏋",
 	   1 : "⚽️",
@@ -65,7 +65,6 @@ try:
 	while True:
 		messageText = ""
 		for update in bot.getUpdates(offset=LAST_UPDATE_ID, timeout=2):
-			#print update
 			if update.edited_message:
 				LAST_UPDATE_ID = update_id + 1
 				text=""
@@ -108,15 +107,10 @@ try:
 
 				else:
 					if(os.fork()==0):
-
-
-						gauth2 = GoogleAuth()
-						gauth2.LoadCredentialsFile("config/mycreds.txt")
-
-						drive2 = GoogleDrive(gauth2)
+						gauth = GoogleAuth(settings_file=settings_file)
+						gauth.CommandLineAuth()
+						drive2 = GoogleDrive(gauth)
 						bot2 = telegram.Bot(TOKEN)
-
-
 
 						file1=drive2.CreateFile({'id':update.callback_query.data})
 						if file1['mimeType']=="application/vnd.google-apps.folder":
@@ -161,7 +155,6 @@ try:
 								keyboard2.append([InlineKeyboardButton("🔙", callback_data=file1['parents'][0]['id'])])
 							reply_markup3 = InlineKeyboardMarkup(keyboard2)
 							bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=file1['title']+":", reply_markup=reply_markup3)
-						#	bot2.sendMessage(chat_id=46806104, text=update['callback_query']['from_user']['username'])
 
 						elif file1['mimeType'] == "application/vnd.google-apps.document":
 							bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document, Andare sul seguente link")
@@ -182,7 +175,7 @@ try:
 							except Exception as e:
 								print str(e)
 								bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
-								open("logs/errors2.txt","a+").write(str(e)+str(fileD['title'])+"\n")
+								open("logs/errors.txt","a+").write(str(e)+str(fileD['title'])+"\n")
 
 						sys.exit(0)
 					else:
@@ -322,7 +315,7 @@ try:
 					messageText += "lunedì - giovedì 14.30 - 16.30 \n"
 					messageText += "venerdì  08.30 - 13.30"
 				elif (text == '/cus' or text == '/cus@dmi_bot'):
-					messageText = "CUS Catania\A
+					messageText = "CUS Catania"
 					if not (dictUrlSezioni == False):
 						for titoli in dictUrlSezioni:
 							messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
@@ -375,7 +368,7 @@ try:
 							messageText=""
 							text=""
 						else:
-							bot.sendMessage(chat_id=chat_id,text="Non hai i permesse per utilizzare la funzione /drive,\n Utilizzare il comando /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro) ")
+							bot.sendMessage(chat_id=chat_id,text="🔒 Non hai i permessi per utilizzare la funzione /drive,\n Utilizzare il comando /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro) ")
 							LAST_UPDATE_ID = update_id + 1
 							messageText=""
 							text=""
@@ -385,7 +378,7 @@ try:
 
 
 					if (chat_id>0):
-						messageText="Richiesta inviata"
+						messageText="✉️ Richiesta inviata"
 						keyboard=[[]]
 						if (update['message']['from_user']['username']):
 							username= update['message']['from_user']['username']
@@ -408,19 +401,17 @@ try:
 					ArrayValue=text.split(" ") #/add nome cognome e-mail username chatid
 					if len(ArrayValue)==6:
 						conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+ArrayValue[5]+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
-						bot.sendMessage(chat_id=int(ArrayValue[5]),text= "La tua richiesta è stata accettata")
+						bot.sendMessage(chat_id=int(ArrayValue[5]),text= "🔓 La tua richiesta è stata accettata")
 						conn.commit()
 					elif len(ArrayValue)==5:
 						conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+ArrayValue[4]+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
-						bot.sendMessage(chat_id=int(ArrayValue[4]),text= "La tua richiesta è stata accettata")
+						bot.sendMessage(chat_id=int(ArrayValue[4]),text= "🔓 La tua richiesta è stata accettata")
 						conn.commit()
 					else:
 						bot.sendMessage(chat_id=chat_id,text="/adddb <nome> <cognome> <e-mail> <username> <chat_id>")
 					text=""
 					LAST_UPDATE_ID = update_id + 1
 					break
-
-
 
 
 		if messageText != "":
@@ -439,5 +430,5 @@ try:
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
 	bot.sendMessage(chat_id=46806104,text="Arresto Forzato")
-
+	bot.sendMessage(chat_id=-1001095167198,text=str(error))
 	print str(error)
