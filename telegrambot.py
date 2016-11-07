@@ -41,8 +41,8 @@ IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
 #token
 tokenconf = open('config/token.conf', 'r').read()
 tokenconf = tokenconf.replace("\n", "")
-TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
-bot = telegram.Bot('279245057:AAH2PqdlSoPdXNaLRH3Nj4bOlOljiiRyQY0')
+TOKEN = tokenconf      		#Token of your telegram bot that you created from @BotFather, write it on token.conf
+bot = telegram.Bot(TOKEN)
 
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
