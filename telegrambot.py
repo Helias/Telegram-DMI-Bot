@@ -31,10 +31,8 @@ last_text = ""
 
 settings_file = "config/settings.yaml"
 
-#gauth = GoogleAuth(settings_file=settings_file)
-#gauth.CommandLineAuth()
-
-gauth = GoogleAuth()
+gauth = GoogleAuth(settings_file=settings_file)
+gauth.CommandLineAuth()
 gauth.LocalWebserverAuth()
 
 drive = GoogleDrive(gauth)
