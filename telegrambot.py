@@ -33,18 +33,20 @@ settings_file = "config/settings.yaml"
 
 gauth = GoogleAuth(settings_file=settings_file)
 gauth.CommandLineAuth()
+#gauth.LocalWebserverAuth()
+
 drive = GoogleDrive(gauth)
 IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
 
 #token
 tokenconf = open('config/token.conf', 'r').read()
 tokenconf = tokenconf.replace("\n", "")
-TOKEN = tokenconf      #Token of your telegram bot that you created from @BotFather, write it on token.conf
+TOKEN = tokenconf      		#Token of your telegram bot that you created from @BotFather, write it on token.conf
 bot = telegram.Bot(TOKEN)
 
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
-#bot.sendMessage(chat_id=46806104,text="Sono online")
+#bot.sendMessage(chat_id=-1001095167198,text="Sono online")
 
 try:
 	LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
@@ -293,28 +295,43 @@ try:
 
 				elif ("/request" in text):
 
-
+					flag=0
 					if (chat_id>0):
-						messageText="✉️ Richiesta inviata"
-						keyboard=[[]]
-						if (update['message']['from_user']['username']):
-							username= update['message']['from_user']['username']
-						else:
-							username=""
-						textSend=str(text)+" "+username
-						keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
-						reply_markup2=InlineKeyboardMarkup(keyboard)
+						for row in conn.execute("SELECT Chat_id FROM Chat_id_List"):
+							if row[0] == chat_id:
+								flag=1
 
-						bot.sendMessage(chat_id=-1001095167198,text=textSend,reply_markup=reply_markup2)
-						text=""
-						break
+						if flag==0:
+							messageText="✉️ Richiesta inviata"
+							keyboard=[[]]
+							if (update['message']['from_user']['username']):
+								username= update['message']['from_user']['username']
+							else:
+								username=""
+							if(len(text.split(" "))==4) and ("@" in text.split(" ")[3]) and ("." in text.split( )[3]):
+								textSend=str(text)+" "+username
+								keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
+								reply_markup2=InlineKeyboardMarkup(keyboard)
+
+								bot.sendMessage(chat_id=-1001095167198,text=textSend,reply_markup=reply_markup2)
+								text=""
+								break
+							else:
+								messageText="Errore compilazione /request:\n Forma esatta: /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro)"
+								text=""
+								break
+						else:
+							messageText="Hai già effettuato la richiesta di accesso"
+							text=""
+							break
+
 					else:
 						messageText="Non è possibile utilizzare /request in un gruppo"
 						text=""
 						break
 
 
-				elif ("/adddb" in text and (chat_id==26349488 or chat_id==46806104)):
+				elif ("/adddb" in text and (chat_id==26349488 or chat_id==-1001095167198)):
 					ArrayValue=text.split(" ") #/add nome cognome e-mail username chatid
 					if len(ArrayValue)==6:
 						conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+ArrayValue[5]+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
