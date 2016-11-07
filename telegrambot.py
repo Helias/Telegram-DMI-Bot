@@ -10,7 +10,6 @@ import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
-
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
 
@@ -46,14 +45,6 @@ bot = telegram.Bot(TOKEN)
 #debugging
 #bot.sendMessage(chat_id=26349488, text="BOT ON")
 #bot.sendMessage(chat_id=46806104,text="Sono online")
-
-CUSicon = {0 : "🏋",
-	   1 : "⚽️",
-	   2 : "🏀",
-	   3 : "🏈",
-	   4 : "🏐",
-	   5 : "🏊",
-}
 
 try:
 	LAST_UPDATE_ID = bot.getUpdates()[-1].update_id
@@ -197,155 +188,30 @@ try:
 			text = text.lower()
 
 			if text.startswith('/'):
-				if (text == '/help' or text == '/help@dmi_bot'):
-					messageText  = "@DMI_Bot risponde ai seguenti comandi: \n\n"
-					messageText += "📖 /esami - /mesami - linka il calendario degli esami\n"
-					messageText += "🗓 /aulario - linka l\'aulario\n"
-					messageText += "👔 /prof <nome> - es. /prof Milici\n"
-					messageText += "🍽 /mensa - orario mensa\n"
-					messageText += "👥 /rappresentanti - elenco dei rappresentanti del DMI\n"
-					messageText += "📚 /biblioteca - orario biblioteca DMI\n"
-					messageText += CUSicon[random.randint(0,5)] + " /cus sede e contatti\n\n"
-					messageText += "Segreteria orari e contatti:\n"
-					messageText += "/sdidattica - segreteria didattica\n"
-					messageText += "/sstudenti - segreteria studenti\n"
-					messageText += "\nERSU orari e contatti\n"
-					messageText += "/ersu - sede centrale\n"
-					messageText += "/ufficioersu - (ufficio tesserini)\n"
-					messageText += "/urp - URP studenti\n\n"
-					messageText += "~Bot~\n"
-					messageText += "/disablenews \n"
-					messageText += "/enablenews\n"
-					messageText += "/contributors"
-				elif (text == '/rappresentanti' or text == '/rappresentanti@dmi_bot'):
-					messageText = "Usa uno dei seguenti comandi per mostrare i rispettivi rappresentanti\n"
-					messageText += "/rappresentanti_dmi\n"
-					messageText += "/rappresentanti_informatica\n"
-					messageText += "/rappresentanti_matematica"
-				elif (text == '/rappresentanti_dmi' or text == '/rappresentanti_dmi@dmi_bot'):
-					messageText =  "Rappresentanti DMI\n"
-					messageText += "Aliperti Vincenzo - @VAliperti\n"
-					messageText += "Apa Marco - @MarcoApa\n"
-					messageText += "Borzì Stefano - @Helias\n"
-					messageText += "Costa Alberto - @knstrct\n"
-					messageText += "Marroccia Marco - @MarcoLebon\n"
-					messageText += "Mattia Ferdinando Alessandro - @AlessandroMattia\n"
-					messageText += "Presente Fabrizio\n"
-					messageText += "Petralia Luca- @lucapppla\n"
-					messageText += "Rapisarda Simone - @CarlinoMalvagio\n"
-					messageText += "Ricordo che per segnalare qualcosa a tutti i rappresentanti si può utilizzare l'email reportdmiunict@gmail.com"
-				elif (text == '/rappresentanti_informatica' or text == '/rappresentanti_informatica@dmi_bot'):
-					messageText =  "Rappresentanti Inforamtica\n"
-					messageText += "Aliperti Vincenzo - @VAliperti\n"
-					messageText += "Apa Marco - @MarcoApa\n"
-					messageText += "Borzì Stefano - @Helias\n"
-					messageText += "Costa Alberto - @knstrct\n"
-					messageText += "Giangreco Antonio - @Antonio0793\n"
-					messageText += "Marroccia Marco - @MarcoLebon\n"
-				elif (text == '/rappresentanti_matematica' or text == '/rappresentanti_matematica@dmi_bot'):
-					messageText =  "Rappresentanti Matematica\n"
-					messageText += "Alessandro Massimiliano - @massi_94\n"
-					messageText += "De Cristofaro Gaetano\n"
-					messageText += "Pratissoli Mirco - @Mirko291194\n"
-					messageText += "Sciuto Rita - @RitaSciuto"
-				elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'):
-					messageText  = "Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\n"
-					messageText += "Sig.ra Cristina Mele\n"
-					messageText += "📞 095/7337227\n"
-					messageText += "✉️ cmele@dmi.unict.it\n\n"
-					messageText += "🕑 Orari:\n"
-					messageText += "Martedì dalle 10:30 alle 12:30\n"
-					messageText += "Giovedì dalle 10:30 alle 12:30"
-				elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):
-					messageText  = "Segreteria studenti\n"
-					messageText += "Sede presso la Cittadella Universitaria (vicino la mensa)\n\n"
-					messageText += "Via S. Sofia, 64 ed. 11 - 95125 Catania\n"
-					messageText += "📞 095.7386103, 6119, 6109, 6125, 6129, 6123, 6122, 6106, 6107, 6121\n"
-					messageText += "✉️ settore.scientifico@unict.it\n\n"
-					messageText += "🕑 Orario invernale:\n"
-					messageText += "Lunedi\': 10:00 - 12.30\n"
-					messageText += "Martedi\': 10:00 -12:30 | 15:00 - 16:30\n"
-					messageText += "Giovedi\': 10:00 - 12:30 | 15:00 - 16:30\n"
-					messageText += "Venerdi\': 10:00 - 12:30"
-				elif (text == '/ersu' or text == '/ersu@dmi_bot'):
-					messageText  = "ERSU Catania - sede centrale\n"
-					messageText += "Sede presso Via Etnea, 570\n\n"
-					messageText += "📞 095/7517940 (ore 9:00/12:00)\n"
-					messageText += "✉️ urp@ersucatania.gov.it\n\n"
-					messageText += "🕑 Orari:\n"
-					messageText += "Lunedì: 09:00 - 12:00\n"
-					messageText += "Mercoledì: 15:30 - 18:00\n"
-					messageText += "Venerdì: 09:00 - 12:00"
-				elif (text == '/ufficioersu' or text == '/ufficioersu@dmi_bot'):
-					messageText  = "ERSU Catania - Ufficio Tesserini\n"
-					messageText += "Sede della Cittadella (accanto l\'ingresso della Casa dello Studente)\n\n"
-					messageText += "🕑 Orari:\n"
-					messageText += "martedì-giovedì dalle 9.00 alle 12.30 \n\n"
-					messageText += "UfficioErsu vicino la mensa Oberdan\n"
-					messageText += "lunedì-mercoledì-venerdì dalle 09.00 alle 12.30 \n"
-					messageText += "mercoledì 15:00 - 18.00:"
-				elif (text == '/urp' or text == '/urp@dmi_bot'):
-					messageText = "URP Studenti\n"
-					messageText += "Sede in Via A.di Sangiuliano, 44\n\n"
-					messageText += "📞 800894327 (da fisso), 095 6139202/1/0\n"
-					messageText += "✉️ urp-studenti@unict.it"
-				elif ('/professori' in text or '/professori@dmi_bot' in text or '/prof' in text or '/professore' in text or '/docente' in text or '/docenti' in text):
-					text = text.replace("@dmi_bot", "")
-					text = text.replace("/professori ", "")
-					text = text.replace("/professore ", "")
-					text = text.replace("/docenti ", "")
-					text = text.replace("/docente ", "")
-					text = text.replace("/prof ", "")
-					messageText = getProfessori(text)
-				elif (text == '/esami' or text == '/esami@dmi_bot'):
-					messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
-				elif (text == '/mesami' or text == '/mesami@dmi_bot'):
-					messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
-				elif (text == '/aulario' or text == '/aulario@dmi_bot'):
-					messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
-				elif (text == '/mensa' or text == '/mensa@dmi_bot'):
-					messageText  = "🕑 Orario Mensa\n"
-					messageText += "pranzo dalle ore 12,00 alle ore 14,30\n"
-					messageText += "cena dalle ore 19,00 alle ore 21,30"
-				elif (text == '/biblioteca' or text == '/biblioteca@dmi_bot'):
-					messageText  = "Sala Lettura:\n"
-					messageText += "lunedì - venerdì 08.00 - 19.00 \n\n"
-					messageText += "Servizio Distribuzione: \n"
-					messageText += "lunedì - giovedì 08.30 - 14.00 \n"
-					messageText += "lunedì - giovedì 14.30 - 16.30 \n"
-					messageText += "venerdì  08.30 - 13.30"
-				elif (text == '/cus' or text == '/cus@dmi_bot'):
-					messageText = "CUS Catania"
-					if not (dictUrlSezioni == False):
-						for titoli in dictUrlSezioni:
-							messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
-					else:
-						messageText = "La sezione non e' stata trovata."
-				elif (text == '/smonta_portoni' or text == '/smonta_portoni@dmi_bot'):
-					r = random.randint(0,13)
-					if (r >= 0 and r <= 3):
-						messageText = "$ sudo umount portoni"
-					elif (r > 3 and r < 10):
-						messageText = "@TkdAlex"
-					elif (r == 11):
-						messageText = "https://s16.postimg.org/5a6khjb5h/smonta_portoni.jpg"
-					else:
-						messageText = "https://s16.postimg.org/rz8117y9x/idraulico.jpg"
+				if (text == '/help' or text == '/help@dmi_bot'): 											messageText = help_cmd()
+				elif (text == '/rappresentanti' or text == '/rappresentanti@dmi_bot'): 						messageText = rapp_cmd()
+				elif (text == '/rappresentanti_dmi' or text == '/rappresentanti_dmi@dmi_bot'): 				messageText = rapp_dmi_cmd()
+				elif (text == '/rappresentanti_informatica' or text == '/rappresentanti_informatica@dmi_bot'): 	messageText = rapp_inf_cmd()
+				elif (text == '/rappresentanti_matematica' or text == '/rappresentanti_matematica@dmi_bot'): 	messageText = rapp_mat_cmd()
+				elif (text == '/sdidattica' or text == '/sdidattica@dmi_bot'): 								messageText = sdidattica_cmd()
+				elif (text == '/sstudenti' or text == '/sstudenti@dmi_bot'):								messageText = sstudenti_cmd()
+				elif (text == '/ersu' or text == '/ersu@dmi_bot'):										messageText = ersu_cmd()
+				elif (text == '/ufficioersu' or text == '/ufficioersu@dmi_bot'):							messageText = ufficio_ersu_cmd()
+				elif (text == '/urp' or text == '/urp@dmi_bot'):											messageText = urp_cmd()
+				elif ('/prof' in text or '/prof@dmi_bot' in text):											messageText = prof_cmd(text)
+				elif (text == '/esami' or text == '/esami@dmi_bot'):										messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
+				elif (text == '/mesami' or text == '/mesami@dmi_bot'):										messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
+				elif (text == '/aulario' or text == '/aulario@dmi_bot'):									messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
+				elif (text == '/mensa' or text == '/mensa@dmi_bot'):										messageText = mensa_cmd()
+				elif (text == '/biblioteca' or text == '/biblioteca@dmi_bot'):								messageText = biblioteca_cmd()
+				elif (text == '/cus' or text == '/cus@dmi_bot'):											messageText = cus_cmd()
+				elif (text == '/smonta_portoni' or text == '/smonta_portoni@dmi_bot'):						messageText = smonta_portoni_cmd()
 				elif (text == '/liste' or text == '/liste@dmi_bot'):
 					img = 1
 					picture = open("data/img/liste.png", "rb")
 					messageText = "Liste e candidati"
-				elif (text == '/contributors' or text == '/contributors@dmi_bot'):
-					messageText = "@Helias, @adriano_effe, @Veenz, @simone989\n"
-					messageText +="https://github.com/Helias/telegram-dmi-bot"
-				elif ('/forum' in text or '/forum@dmi_bot' in text):
-					text = text.replace("/forum ","")
-					dictUrlSezioni = forum(text)
-					if not (dictUrlSezioni == False):
-						for titoli in dictUrlSezioni:
-							messageText = StringParser.startsWithUpper(titoli)+": "+str(dictUrlSezioni[titoli])
-					else:
-						messageText = "La sezione non e' stata trovata."
+				elif (text == '/contributors' or text == '/contributors@dmi_bot'):							messageText = contributors_cmd()
+				elif ('/forum' in text or '/forum@dmi_bot' in text):										messageText = forum_cmd(text)
 				elif (('/news' in text) and (chat_id == 26349488)):
 					news = originalText.replace("/news ", "")
 					messageText = "News Aggiornata!"
@@ -363,7 +229,7 @@ try:
 					chat_ids = open('logs/log.txt', 'r').read()
 					if not ("+"+str(chat_id)) in chat_ids:
 						chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
-						messageText = "News disabilitate!"
+						messageText= "News disabilitate!"
 						open('logs/log.txt', 'w').write(chat_ids)
 					else:
 						messageText = "News già disabilitate!"
@@ -480,6 +346,5 @@ try:
 			text = ""
 except Exception as error:
 	open("logs/errors.txt","a+").write(str(error)+"\n")
-	bot.sendMessage(chat_id=46806104,text="Arresto Forzato")
-	bot.sendMessage(chat_id=-1001095167198,text=str(error))
+	bot.sendMessage(chat_id=-26349488,text=str(error))
 	print str(error)
