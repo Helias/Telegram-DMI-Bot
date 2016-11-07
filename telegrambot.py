@@ -33,7 +33,7 @@ settings_file = "config/settings.yaml"
 
 gauth = GoogleAuth(settings_file=settings_file)
 gauth.CommandLineAuth()
-gauth.LocalWebserverAuth()
+#gauth.LocalWebserverAuth()
 
 drive = GoogleDrive(gauth)
 IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
