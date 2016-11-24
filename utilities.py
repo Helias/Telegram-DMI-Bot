@@ -6,6 +6,19 @@ import re
 import random
 from bs4 import BeautifulSoup
 from classes.StringParser import StringParser
+import telegram.ext
+import telegram
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
+
+
+from pydrive.drive import GoogleDrive
+from pydrive.auth import GoogleAuth
+import requests
+import os,sys
+
+import sqlite3
+conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
 
 def getProfessori(input):
     with open("data/json/professori.json") as data_file:
@@ -91,7 +104,7 @@ def forum(sezione):
 
     response = urllib2.urlopen("http://forum.informatica.unict.it/")
     html_doc = response.read()
-    
+
     #print(html_doc)
     s = BeautifulSoup(html_doc, 'html.parser')
     s.prettify()
@@ -104,7 +117,7 @@ def forum(sezione):
                 for anchorTags in spanUnder.find_all('a'):
                     anchorTagsSplitted = anchorTags.string.split(",")
                     anchorTagsWithoutCFU = StringParser.removeCFU(anchorTagsSplitted[0])
-                   
+
                     if(sezione == anchorTagsWithoutCFU.lower()):
                         dictionary[anchorTagsWithoutCFU.lower()] = anchorTags['href']
                         return dictionary
@@ -122,26 +135,27 @@ CUSicon = {0 : "🏋",
 }
 
 def help_cmd():
-	output = "@DMI_Bot risponde ai seguenti comandi: \n\n"
-	output += "📖 /esami - /mesami - linka il calendario degli esami\n"
-	output+= "🗓 /aulario - linka l\'aulario\n"
-	output+= "👔 /prof <nome> - es. /prof Milici\n"
-	output+= "🍽 /mensa - orario mensa\n"
-	output+= "👥 /rappresentanti - elenco dei rappresentanti del DMI\n"
-	output+= "📚 /biblioteca - orario biblioteca DMI\n"
-	output+= CUSicon[random.randint(0,5)] + " /cus sede e contatti\n\n"
-	output+= "Segreteria orari e contatti:\n"
-	output+= "/sdidattica - segreteria didattica\n"
-	output+= "/sstudenti - segreteria studenti\n"
-	output+= "\nERSU orari e contatti\n"
-	output+= "/ersu - sede centrale\n"
-	output+= "/ufficioersu - (ufficio tesserini)\n"
-	output+= "/urp - URP studenti\n\n"
-	output+= "~Bot~\n"
-	output+= "/disablenews \n"
-	output+= "/enablenews\n"
-	output+= "/contributors"
-	return output
+    output = "@DMI_Bot risponde ai seguenti comandi: \n\n"
+    output += "📖 /esami - /mesami - linka il calendario degli esami\n"
+    output+= "🗓 /aulario - linka l\'aulario\n"
+    output+= "👔 /prof <nome> - es. /prof Milici\n"
+    output+= "🍽 /mensa - orario mensa\n"
+    output+= "👥 /rappresentanti - elenco dei rappresentanti del DMI\n"
+    output+= "📚 /biblioteca - orario biblioteca DMI\n"
+    output+= CUSicon[random.randint(0,5)] + " /cus sede e contatti\n\n"
+    output+= "Segreteria orari e contatti:\n"
+    output+= "/sdidattica - segreteria didattica\n"
+    output+= "/sstudenti - segreteria studenti\n"
+    output+= "\nERSU orari e contatti\n"
+    output+= "/ersu - sede centrale\n"
+    output+= "/ufficioersu - (ufficio tesserini)\n"
+    output+= "/urp - URP studenti\n\n"
+    output+= "~Bot~\n"
+    output+= "📂 /drive - accedi a drive\n"
+    output+= "/disablenews \n"
+    output+= "/enablenews\n"
+    output+= "/contributors"
+    return output
 
 def rapp_cmd():
 	output = "Usa uno dei seguenti comandi per mostrare i rispettivi rappresentanti\n"
@@ -275,6 +289,19 @@ def smonta_portoni_cmd():
 		output = "https://s16.postimg.org/rz8117y9x/idraulico.jpg"
 	return output
 
+def santino_cmd():
+    r = random.randint(0,20)
+    if (r >= 0 and r <= 3):
+        output = "@Santinol"
+    elif (r > 3 and r < 10):
+        output = "https://s18.postimg.org/t13s9lai1/photo_2016_11_24_11_04_42.jpg"
+    elif (r >= 10 and r < 16):
+		output = "https://s11.postimg.org/yiwugh4ib/photo_2016_11_24_11_04_31.jpg"
+    elif (r >=16 and r < 21):
+        output = "https://s12.postimg.org/5d7y88pj1/photo_2016_11_24_11_04_29.jpg"
+
+    return output
+
 def contributors_cmd():
 	output = "@Helias, @adriano_effe, @Veenz, @simone989\n"
 	output +="https://github.com/Helias/telegram-dmi-bot"
@@ -289,3 +316,349 @@ def forum_cmd(text):
 	else:
 		output = "La sezione non e' stata trovata."
 	return output
+
+
+def callback(bot, update):
+
+	keyboard2=[[]];
+	icona=""
+	NumberRow=0
+	NumberArray=0
+	update_id = update.update_id
+
+	if len(update.callback_query.data)<13:
+		#conn.execute("DELETE FROM 'Chat_id_List'")
+		ArrayValue=update['callback_query']['message']['text'].split(" ")
+		try:
+			if len(ArrayValue)==5:
+				conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+update.callback_query.data+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
+				bot.sendMessage(chat_id=update.callback_query.data,text= "🔓 La tua richiesta è stata accettata")
+				bot.sendMessage(chat_id=-1001095167198,text=str(ArrayValue[1])+" "+str(ArrayValue[2]+str(" è stato inserito nel database")))
+
+			elif len(ArrayValue)==4:
+				conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+update.callback_query.data+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
+				bot.sendMessage(chat_id=update.callback_query.data,text= "🔓 La tua richiesta è stata accettata")
+
+			else:
+				bot.sendMessage(chat_id=-1001095167198,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+			conn.commit()
+		except Exception as error:
+			bot.sendMessage(chat_id=-1001095167198,text=str("ERRORE INSERIMENTO: ")+str(update['callback_query']['message']['text'])+" "+str(update['callback_query']['data']))
+
+
+
+		LAST_UPDATE_ID = update_id + 1
+		text = ""
+		messageText = ""
+
+	else:
+		if(os.fork()==0):
+			gauth2 = GoogleAuth()
+			gauth2.LocalWebserverAuth()
+			drive2 = GoogleDrive(gauth2)
+			bot2 = telegram.Bot(TOKEN)
+
+			file1=drive2.CreateFile({'id':update.callback_query.data})
+			if file1['mimeType']=="application/vnd.google-apps.folder":
+				file_list2= drive2.ListFile({'q': "'"+file1['id']+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
+				for file2 in file_list2:
+
+					fileN=""
+
+
+					if file2['mimeType']=="application/vnd.google-apps.folder":
+						if NumberRow>=1:
+							keyboard2.append([InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id'])])
+							NumberRow=0
+							NumberArray+=1
+						else:
+							keyboard2[NumberArray].append(InlineKeyboardButton("🗂 "+file2['title'], callback_data=file2['id']))
+							NumberRow+=1
+					else:
+						if  ".pdf" in file2['title']:
+							icona="📕 "
+						elif ".doc" in file2['title'] or ".docx" in file2['title'] or ".txt" in file2['title'] :
+							icona="📘 "
+						elif ".jpg" in file2['title'] or ".png" in file2['title'] or ".gif" in  file2['title']:
+							icona="📷 "
+						elif ".rar" in file2['title'] or ".zip" in file2['title']:
+							icona="🗄 "
+						elif ".out" in file2['title'] or ".exe" in file2['title']:
+							icona="⚙ "
+						elif ".c" in file2['title'] or ".cpp" in file2['title'] or ".py" in file2['title'] or ".java" in file2['title'] or ".js" in file2['title'] or ".html" in file2['title'] or ".php" in file2['title']:
+							icona="💻 "
+						else:
+							icona="📄 "
+						if NumberRow>=1:
+							keyboard2.append([InlineKeyboardButton(icona+file2['title'], callback_data=file2['id'])])
+							NumberRow=0
+							NumberArray+=1
+						else:
+							keyboard2[NumberArray].append(InlineKeyboardButton(icona+file2['title'], callback_data=file2['id']))
+							NumberRow+=1
+
+				if file1['parents'][0]['id'] != '0ADXK_Yx5406vUk9PVA':
+					keyboard2.append([InlineKeyboardButton("🔙", callback_data=file1['parents'][0]['id'])])
+				reply_markup3 = InlineKeyboardMarkup(keyboard2)
+				bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=file1['title']+":", reply_markup=reply_markup3)
+
+			elif file1['mimeType'] == "application/vnd.google-apps.document":
+				bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="Impossibile scaricare questo file poichè esso è un google document, Andare sul seguente link")
+				bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text=file1['exportLinks']['application/pdf'])
+
+			else:
+				try:
+					fileD=drive2.CreateFile({'id':file1['id']})
+					if int(fileD['fileSize']) < 5e+7:
+						fileD.GetContentFile('file/'+file1['title'])
+						fileS=file1['title']
+						filex=open(str("file/"+fileS),"rb")
+						bot2.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
+						os.remove(str("file/"+fileS))
+					else:
+						bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'], text="File troppo grande per il download diretto, scarica dal seguente link")
+						bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text=fileD['alternateLink']) ##fileD['downloadUrl']
+				except Exception as e:
+					print str(e)
+					bot2.sendMessage(chat_id=update['callback_query']['from_user']['id'],text="Impossibile scaricare questo file, contattare gli sviluppatori del bot")
+					open("logs/errors.txt","a+").write(str(e)+str(fileD['title'])+"\n")
+
+			sys.exit(0)
+
+def request(bot, update):
+	print "entra request"
+	chat_id = update.message.chat_id
+	flag=0
+	if (chat_id>0):
+		for row in conn.execute("SELECT Chat_id FROM Chat_id_List"):
+			if row[0] == chat_id:
+				flag=1
+
+		if flag==0:
+			messageText="✉️ Richiesta inviata"
+			keyboard=[[]]
+			if (update['message']['from_user']['username']):
+				username= update['message']['from_user']['username']
+			else:
+				username=""
+			if(len(update.message.text.split(" "))==4) and ("@" in update.message.text.split(" ")[3]) and ("." in update.message.text.split( )[3]):
+				textSend=str(update.message.text)+" "+username
+				keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
+				reply_markup2=InlineKeyboardMarkup(keyboard)
+				bot.sendMessage(chat_id=46806104,text=textSend,reply_markup=reply_markup2)
+				#bot.sendMessage(chat_id=-1001095167198,text=textSend,reply_markup=reply_markup2)
+				bot.sendMessage(chat_id=chat_id, text=messageText)
+
+			else:
+				messageText="Errore compilazione /request:\n Forma esatta: /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro)"
+				bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+
+		else:
+			messageText="Hai già effettuato la richiesta di accesso"
+			bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+
+
+	else:
+		messageText="Non è possibile utilizzare /request in un gruppo"
+		bot.sendMessage(chat_id= chat_id, text=messageText)
+
+
+
+def adddb(bot, update):
+	print "enta adddb"
+	chat_id = update.message.chat_id
+	if (chat_id==26349488 or chat_id==-1001095167198 or chat_id==46806104):
+		ArrayValue=update.message.text.split(" ") #/add nome cognome e-mail username chatid
+		if len(ArrayValue)==6:
+			conn.execute("INSERT INTO 'Chat_id_List' VALUES ("+ArrayValue[5]+",'"+ArrayValue[4]+"','"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"') ")
+			bot.sendMessage(chat_id=ArrayValue[5],text= "🔓 La tua richiesta è stata accettata")
+			conn.commit()
+		elif len(ArrayValue)==5:
+			conn.execute("INSERT INTO 'Chat_id_List'('Chat_id','Nome','Cognome','Email') VALUES ("+ArrayValue[4]+",'"+ArrayValue[1]+"','"+ArrayValue[2]+"','"+ArrayValue[3]+"')")
+			bot.sendMessage(chat_id=int(ArrayValue[4]),text= "🔓 La tua richiesta è stata accettata")
+			conn.commit()
+		else:
+			bot.sendMessage(chat_id=chat_id,text="/adddb <nome> <cognome> <e-mail> <username> <chat_id>")
+
+def drive(bot, update):
+    print "ciao"
+    gauth = GoogleAuth()
+    gauth.LocalWebserverAuth()
+    drive = GoogleDrive(gauth)
+    chat_id=update.message.chat_id
+    TestDB=0
+    IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
+    if chat_id < 0:
+    	bot.sendMessage(chat_id=chat_id,text="LA FUNZIONE /drive NON È AMMESSA NEI GRUPPI")
+    else:
+    	for row in conn.execute("SELECT Chat_id FROM 'Chat_id_List' "):
+    		if row[0] == chat_id:
+    			TestDB=1;
+
+    	if TestDB==1:
+            keyboard2=[[]];
+            try:
+                file_list = drive.ListFile({'q': "'"+IDDrive+"' in parents and trashed=false",'orderBy':'folder,title'}).GetList()
+            except Exception as error:
+                print str(error)
+            NumberRow=0
+            NumberArray=0
+
+            for file1 in file_list:
+                fileN=""
+                if file1['mimeType']=="application/vnd.google-apps.folder":
+                    if NumberRow>=3:
+                        keyboard2.append([InlineKeyboardButton("🗂 "+file1['title'], callback_data=file1['id'])])
+                        NumberRow=0
+                        NumberArray+=1
+                    else:
+                        keyboard2[NumberArray].append(InlineKeyboardButton("🗂 "+file1['title'],callback_data=file1['id']))
+                        NumberRow+=1
+                else:
+                    if NumberRow>=3:
+                        keyboard2.append([InlineKeyboardButton("📃 "+file1['title'], callback_data=file1['id'])])
+                        NumberRow=0
+                        NumberArray+=1
+                    else:
+                        keyboard2[NumberArray].append(InlineKeyboardButton("📃 "+file1['title'],callback_data=file1['id']))
+                        NumberRow+=1
+
+            reply_markup3 = InlineKeyboardMarkup(keyboard2)
+            bot.sendMessage(chat_id=chat_id,text="DMI UNICT - Appunti & Risorse:", reply_markup=reply_markup3)
+    	else:
+    		bot.sendMessage(chat_id=chat_id,text="🔒 Non hai i permessi per utilizzare la funzione /drive,\n Utilizzare il comando /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro) ")
+
+
+def help(bot, update):
+	messageText = help_cmd()
+	bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
+
+def rappresentanti(bot, update):
+	messageText = rapp_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def rappresentanti_dmi(bot, update):
+	messageText = rapp_dmi_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def rappresentanti_info(bot, update):
+	messageText = rapp_inf_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def rappresentanti_mate(bot, update):
+	messageText = rapp_mat_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def sdidattica(bot, update):
+	messageText = sdidattica_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def sstudenti(bot, update):
+	messageText = sstudenti_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def ersu(bot, update):
+	messageText = ersu_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def ufficioersu(bot, update):
+	messageText = ufficio_ersu_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def urp(bot, update):
+	messageText = ufficio_ersu_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def prof(bot, update):
+	messageText = prof_cmd(update.message.text)
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def esami(bot, update):
+	messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def mesami(bot, update):
+	messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def aulario(bot, update):
+	messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def mensa(bot, update):
+	messageText = mensa_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+
+def biblioteca(bot, update):
+	messageText= biblioteca_cmd()
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
+
+def cus(bot, update):
+	messageText= cus_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def smonta_portoni(bot, update):
+	messageText = smonta_portoni_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def santino(bot, update):
+    messageText = santino_cmd()
+    bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+
+def liste(bot, update):
+	img = 1
+	picture = open("data/img/liste.png", "rb")
+	messageText = "Liste e candidati"
+	bot.sendPhoto(chat_id=update.message.chat_id, photo=picture)
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def contributors(bot, update):
+	messageText = contributors_cmd()
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def forum_bot(bot, update):
+	messageText = forum_cmd(update.message.text)
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def news(bot, update):
+	if(update.message.chat_id==26349488):
+		news = update.message.text.replace("/news ", "")
+		messageText = "News Aggiornata!"
+		bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def spamnews(bot, update):
+	if(update.message.chat_id==26349488): ##STEFANO DEVI GUARDARE QUI
+		chat_ids = open('logs/log.txt', 'r').read()
+		chat_ids = chat_ids.split("\n")
+		for i in range((len(chat_ids)-1)):
+			try:
+				if not "+" in chat_ids[i]:
+					bot.sendMessage(chat_id=chat_ids[i], text=news)
+			except Exception as error:
+				open("logs/errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
+		messageText = "News spammata!"
+		bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+def disablenews(bot, update):
+	chat_ids = open('logs/log.txt', 'r').read()
+	if not ("+"+str(chat_id)) in chat_ids:
+		chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
+		messageText= "News disabilitate!"
+		open('logs/log.txt', 'w').write(chat_ids)
+	else:
+		messageText = "News già disabilitate!"
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+
+
+def enablenews(bot, update):
+	chat_ids = open('logs/log.txt', 'r').read()
+	if ("+"+str(chat_id)) in chat_ids:
+		chat_ids = chat_ids.replace("+"+str(chat_id), str(chat_id))
+		messageText = "News abilitate!"
+		open('logs/log.txt', 'w').write(chat_ids)
+	else:
+		messageText = "News già abilitate!"
+	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
