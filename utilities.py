@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
-import json
-import datetime
-import urllib2
-import re
-import random
-from bs4 import BeautifulSoup
-from classes.StringParser import StringParser
 import telegram.ext
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
 
-
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
+
+from classes.StringParser import StringParser
+
+import json,datetime,re,random,os,sys
 import requests
-import os,sys
+import urllib2
+from bs4 import BeautifulSoup
 
 import sqlite3
 conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+
+#token
+tokenconf = open('config/token.conf', 'r').read()
+tokenconf = tokenconf.replace("\n", "")
+TOKEN = tokenconf      		#Token of your telegram bot that you created from @BotFather, write it on token.conf
 
 def getProfessori(input):
     with open("data/json/professori.json") as data_file:
@@ -196,7 +198,7 @@ def rapp_mat_cmd():
 	output += "Sciuto Rita - @RitaSciuto"
 	return output
 
-def sditattica_cmd():
+def sdidattica_cmd():
 	output  = "Sede presso il Dipartimento di Matematica e Informatica (primo piano vicino al laboratorio) \n\n"
 	output += "Sig.ra Cristina Mele\n"
 	output += "📞 095/7337227\n"
@@ -271,8 +273,8 @@ def biblioteca_cmd():
 def cus_cmd():
 	output = "CUS Catania\n"
 	output += "Viale A. Doria n° 6  - 95125 Catania \n"
-	output += "tel. 095336327- fax 095336478 \n"
-	output += "info@cuscatania.it\n"
+	output += "📞 095336327- fax 095336478 \n"
+	output += "✉ info@cuscatania.it\n"
 	output += "http://www.cuscatania.it/Contatti.aspx";
 	return output
 
@@ -319,7 +321,6 @@ def forum_cmd(text):
 
 
 def callback(bot, update):
-
 	keyboard2=[[]];
 	icona=""
 	NumberRow=0
@@ -347,14 +348,17 @@ def callback(bot, update):
 
 
 
+
 		LAST_UPDATE_ID = update_id + 1
 		text = ""
 		messageText = ""
 
 	else:
 		if(os.fork()==0):
-			gauth2 = GoogleAuth()
-			gauth2.LocalWebserverAuth()
+			settings_file = "config/settings.yaml"
+			gauth2 = GoogleAuth(settings_file=settings_file)
+			gauth2.CommandLineAuth()
+			#gauth2.LocalWebserverAuth()
 			drive2 = GoogleDrive(gauth2)
 			bot2 = telegram.Bot(TOKEN)
 
@@ -364,7 +368,6 @@ def callback(bot, update):
 				for file2 in file_list2:
 
 					fileN=""
-
 
 					if file2['mimeType']=="application/vnd.google-apps.folder":
 						if NumberRow>=1:
@@ -445,29 +448,28 @@ def request(bot, update):
 				textSend=str(update.message.text)+" "+username
 				keyboard.append([InlineKeyboardButton("Accetta", callback_data=str(chat_id))])
 				reply_markup2=InlineKeyboardMarkup(keyboard)
-				bot.sendMessage(chat_id=46806104,text=textSend,reply_markup=reply_markup2)
-				#bot.sendMessage(chat_id=-1001095167198,text=textSend,reply_markup=reply_markup2)
+				bot.sendMessage(chat_id=-1001095167198,text=textSend,reply_markup=reply_markup2)
 				bot.sendMessage(chat_id=chat_id, text=messageText)
 
 			else:
 				messageText="Errore compilazione /request:\n Forma esatta: /request <nome> <cognome> <e-mail> (il nome e il cognome devono essere scritti uniti Es: Di mauro -> Dimauro)"
-				bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+				bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 
 		else:
 			messageText="Hai già effettuato la richiesta di accesso"
-			bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+			bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 
 
 	else:
 		messageText="Non è possibile utilizzare /request in un gruppo"
-		bot.sendMessage(chat_id= chat_id, text=messageText)
+		bot.sendMessage(chat_id=chat_id, text=messageText)
 
 
 
 def adddb(bot, update):
-	print "enta adddb"
+	print "entra adddb"
 	chat_id = update.message.chat_id
 	if (chat_id==26349488 or chat_id==-1001095167198 or chat_id==46806104):
 		ArrayValue=update.message.text.split(" ") #/add nome cognome e-mail username chatid
@@ -483,10 +485,14 @@ def adddb(bot, update):
 			bot.sendMessage(chat_id=chat_id,text="/adddb <nome> <cognome> <e-mail> <username> <chat_id>")
 
 def drive(bot, update):
-    print "ciao"
-    gauth = GoogleAuth()
-    gauth.LocalWebserverAuth()
+    checkLog(bot, update)
+
+    settings_file = "config/settings.yaml"
+    gauth = GoogleAuth(settings_file=settings_file)
+    gauth.CommandLineAuth()
+    #gauth.LocalWebserverAuth()
     drive = GoogleDrive(gauth)
+
     chat_id=update.message.chat_id
     TestDB=0
     IDDrive='0B7-Gi4nb88hremEzWnh3QmN3ZlU'
@@ -532,105 +538,126 @@ def drive(bot, update):
 
 
 def help(bot, update):
+	checkLog(bot, update)
 	messageText = help_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
 
 def rappresentanti(bot, update):
+	checkLog(bot, update)
 	messageText = rapp_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_dmi(bot, update):
+	checkLog(bot, update)
 	messageText = rapp_dmi_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_info(bot, update):
+	checkLog(bot, update)
 	messageText = rapp_inf_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_mate(bot, update):
+	checkLog(bot, update)
 	messageText = rapp_mat_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def sdidattica(bot, update):
+	checkLog(bot, update)
 	messageText = sdidattica_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def sstudenti(bot, update):
+	checkLog(bot, update)
 	messageText = sstudenti_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ersu(bot, update):
+	checkLog(bot, update)
 	messageText = ersu_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ufficioersu(bot, update):
+	checkLog(bot, update)
 	messageText = ufficio_ersu_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def urp(bot, update):
+	checkLog(bot, update)
 	messageText = ufficio_ersu_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def prof(bot, update):
+	checkLog(bot, update)
 	messageText = prof_cmd(update.message.text)
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def esami(bot, update):
+	checkLog(bot, update)
 	messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def mesami(bot, update):
+	checkLog(bot, update)
 	messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def aulario(bot, update):
+	checkLog(bot, update)
 	messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def mensa(bot, update):
+	checkLog(bot, update)
 	messageText = mensa_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text=messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def biblioteca(bot, update):
+	checkLog(bot, update)
 	messageText= biblioteca_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def cus(bot, update):
+	checkLog(bot, update)
 	messageText= cus_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def smonta_portoni(bot, update):
+	checkLog(bot, update)
 	messageText = smonta_portoni_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def santino(bot, update):
-    messageText = santino_cmd()
-    bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
-
+	checkLog(bot, update)
+	messageText = santino_cmd()
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def liste(bot, update):
-	img = 1
+	checkLog(bot, update)
 	picture = open("data/img/liste.png", "rb")
 	messageText = "Liste e candidati"
 	bot.sendPhoto(chat_id=update.message.chat_id, photo=picture)
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def contributors(bot, update):
+	checkLog(bot, update)
 	messageText = contributors_cmd()
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def forum_bot(bot, update):
+	checkLog(bot, update)
 	messageText = forum_cmd(update.message.text)
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
-def news(bot, update):
-	if(update.message.chat_id==26349488):
+def news_(bot, update):
+	if (update.message.chat_id == 26349488):
+		global news
 		news = update.message.text.replace("/news ", "")
 		messageText = "News Aggiornata!"
-		bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+		bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def spamnews(bot, update):
-	if(update.message.chat_id==26349488): ##STEFANO DEVI GUARDARE QUI
+	if(update.message.chat_id==26349488):
 		chat_ids = open('logs/log.txt', 'r').read()
 		chat_ids = chat_ids.split("\n")
 		for i in range((len(chat_ids)-1)):
@@ -640,25 +667,36 @@ def spamnews(bot, update):
 			except Exception as error:
 				open("logs/errors.txt", "a+").write(str(error)+" "+str(chat_ids[i])+"\n")
 		messageText = "News spammata!"
-		bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+		bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def disablenews(bot, update):
+	checkLog(bot, update)
 	chat_ids = open('logs/log.txt', 'r').read()
+	chat_id = update.message.chat_id
 	if not ("+"+str(chat_id)) in chat_ids:
 		chat_ids = chat_ids.replace(str(chat_id), "+"+str(chat_id))
 		messageText= "News disabilitate!"
 		open('logs/log.txt', 'w').write(chat_ids)
 	else:
 		messageText = "News già disabilitate!"
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 
 def enablenews(bot, update):
+	checkLog(bot, update)
 	chat_ids = open('logs/log.txt', 'r').read()
+	chat_id = update.message.chat_id
 	if ("+"+str(chat_id)) in chat_ids:
 		chat_ids = chat_ids.replace("+"+str(chat_id), str(chat_id))
 		messageText = "News abilitate!"
 		open('logs/log.txt', 'w').write(chat_ids)
 	else:
 		messageText = "News già abilitate!"
-	bot.sendMessage(chat_id= update.message.chat_id, text= messageText)
+	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
+
+# check if user (chatid) is registered on log.txt
+def checkLog(bot, update):
+	chat_id = update.message.chat_id
+	log = open("logs/log.txt", "a+")
+	if not str(chat_id) in log.read():
+		log.write(str(chat_id)+"\n")
