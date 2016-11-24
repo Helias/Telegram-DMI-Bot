@@ -6,3 +6,5 @@ classes/__init__.pyc
 utilities.pyc
 config/drive_credentials.json
 config/settings.yaml
+DMI_DB.db
+
