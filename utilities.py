@@ -538,9 +538,7 @@ def drive(bot, update):
 
 
 def help(bot, update):
-    print "entra"
     checkLog(bot, update,"help")
-    print "fine"
     messageText = help_cmd()
     bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
 
@@ -698,14 +696,21 @@ def enablenews(bot, update):
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 # check if user (chatid) is registered on log.txt
+
+def stat(bot,update):
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    text=""
+    for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list GROUP BY Type ORDER BY Type;" ):
+        text+= str(row[0])+" Utilizzi: --------> "+str(row[1])+"\n"
+    bot.sendMessage(chat_id=chat_id,text=text)
+
+
 def checkLog(bot, update,type):
     chat_id = update.message.chat_id
     conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
-    try:
-        conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+")")
-        conn.commit()
-        log = open("logs/log.txt", "a+")
-        if not str(chat_id) in log.read():
-            log.write(str(chat_id)+"\n")
-    except Exception as e:
-        print str(e)
+    conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+")")
+    conn.commit()
+    log = open("logs/log.txt", "a+")
+    if not str(chat_id) in log.read():
+        log.write(str(chat_id)+"\n")

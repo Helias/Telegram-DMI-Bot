@@ -42,6 +42,7 @@ def main():
 	dp.add_handler(RegexHandler('^(/drive|/Drive|/DRIVE)$',drive))
 	dp.add_handler(RegexHandler('/adddb',adddb))
 	dp.add_handler(RegexHandler('/request',request))
+	dp.add_handler(RegexHandler('/stat',stat))
 	dp.add_handler(CallbackQueryHandler(callback))
 
 	updater.start_polling()
