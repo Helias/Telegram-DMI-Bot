@@ -538,114 +538,117 @@ def drive(bot, update):
 
 
 def help(bot, update):
-	checkLog(bot, update)
-	messageText = help_cmd()
-	bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
+    print "entra"
+    checkLog(bot, update,"help")
+    print "fine"
+    messageText = help_cmd()
+    bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
+
 
 def rappresentanti(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti")
 	messageText = rapp_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_dmi(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti_dmi")
 	messageText = rapp_dmi_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_info(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti_info")
 	messageText = rapp_inf_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_mate(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti_mate")
 	messageText = rapp_mat_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def sdidattica(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"sdidattica")
 	messageText = sdidattica_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def sstudenti(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"sstudenti")
 	messageText = sstudenti_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ersu(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"ersu")
 	messageText = ersu_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ufficioersu(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"ufficioersu")
 	messageText = ufficio_ersu_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def urp(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"urp")
 	messageText = ufficio_ersu_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def prof(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"prof")
 	messageText = prof_cmd(update.message.text)
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def esami(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"esami")
 	messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def mesami(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"mesami")
 	messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def aulario(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"aulario")
 	messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def mensa(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"mensa")
 	messageText = mensa_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def biblioteca(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"biblioteca")
 	messageText= biblioteca_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def cus(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"cus")
 	messageText= cus_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def smonta_portoni(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"smonta_portoni")
 	messageText = smonta_portoni_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def santino(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"santino")
 	messageText = santino_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def liste(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"liste")
 	picture = open("data/img/liste.png", "rb")
 	messageText = "Liste e candidati"
 	bot.sendPhoto(chat_id=update.message.chat_id, photo=picture)
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def contributors(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"contributors")
 	messageText = contributors_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def forum_bot(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"forum_bot")
 	messageText = forum_cmd(update.message.text)
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
@@ -670,7 +673,7 @@ def spamnews(bot, update):
 		bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def disablenews(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"disablenews")
 	chat_ids = open('logs/log.txt', 'r').read()
 	chat_id = update.message.chat_id
 	if not ("+"+str(chat_id)) in chat_ids:
@@ -683,7 +686,7 @@ def disablenews(bot, update):
 
 
 def enablenews(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"enablenews")
 	chat_ids = open('logs/log.txt', 'r').read()
 	chat_id = update.message.chat_id
 	if ("+"+str(chat_id)) in chat_ids:
@@ -695,8 +698,14 @@ def enablenews(bot, update):
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 # check if user (chatid) is registered on log.txt
-def checkLog(bot, update):
-	chat_id = update.message.chat_id
-	log = open("logs/log.txt", "a+")
-	if not str(chat_id) in log.read():
-		log.write(str(chat_id)+"\n")
+def checkLog(bot, update,type):
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    try:
+        conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+")")
+        conn.commit()
+        log = open("logs/log.txt", "a+")
+        if not str(chat_id) in log.read():
+            log.write(str(chat_id)+"\n")
+    except Exception as e:
+        print str(e)
