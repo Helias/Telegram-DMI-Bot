@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 from utilities import *
 
-conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
-#conn.execute("CREATE TABLE IF NOT EXISTS 'Chat_id_List' ('Chat_id' int(11) NOT NULL,'Username' text,'Nome' text NOT NULL,'Cognome' text NOT NULL,'Email' text NOT NULL);"  )
-
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+bot= telegram.Bot(TOKEN)
 updater = Updater(TOKEN)
-
 # Get the dispatcher to register handlers
 dp = updater.dispatcher
 
@@ -42,11 +39,13 @@ def main():
 	dp.add_handler(RegexHandler('^(/drive|/Drive|/DRIVE)$',drive))
 	dp.add_handler(RegexHandler('/adddb',adddb))
 	dp.add_handler(RegexHandler('/request',request))
+	dp.add_handler(RegexHandler('^(/stat)',stat))
+	dp.add_handler(RegexHandler('^(/statT)$',statTot))
+
 	dp.add_handler(CallbackQueryHandler(callback))
 
 	updater.start_polling()
 	updater.idle()
-
 
 if __name__ == '__main__':
     main()

@@ -3,6 +3,8 @@ import telegram.ext
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
+from datetime import date, datetime, timedelta
+
 
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
@@ -15,7 +17,7 @@ import urllib2
 from bs4 import BeautifulSoup
 
 import sqlite3
-conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
 
 #token
 tokenconf = open('config/token.conf', 'r').read()
@@ -137,6 +139,7 @@ CUSicon = {0 : "🏋",
 }
 
 def help_cmd():
+    print "Entra"
     output = "@DMI_Bot risponde ai seguenti comandi: \n\n"
     output += "📖 /esami - /mesami - linka il calendario degli esami\n"
     output+= "🗓 /aulario - linka l\'aulario\n"
@@ -485,7 +488,7 @@ def adddb(bot, update):
 			bot.sendMessage(chat_id=chat_id,text="/adddb <nome> <cognome> <e-mail> <username> <chat_id>")
 
 def drive(bot, update):
-    checkLog(bot, update)
+    checkLog(bot, update, "drive")
 
     settings_file = "config/settings.yaml"
     gauth = GoogleAuth(settings_file=settings_file)
@@ -538,114 +541,115 @@ def drive(bot, update):
 
 
 def help(bot, update):
-	checkLog(bot, update)
-	messageText = help_cmd()
-	bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
+    checkLog(bot, update,"help")
+    messageText = help_cmd()
+    bot.sendMessage(chat_id=update.message.chat_id,text=messageText)
+
 
 def rappresentanti(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti")
 	messageText = rapp_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_dmi(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti_dmi")
 	messageText = rapp_dmi_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_info(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti_info")
 	messageText = rapp_inf_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def rappresentanti_mate(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"rappresentanti_mate")
 	messageText = rapp_mat_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def sdidattica(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"sdidattica")
 	messageText = sdidattica_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def sstudenti(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"sstudenti")
 	messageText = sstudenti_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ersu(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"ersu")
 	messageText = ersu_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ufficioersu(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"ufficioersu")
 	messageText = ufficio_ersu_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def urp(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"urp")
 	messageText = ufficio_ersu_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def prof(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"prof")
 	messageText = prof_cmd(update.message.text)
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def esami(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"esami")
 	messageText = "http://web.dmi.unict.it/Didattica/Laurea%20Triennale%20in%20Informatica%20L-31/Calendario%20dEsami"
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def mesami(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"mesami")
 	messageText = 'http://web.dmi.unict.it/Didattica/Laurea%20Magistrale%20in%20Informatica%20LM-18/Calendario%20degli%20Esami'
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def aulario(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"aulario")
 	messageText = 'http://aule.dmi.unict.it/aulario/roschedule.php'
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def mensa(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"mensa")
 	messageText = mensa_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def biblioteca(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"biblioteca")
 	messageText= biblioteca_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def cus(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"cus")
 	messageText= cus_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def smonta_portoni(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"smonta_portoni")
 	messageText = smonta_portoni_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def santino(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"santino")
 	messageText = santino_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def liste(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"liste")
 	picture = open("data/img/liste.png", "rb")
 	messageText = "Liste e candidati"
 	bot.sendPhoto(chat_id=update.message.chat_id, photo=picture)
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def contributors(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"contributors")
 	messageText = contributors_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def forum_bot(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"forum_bot")
 	messageText = forum_cmd(update.message.text)
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
@@ -670,7 +674,7 @@ def spamnews(bot, update):
 		bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 def disablenews(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"disablenews")
 	chat_ids = open('logs/log.txt', 'r').read()
 	chat_id = update.message.chat_id
 	if not ("+"+str(chat_id)) in chat_ids:
@@ -683,7 +687,7 @@ def disablenews(bot, update):
 
 
 def enablenews(bot, update):
-	checkLog(bot, update)
+	checkLog(bot, update,"enablenews")
 	chat_ids = open('logs/log.txt', 'r').read()
 	chat_id = update.message.chat_id
 	if ("+"+str(chat_id)) in chat_ids:
@@ -695,8 +699,39 @@ def enablenews(bot, update):
 	bot.sendMessage(chat_id=update.message.chat_id, text= messageText)
 
 # check if user (chatid) is registered on log.txt
-def checkLog(bot, update):
-	chat_id = update.message.chat_id
-	log = open("logs/log.txt", "a+")
-	if not str(chat_id) in log.read():
-		log.write(str(chat_id)+"\n")
+
+def stat(bot,update):
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
+    if(len(update['message']['text'].split(' '))==2):
+        days=int(update['message']['text'].split(' ')[1])
+        if(days<=0):
+            days=30
+    else:
+        days=30
+    text=""
+    dateCheck=unicode(date.today()-timedelta(days=days))
+    text+="Record di "+str(days)+" giorni:\n"
+    for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list WHERE DateCommand > '"+dateCheck+"' GROUP BY Type ORDER BY Type;" ):
+        text+=str(row[1])+": "+str(row[0])+"\n"
+    bot.sendMessage(chat_id=chat_id,text=text)
+
+def statTot(bot,update):
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
+    text=""
+    text+="Record Globale:\n"
+    for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list GROUP BY Type ORDER BY Type;" ):
+        text+=str(row[1])+": "+str(row[0])+"\n"
+    bot.sendMessage(chat_id=chat_id,text=text)
+
+
+def checkLog(bot, update,type):
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
+    today=unicode(date.today());
+    conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
+    conn.commit()
+    log = open("logs/log.txt", "a+")
+    if not str(chat_id) in log.read():
+        log.write(str(chat_id)+"\n")
