@@ -3,6 +3,9 @@ import telegram.ext
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
+from datetime import date, datetime, timedelta
+#from datetime import
+
 
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
@@ -137,6 +140,7 @@ CUSicon = {0 : "🏋",
 }
 
 def help_cmd():
+    print "Entra"
     output = "@DMI_Bot risponde ai seguenti comandi: \n\n"
     output += "📖 /esami - /mesami - linka il calendario degli esami\n"
     output+= "🗓 /aulario - linka l\'aulario\n"
@@ -700,16 +704,33 @@ def enablenews(bot, update):
 def stat(bot,update):
     chat_id = update.message.chat_id
     conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    print update['message']['text'].split(' ')
+    if(len(update['message']['text'].split(' '))==2):
+        days=int(update['message']['text'].split(' ')[1])
+    else:
+        days=30
     text=""
+    dateCheck=unicode(date.today()-timedelta(days=days))
+    text+="Record di "+str(days)+" giorni:\n"
+    for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list WHERE DateCommand > '"+dateCheck+"' GROUP BY Type ORDER BY Type;" ):
+        text+=str(row[1])+": Comando: --------> "+str(row[0])+"\n"
+    bot.sendMessage(chat_id=chat_id,text=text)
+
+def statTot(bot,update):
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    text=""
+    text+="Record Globale:\n"
     for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list GROUP BY Type ORDER BY Type;" ):
-        text+= str(row[0])+" Utilizzi: --------> "+str(row[1])+"\n"
+        text+=str(row[1])+": Comando: --------> "+str(row[0])+"\n"
     bot.sendMessage(chat_id=chat_id,text=text)
 
 
 def checkLog(bot, update,type):
     chat_id = update.message.chat_id
     conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
-    conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+")")
+    today=unicode(date.today());
+    conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
     conn.commit()
     log = open("logs/log.txt", "a+")
     if not str(chat_id) in log.read():
