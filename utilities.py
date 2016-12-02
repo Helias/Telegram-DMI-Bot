@@ -704,7 +704,6 @@ def enablenews(bot, update):
 def stat(bot,update):
     chat_id = update.message.chat_id
     conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
-    print update['message']['text'].split(' ')
     if(len(update['message']['text'].split(' '))==2):
         days=int(update['message']['text'].split(' ')[1])
     else:
