@@ -712,7 +712,7 @@ def stat(bot,update):
     dateCheck=unicode(date.today()-timedelta(days=days))
     text+="Record di "+str(days)+" giorni:\n"
     for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list WHERE DateCommand > '"+dateCheck+"' GROUP BY Type ORDER BY Type;" ):
-        text+=str(row[1])+": Comando: --------> "+str(row[0])+"\n"
+        text+=str(row[1])+": Comando: "+str(row[0])+"\n"
     bot.sendMessage(chat_id=chat_id,text=text)
 
 def statTot(bot,update):
@@ -721,7 +721,7 @@ def statTot(bot,update):
     text=""
     text+="Record Globale:\n"
     for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list GROUP BY Type ORDER BY Type;" ):
-        text+=str(row[1])+": Comando: --------> "+str(row[0])+"\n"
+        text+=str(row[1])+": Comando: "+str(row[0])+"\n"
     bot.sendMessage(chat_id=chat_id,text=text)
 
 
