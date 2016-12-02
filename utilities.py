@@ -700,7 +700,7 @@ def enablenews(bot, update):
 
 # check if user (chatid) is registered on log.txt
 
-def stat(bot,update):
+def stats(bot,update):
     chat_id = update.message.chat_id
     conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
     if(len(update['message']['text'].split(' '))==2):
@@ -716,7 +716,7 @@ def stat(bot,update):
         text+=str(row[1])+": "+str(row[0])+"\n"
     bot.sendMessage(chat_id=chat_id,text=text)
 
-def statTot(bot,update):
+def statsTot(bot,update):
     chat_id = update.message.chat_id
     conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
     text=""
