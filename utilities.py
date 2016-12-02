@@ -4,7 +4,6 @@ import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
 from datetime import date, datetime, timedelta
-#from datetime import
 
 
 from pydrive.drive import GoogleDrive
@@ -18,7 +17,7 @@ import urllib2
 from bs4 import BeautifulSoup
 
 import sqlite3
-conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
 
 #token
 tokenconf = open('config/token.conf', 'r').read()
@@ -489,7 +488,7 @@ def adddb(bot, update):
 			bot.sendMessage(chat_id=chat_id,text="/adddb <nome> <cognome> <e-mail> <username> <chat_id>")
 
 def drive(bot, update):
-    checkLog(bot, update)
+    checkLog(bot, update, "drive")
 
     settings_file = "config/settings.yaml"
     gauth = GoogleAuth(settings_file=settings_file)
@@ -703,7 +702,7 @@ def enablenews(bot, update):
 
 def stat(bot,update):
     chat_id = update.message.chat_id
-    conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
     if(len(update['message']['text'].split(' '))==2):
         days=int(update['message']['text'].split(' ')[1])
         if(days<=0):
@@ -719,7 +718,7 @@ def stat(bot,update):
 
 def statTot(bot,update):
     chat_id = update.message.chat_id
-    conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
     text=""
     text+="Record Globale:\n"
     for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list GROUP BY Type ORDER BY Type;" ):
@@ -729,7 +728,7 @@ def statTot(bot,update):
 
 def checkLog(bot, update,type):
     chat_id = update.message.chat_id
-    conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
     today=unicode(date.today());
     conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
     conn.commit()

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 from utilities import *
 
-conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
-#conn.execute("CREATE TABLE IF NOT EXISTS 'Chat_id_List' ('Chat_id' int(11) NOT NULL,'Username' text,'Nome' text NOT NULL,'Cognome' text NOT NULL,'Email' text NOT NULL);"  )
-
 reload(sys)
 sys.setdefaultencoding('utf8')
 
