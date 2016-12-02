@@ -706,13 +706,15 @@ def stat(bot,update):
     conn = sqlite3.connect('DMI_DB.db',check_same_thread=False)
     if(len(update['message']['text'].split(' '))==2):
         days=int(update['message']['text'].split(' ')[1])
+        if(days<=0):
+            days=30
     else:
         days=30
     text=""
     dateCheck=unicode(date.today()-timedelta(days=days))
     text+="Record di "+str(days)+" giorni:\n"
     for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list WHERE DateCommand > '"+dateCheck+"' GROUP BY Type ORDER BY Type;" ):
-        text+=str(row[1])+": Comando: "+str(row[0])+"\n"
+        text+=str(row[1])+": "+str(row[0])+"\n"
     bot.sendMessage(chat_id=chat_id,text=text)
 
 def statTot(bot,update):
@@ -721,7 +723,7 @@ def statTot(bot,update):
     text=""
     text+="Record Globale:\n"
     for row in conn.execute("SELECT Type, count(chat_id) FROM stat_list GROUP BY Type ORDER BY Type;" ):
-        text+=str(row[1])+": Comando: "+str(row[0])+"\n"
+        text+=str(row[1])+": "+str(row[0])+"\n"
     bot.sendMessage(chat_id=chat_id,text=text)
 
 

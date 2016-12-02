@@ -9,7 +9,6 @@ sys.setdefaultencoding('utf8')
 
 bot= telegram.Bot(TOKEN)
 updater = Updater(TOKEN)
-bot.sendMessage(chat_id=46806104,text="Sono online")
 # Get the dispatcher to register handlers
 dp = updater.dispatcher
 
