@@ -419,7 +419,7 @@ def callback(bot, update):
 						fileD.GetContentFile('file/'+file1['title'])
 						fileS=file1['title']
 						filex=open(str("file/"+fileS),"rb")
-                        bot2.sendChatAction(chat_id=update['callback_query']['from_user']['id'], action="UPLOAD_DOCUMENT")
+						bot2.sendChatAction(chat_id=update['callback_query']['from_user']['id'], action="UPLOAD_DOCUMENT")
 						bot2.sendDocument(chat_id=update['callback_query']['from_user']['id'], document=filex)
 						os.remove(str("file/"+fileS))
 					else:
