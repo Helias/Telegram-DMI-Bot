@@ -589,7 +589,7 @@ def ufficioersu(bot, update):
 
 def urp(bot, update):
 	checkLog(bot, update,"urp")
-	messageText = ufficio_ersu_cmd()
+	messageText = urp_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def prof(bot, update):
