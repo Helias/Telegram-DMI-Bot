@@ -728,11 +728,12 @@ def statsTot(bot,update):
 
 
 def checkLog(bot, update,type):
-    chat_id = update.message.chat_id
-    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
-    today=unicode(date.today());
-    conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
-    conn.commit()
-    log = open("logs/log.txt", "a+")
-    if not str(chat_id) in log.read():
-        log.write(str(chat_id)+"\n")
+    pass
+    #chat_id = update.message.chat_id
+    #conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
+    #today=unicode(date.today());
+    #conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
+    #conn.commit()
+    #log = open("logs/log.txt", "a+")
+    #if not str(chat_id) in log.read():
+    #    log.write(str(chat_id)+"\n")
