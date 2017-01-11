@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
-import telegram.ext
 import telegram
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
 from datetime import date, datetime, timedelta
-
-
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
-
 from classes.StringParser import StringParser
-
 import json,datetime,re,random,os,sys
 import requests
 import urllib2
 from bs4 import BeautifulSoup
-
 import sqlite3
+import logging
+
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+
+logger = logging.getLogger(__name__)
+
 conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
 
 #token
@@ -47,7 +47,7 @@ def getProfessori(input):
     if output == "":
         return "\nNon sono stati trovati risultati :(\n\n"
 
-    return output
+    return output #Redefine with @TkdAlex
 
 def getLezioni(anno,semestre,giorno,corso):
     if (corso == "triennale"):
@@ -66,7 +66,7 @@ def getLezioni(anno,semestre,giorno,corso):
         i += 1
     if (risultati == 0):
         return "Nessuna lezione trovata per il giorno specificato"
-    return output
+    return output #Redefine with @TkdAlex
 
 def lezioni(input,corso):
     #Interpreta l'anno richiesto
@@ -101,7 +101,7 @@ def lezioni(input,corso):
     #Imposta il semestre corrente
     semestre = "1"
     #Chiama la funzione apposita con gli argomenti correttamente interpretati
-    return getLezioni(anno,semestre,giorno,corso)
+    return getLezioni(anno,semestre,giorno,corso) #Redefine with @TkdAlex
 
 
 def forum(sezione):
@@ -126,7 +126,7 @@ def forum(sezione):
                         dictionary[anchorTagsWithoutCFU.lower()] = anchorTags['href']
                         return dictionary
 
-    return False
+    return False #Redefine with @Veeenz API
 
 
 # Commands
