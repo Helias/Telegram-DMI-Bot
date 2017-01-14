@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
+#Telegram
 import telegram
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, RegexHandler
-from datetime import date, datetime, timedelta
+
+#Drive
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
+
+# custom classes
 from classes.StringParser import StringParser
+
+# system libraries
+from datetime import date, datetime, timedelta
 import json,datetime,re,random,os,sys
 import requests
 import urllib2
@@ -728,12 +736,11 @@ def statsTot(bot,update):
 
 
 def checkLog(bot, update,type):
-    pass
-    #chat_id = update.message.chat_id
-    #conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
-    #today=unicode(date.today());
-    #conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
-    #conn.commit()
-    #log = open("logs/log.txt", "a+")
-    #if not str(chat_id) in log.read():
-    #    log.write(str(chat_id)+"\n")
+    chat_id = update.message.chat_id
+    conn = sqlite3.connect('data/DMI_DB.db',check_same_thread=False)
+    today=unicode(date.today());
+    conn.execute("INSERT INTO stat_list VALUES ('"+str(type)+"',"+str(chat_id)+",'"+str(today)+" ')");
+    conn.commit()
+    log = open("logs/log.txt", "a+")
+    if not str(chat_id) in log.read():
+        log.write(str(chat_id)+"\n")
