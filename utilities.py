@@ -159,6 +159,7 @@ def help_cmd():
     output+= "Segreteria orari e contatti:\n"
     output+= "/sdidattica - segreteria didattica\n"
     output+= "/sstudenti - segreteria studenti\n"
+    output+= "/cea - CEA\n"
     output+= "\nERSU orari e contatti\n"
     output+= "/ersu - sede centrale\n"
     output+= "/ufficioersu - (ufficio tesserini)\n"
@@ -230,6 +231,14 @@ def sstudenti_cmd():
 	output += "Martedi\': 10:00 -12:30 | 15:00 - 16:30\n"
 	output += "Giovedi\': 10:00 - 12:30 | 15:00 - 16:30\n"
 	output += "Venerdi\': 10:00 - 12:30"
+	return output
+
+def cea_cmd():
+        output  = "Centro per i sistemi di elaborazione e le applicazioni scientifiche e didattiche (CEA)\n"
+        output += "📞 0957307560 - fax: 0957307544\n"
+	output += "✉️ cea@unict.it\n"
+	output += "Via Santa Maria del Rosario, 9 - via Sangiuliano 257 (terzo piano) - 95131 Catania\n"
+	output += "http://archivio.unict.it/cea"
 	return output
 
 def ersu_cmd():
@@ -583,6 +592,11 @@ def sdidattica(bot, update):
 def sstudenti(bot, update):
 	checkLog(bot, update,"sstudenti")
 	messageText = sstudenti_cmd()
+	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
+
+def cea(bot, update):
+	checkLog(bot, update,"cea")
+	messageText = cea_cmd()
 	bot.sendMessage(chat_id=update.message.chat_id, text=messageText)
 
 def ersu(bot, update):

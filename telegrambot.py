@@ -17,6 +17,7 @@ def main():
 	dp.add_handler(RegexHandler('^(/rappresentanti_matematica|/rappresentanti_matematica|/RAPPRESENTANTI_MATEMATICA)$',rappresentanti_mate))
 	dp.add_handler(RegexHandler('/sdidattica',sdidattica))
 	dp.add_handler(RegexHandler('/sstudenti',sstudenti))
+	dp.add_handler(RegexHandler('/cea',cea))
 	dp.add_handler(RegexHandler('^(/ersu|/Ersu|/ERSU)$',ersu))
 	dp.add_handler(RegexHandler('^(/ufficioersu|/Ufficioersu|/UFFICIOERSU)$',ufficioersu))
 	dp.add_handler(RegexHandler('^(/urp|/Urp|/URP)$',urp))
