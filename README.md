@@ -1,5 +1,7 @@
 # Telegram-DMI-Bot
 
+## We migrated the development [here](https://github.com/UNICT-DMI/Telegram-DMI-Bot)
+
 **Telegram-DMI-Bot** is the platform that powers **@DMI_bot**, a Telegram bot aided at helping students find informations about professors, classes' schedules, administration's office hours and more.
 
 ###Setting up a local istance
